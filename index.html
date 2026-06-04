@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta
+      name="description"
+      content="EnglishFlow is a personal PWA for learning practical English from A0 to A2."
+    />
+    <title>EnglishFlow PWA</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/icon.svg" />
+    <link rel="stylesheet" href="style.css?v=7" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Основная навигация">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">EF</div>
+          <div>
+            <p class="eyebrow">A0 to A2</p>
+            <h1>EnglishFlow</h1>
+          </div>
+        </div>
+
+        <div class="sidebar-panel">
+          <p class="section-label">Сегодня</p>
+          <div class="daily-ring" aria-label="Прогресс ежедневной цели">
+            <strong id="dailyCount">0</strong>
+            <span>/ 10 карточек</span>
+          </div>
+        </div>
+
+        <nav class="nav-list">
+          <button class="nav-item active" data-view="cards" type="button">
+            <span aria-hidden="true">□</span>
+            Карточки
+          </button>
+          <button class="nav-item" data-view="games" type="button">
+            <span aria-hidden="true">◇</span>
+            Игры
+          </button>
+          <button class="nav-item" data-view="dialogues" type="button">
+            <span aria-hidden="true">◌</span>
+            Диалоги
+          </button>
+          <button class="nav-item" data-view="progress" type="button">
+            <span aria-hidden="true">▦</span>
+            Прогресс
+          </button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <p>Remote-ready PWA</p>
+          <span>GitHub Pages + OpenAI proxy later</span>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Learning Console</p>
+            <h2 id="viewTitle">Карточки слов</h2>
+          </div>
+          <div class="stats-strip" aria-label="Краткая статистика">
+            <div>
+              <span>XP</span>
+              <strong id="xpValue">0</strong>
+            </div>
+            <div>
+              <span>Стрик</span>
+              <strong id="streakValue">0</strong>
+            </div>
+            <div>
+              <span>Уровень</span>
+              <strong id="levelValue">1</strong>
+            </div>
+          </div>
+        </header>
+
+        <section class="view active" id="cardsView" aria-labelledby="cardsHeading">
+          <div class="learning-grid">
+            <article class="word-card">
+              <div class="card-top">
+                <div>
+                  <p class="section-label" id="cardTheme">Тема</p>
+                  <h3 id="wordText">Loading</h3>
+                  <p class="transcription" id="wordTranscription">...</p>
+                </div>
+                <button class="icon-button" id="speakButton" type="button" title="Озвучить слово">
+                  ▶
+                </button>
+              </div>
+
+              <div class="association" id="wordEmoji" aria-hidden="true">◯</div>
+
+              <div class="translation-box" id="translationBox">
+                <p>Перевод скрыт</p>
+                <strong id="translationText">Нажми «Показать перевод»</strong>
+              </div>
+
+              <div class="card-actions">
+                <button class="primary-button" id="revealButton" type="button">Показать перевод</button>
+                <button class="ghost-button" id="unknownButton" type="button">Не знал</button>
+                <button class="success-button" id="knownButton" type="button">Знал</button>
+              </div>
+            </article>
+
+            <aside class="study-panel">
+              <div class="panel-card">
+                <p class="section-label">Сессия</p>
+                <div class="metric-row">
+                  <span>Изучено сегодня</span>
+                  <strong id="todayReviewed">0</strong>
+                </div>
+                <div class="metric-row">
+                  <span>Знакомых слов</span>
+                  <strong id="knownWords">0</strong>
+                </div>
+                <div class="metric-row">
+                  <span>Слабых слов</span>
+                  <strong id="weakWords">0</strong>
+                </div>
+              </div>
+
+              <div class="panel-card voice-card">
+                <p class="section-label">Голос</p>
+                <div class="voice-mode" aria-label="Предпочтение голоса">
+                  <button class="voice-mode-button active" data-voice-mode="male" type="button">Мужской</button>
+                  <button class="voice-mode-button" data-voice-mode="female" type="button">Женский</button>
+                </div>
+                <label class="voice-select-label" for="voiceSelect">Голос устройства</label>
+                <select id="voiceSelect" class="voice-select">
+                  <option value="">Загрузка голосов...</option>
+                </select>
+                <button class="ghost-button voice-test-button" id="voiceTestButton" type="button">
+                  Проверить голос
+                </button>
+                <p class="voice-note" id="voiceNote">
+                  Голоса зависят от устройства и браузера.
+                </p>
+              </div>
+
+              <div class="panel-card theme-card">
+                <p class="section-label">Темы</p>
+                <div id="themeList" class="theme-list"></div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="gamesView" aria-labelledby="gamesHeading">
+          <div class="game-layout">
+            <article class="quiz-card">
+              <div class="quiz-header">
+                <div>
+                  <p class="section-label">Угадай перевод</p>
+                  <h3 id="quizWord">Loading</h3>
+                  <p id="quizTheme" class="transcription">Тема</p>
+                </div>
+                <div class="quiz-emoji" id="quizEmoji" aria-hidden="true">◇</div>
+              </div>
+
+              <div class="quiz-options" id="quizOptions"></div>
+
+              <div class="quiz-feedback" id="quizFeedback">Выбери правильный перевод.</div>
+
+              <div class="quiz-actions">
+                <button class="primary-button" id="nextQuizButton" type="button">Следующий вопрос</button>
+                <button class="ghost-button" id="speakQuizButton" type="button">Озвучить слово</button>
+              </div>
+            </article>
+
+            <aside class="study-panel">
+              <div class="panel-card">
+                <p class="section-label">Темы игры</p>
+                <div class="quiz-topic-list" id="quizTopicList"></div>
+              </div>
+
+              <div class="panel-card">
+                <p class="section-label">Счёт</p>
+                <div class="metric-row">
+                  <span>Правильно</span>
+                  <strong id="quizCorrect">0</strong>
+                </div>
+                <div class="metric-row">
+                  <span>Ошибки</span>
+                  <strong id="quizWrong">0</strong>
+                </div>
+                <div class="metric-row">
+                  <span>Серия</span>
+                  <strong id="quizStreak">0</strong>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          <div class="secondary-games">
+            <article class="sentence-card">
+              <span>02</span>
+              <h3>Собери предложение</h3>
+              <p id="sentenceTranslation">Перевод</p>
+              <div class="sentence-build" id="sentenceBuild"></div>
+              <div class="sentence-bank" id="sentenceBank"></div>
+              <div class="quiz-feedback" id="sentenceFeedback">Собери английскую фразу в правильном порядке.</div>
+              <div class="quiz-actions">
+                <button class="primary-button" id="checkSentenceButton" type="button">Проверить</button>
+                <button class="ghost-button" id="nextSentenceButton" type="button">Следующая</button>
+              </div>
+            </article>
+            <article class="feature-tile">
+              <span>03</span>
+              <h3>Заполни пропуск</h3>
+              <p id="blankTheme">Тема</p>
+              <div class="blank-template" id="blankTemplate">Loading ___</div>
+              <p id="blankTranslation">Перевод</p>
+              <div class="blank-options" id="blankOptions"></div>
+              <div class="quiz-feedback" id="blankFeedback">Выбери слово для пропуска.</div>
+              <button class="primary-button blank-next-button" id="nextBlankButton" type="button">
+                Следующий пропуск
+              </button>
+            </article>
+            <article class="pairs-card">
+              <span>04</span>
+              <h3>Тап-пары</h3>
+              <p>Нажми картинку, потом английское слово. Верная пара подсветится зелёным.</p>
+              <div class="pairs-board">
+                <div class="pair-images" id="pairImages"></div>
+                <div class="pair-words" id="pairWords"></div>
+              </div>
+              <div class="quiz-feedback" id="pairsFeedback">Найди первую пару.</div>
+              <button class="primary-button pair-next-button" id="nextPairsButton" type="button">Новый набор</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="dialoguesView" aria-labelledby="dialoguesHeading">
+          <div class="dialogue-board">
+            <div>
+              <p class="section-label">OpenAI later</p>
+              <h3>Диалоги появятся после MVP карточек</h3>
+              <p>
+                Здесь будут аэропорт, отель, кафе, магазин, знакомство и транспорт. Запросы
+                к OpenAI пойдут через защищённый прокси, чтобы ключ не попадал в браузер.
+              </p>
+            </div>
+            <div id="dialogueScenarios" class="scenario-list"></div>
+          </div>
+        </section>
+
+        <section class="view" id="progressView" aria-labelledby="progressHeading">
+          <div class="progress-grid">
+            <article class="panel-card">
+              <p class="section-label">Общий прогресс</p>
+              <div class="big-number" id="totalReviewed">0</div>
+              <p>Всего повторений карточек</p>
+            </article>
+            <article class="panel-card">
+              <p class="section-label">Последние 7 дней</p>
+              <div class="activity-bars" id="activityBars"></div>
+            </article>
+            <article class="panel-card weak-list-card">
+              <p class="section-label">Слабые слова</p>
+              <div id="weakList" class="weak-list"></div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Мобильная навигация">
+      <button class="nav-item active" data-view="cards" type="button">Карточки</button>
+      <button class="nav-item" data-view="games" type="button">Игры</button>
+      <button class="nav-item" data-view="dialogues" type="button">Диалоги</button>
+      <button class="nav-item" data-view="progress" type="button">Прогресс</button>
+    </nav>
+
+    <script src="config.js?v=7"></script>
+    <script src="app.js?v=7"></script>
+  </body>
+</html>

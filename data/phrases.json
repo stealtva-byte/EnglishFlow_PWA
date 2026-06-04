@@ -1,0 +1,14 @@
+[
+  {
+    "id": "phrase-001",
+    "english": "Hello, how are you?",
+    "russian": "Привет, как дела?",
+    "level": "A0"
+  },
+  {
+    "id": "phrase-002",
+    "english": "I would like a coffee, please.",
+    "russian": "Я бы хотел кофе, пожалуйста.",
+    "level": "A1"
+  }
+]

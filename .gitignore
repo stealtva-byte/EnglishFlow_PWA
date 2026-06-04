@@ -1,0 +1,13 @@
+.DS_Store
+Thumbs.db
+
+# Local-only secrets and overrides. Do not commit API keys.
+config.local.js
+.env
+.env.*
+
+# Temporary files
+*.log
+tmp/
+temp/
+

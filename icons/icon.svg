@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="EnglishFlow icon">
+  <rect width="512" height="512" rx="96" fill="#0f172a"/>
+  <path d="M96 308c36-78 90-117 162-117 62 0 102 29 154 29 26 0 45-8 60-25-35 79-89 118-162 118-62 0-101-30-154-30-26 0-45 8-60 25Z" fill="#16a394"/>
+  <path d="M125 162h190v52H185v45h110v48H185v49h135v52H125V162Z" fill="#f8fafc"/>
+  <path d="M338 162h52v206h-52V162Z" fill="#f2b84b"/>
+</svg>

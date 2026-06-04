@@ -1,0 +1,38 @@
+[
+  {
+    "id": "airport",
+    "title": "Аэропорт",
+    "level": "A1",
+    "starter": "Hello. Where is gate B12?"
+  },
+  {
+    "id": "hotel",
+    "title": "Отель",
+    "level": "A1",
+    "starter": "Hello. I have a reservation."
+  },
+  {
+    "id": "cafe",
+    "title": "Кафе",
+    "level": "A0",
+    "starter": "Can I have a coffee, please?"
+  },
+  {
+    "id": "shop",
+    "title": "Магазин",
+    "level": "A1",
+    "starter": "How much is it?"
+  },
+  {
+    "id": "meeting",
+    "title": "Знакомство",
+    "level": "A0",
+    "starter": "Hello. My name is Alex."
+  },
+  {
+    "id": "taxi",
+    "title": "Такси",
+    "level": "A1",
+    "starter": "Can you take me to the hotel?"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {"id":"pair-001","word":"head","translation":"голова","theme":"Тело","emoji":"🙂"},
+  {"id":"pair-002","word":"hand","translation":"рука","theme":"Тело","emoji":"✋"},
+  {"id":"pair-003","word":"leg","translation":"нога","theme":"Тело","emoji":"🦵"},
+  {"id":"pair-004","word":"eye","translation":"глаз","theme":"Тело","emoji":"👁"},
+  {"id":"pair-005","word":"ear","translation":"ухо","theme":"Тело","emoji":"👂"},
+  {"id":"pair-006","word":"mouth","translation":"рот","theme":"Тело","emoji":"👄"},
+  {"id":"pair-007","word":"car","translation":"машина","theme":"Автомобили","emoji":"🚗"},
+  {"id":"pair-008","word":"wheel","translation":"колесо","theme":"Автомобили","emoji":"○"},
+  {"id":"pair-009","word":"engine","translation":"двигатель","theme":"Автомобили","emoji":"▣"},
+  {"id":"pair-010","word":"taxi","translation":"такси","theme":"Автомобили","emoji":"🚕"},
+  {"id":"pair-011","word":"block","translation":"блок","theme":"Minecraft","emoji":"▦"},
+  {"id":"pair-012","word":"diamond","translation":"алмаз","theme":"Minecraft","emoji":"◇"},
+  {"id":"pair-013","word":"sword","translation":"меч","theme":"Minecraft","emoji":"⚔"},
+  {"id":"pair-014","word":"torch","translation":"факел","theme":"Minecraft","emoji":"✦"},
+  {"id":"pair-015","word":"airport","translation":"аэропорт","theme":"Путешествия","emoji":"✈"},
+  {"id":"pair-016","word":"hotel","translation":"отель","theme":"Путешествия","emoji":"▥"},
+  {"id":"pair-017","word":"ticket","translation":"билет","theme":"Путешествия","emoji":"▭"},
+  {"id":"pair-018","word":"bag","translation":"сумка","theme":"Путешествия","emoji":"▣"},
+  {"id":"pair-019","word":"apple","translation":"яблоко","theme":"Еда","emoji":"🍎"},
+  {"id":"pair-020","word":"coffee","translation":"кофе","theme":"Еда","emoji":"☕"}
+]

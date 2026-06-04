@@ -1,0 +1,18 @@
+[
+  {"id":"s-001","sentence":"I want water","translation":"Я хочу воду","theme":"База","type":"Утверждение","words":["I","want","water"]},
+  {"id":"s-002","sentence":"I need a taxi","translation":"Мне нужно такси","theme":"Путешествия","type":"Утверждение","words":["I","need","a","taxi"]},
+  {"id":"s-003","sentence":"I have a ticket","translation":"У меня есть билет","theme":"Путешествия","type":"Утверждение","words":["I","have","a","ticket"]},
+  {"id":"s-004","sentence":"This is my bag","translation":"Это моя сумка","theme":"Путешествия","type":"Утверждение","words":["This","is","my","bag"]},
+  {"id":"s-005","sentence":"The car is fast","translation":"Машина быстрая","theme":"Автомобили","type":"Утверждение","words":["The","car","is","fast"]},
+  {"id":"s-006","sentence":"I see a car","translation":"Я вижу машину","theme":"Автомобили","type":"Утверждение","words":["I","see","a","car"]},
+  {"id":"s-007","sentence":"I build a house","translation":"Я строю дом","theme":"Minecraft","type":"Утверждение","words":["I","build","a","house"]},
+  {"id":"s-008","sentence":"I need a pickaxe","translation":"Мне нужна кирка","theme":"Minecraft","type":"Утверждение","words":["I","need","a","pickaxe"]},
+  {"id":"s-009","sentence":"Can I have coffee","translation":"Можно мне кофе?","theme":"Кафе","type":"Вопрос","words":["Can","I","have","coffee"]},
+  {"id":"s-010","sentence":"Where is the hotel","translation":"Где отель?","theme":"Путешествия","type":"Вопрос","words":["Where","is","the","hotel"]},
+  {"id":"s-011","sentence":"Where is the gate","translation":"Где выход?","theme":"Путешествия","type":"Вопрос","words":["Where","is","the","gate"]},
+  {"id":"s-012","sentence":"How much is it","translation":"Сколько это стоит?","theme":"Магазин","type":"Вопрос","words":["How","much","is","it"]},
+  {"id":"s-013","sentence":"Do you have bread","translation":"У вас есть хлеб?","theme":"Кафе","type":"Вопрос","words":["Do","you","have","bread"]},
+  {"id":"s-014","sentence":"Do you have fuel","translation":"У вас есть топливо?","theme":"Автомобили","type":"Вопрос","words":["Do","you","have","fuel"]},
+  {"id":"s-015","sentence":"Is this your car","translation":"Это твоя машина?","theme":"Автомобили","type":"Вопрос","words":["Is","this","your","car"]},
+  {"id":"s-016","sentence":"Is this your sword","translation":"Это твой меч?","theme":"Minecraft","type":"Вопрос","words":["Is","this","your","sword"]}
+]

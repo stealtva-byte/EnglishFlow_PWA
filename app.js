@@ -1,0 +1,897 @@
+const STORAGE_KEY = "englishflow.progress.v1";
+const VOICE_SETTINGS_KEY = "englishflow.voice.v1";
+const DAY_MS = 24 * 60 * 60 * 1000;
+const MALE_VOICE_HINTS = ["alex", "daniel", "fred", "tom", "thomas", "arthur", "george", "oliver", "male"];
+const FEMALE_VOICE_HINTS = [
+  "samantha",
+  "victoria",
+  "karen",
+  "moira",
+  "susan",
+  "tessa",
+  "zira",
+  "female",
+  "serena",
+  "ava",
+];
+
+const state = {
+  words: [],
+  dialogues: [],
+  quizzes: [],
+  sentences: [],
+  pairs: [],
+  blanks: [],
+  currentIndex: 0,
+  translationVisible: false,
+  currentQuiz: null,
+  quizTopic: "Все",
+  quizAnswered: false,
+  quizStats: { correct: 0, wrong: 0, streak: 0 },
+  currentSentence: null,
+  sentenceBank: [],
+  sentenceAnswer: [],
+  sentenceSolved: false,
+  currentPairs: [],
+  pairWordsOrder: [],
+  pairsMessage: "",
+  selectedPairImage: null,
+  selectedPairWord: null,
+  matchedPairs: new Set(),
+  currentBlank: null,
+  blankAnswered: false,
+  progress: loadProgress(),
+  voiceSettings: loadVoiceSettings(),
+  voices: [],
+};
+
+const els = {
+  viewTitle: document.getElementById("viewTitle"),
+  wordText: document.getElementById("wordText"),
+  wordTranscription: document.getElementById("wordTranscription"),
+  wordEmoji: document.getElementById("wordEmoji"),
+  cardTheme: document.getElementById("cardTheme"),
+  translationBox: document.getElementById("translationBox"),
+  translationText: document.getElementById("translationText"),
+  revealButton: document.getElementById("revealButton"),
+  knownButton: document.getElementById("knownButton"),
+  unknownButton: document.getElementById("unknownButton"),
+  speakButton: document.getElementById("speakButton"),
+  xpValue: document.getElementById("xpValue"),
+  streakValue: document.getElementById("streakValue"),
+  levelValue: document.getElementById("levelValue"),
+  dailyCount: document.getElementById("dailyCount"),
+  todayReviewed: document.getElementById("todayReviewed"),
+  knownWords: document.getElementById("knownWords"),
+  weakWords: document.getElementById("weakWords"),
+  themeList: document.getElementById("themeList"),
+  totalReviewed: document.getElementById("totalReviewed"),
+  activityBars: document.getElementById("activityBars"),
+  weakList: document.getElementById("weakList"),
+  dialogueScenarios: document.getElementById("dialogueScenarios"),
+  voiceSelect: document.getElementById("voiceSelect"),
+  voiceTestButton: document.getElementById("voiceTestButton"),
+  voiceNote: document.getElementById("voiceNote"),
+  quizWord: document.getElementById("quizWord"),
+  quizTheme: document.getElementById("quizTheme"),
+  quizEmoji: document.getElementById("quizEmoji"),
+  quizOptions: document.getElementById("quizOptions"),
+  quizFeedback: document.getElementById("quizFeedback"),
+  quizTopicList: document.getElementById("quizTopicList"),
+  quizCorrect: document.getElementById("quizCorrect"),
+  quizWrong: document.getElementById("quizWrong"),
+  quizStreak: document.getElementById("quizStreak"),
+  nextQuizButton: document.getElementById("nextQuizButton"),
+  speakQuizButton: document.getElementById("speakQuizButton"),
+  sentenceTranslation: document.getElementById("sentenceTranslation"),
+  sentenceBuild: document.getElementById("sentenceBuild"),
+  sentenceBank: document.getElementById("sentenceBank"),
+  sentenceFeedback: document.getElementById("sentenceFeedback"),
+  checkSentenceButton: document.getElementById("checkSentenceButton"),
+  nextSentenceButton: document.getElementById("nextSentenceButton"),
+  pairImages: document.getElementById("pairImages"),
+  pairWords: document.getElementById("pairWords"),
+  pairsFeedback: document.getElementById("pairsFeedback"),
+  nextPairsButton: document.getElementById("nextPairsButton"),
+  blankTheme: document.getElementById("blankTheme"),
+  blankTemplate: document.getElementById("blankTemplate"),
+  blankTranslation: document.getElementById("blankTranslation"),
+  blankOptions: document.getElementById("blankOptions"),
+  blankFeedback: document.getElementById("blankFeedback"),
+  nextBlankButton: document.getElementById("nextBlankButton"),
+};
+
+const viewTitles = {
+  cards: "Карточки слов",
+  games: "Мини-игры",
+  dialogues: "Диалоги",
+  progress: "Прогресс",
+};
+
+document.addEventListener("DOMContentLoaded", init);
+
+async function init() {
+  bindNavigation();
+  bindCardActions();
+  bindVoiceControls();
+  bindQuizControls();
+  bindSentenceControls();
+  bindPairsControls();
+  bindBlankControls();
+  await loadData();
+  setupVoices();
+  chooseNextWord();
+  chooseNextQuiz();
+  chooseNextSentence();
+  chooseNextPairs();
+  chooseNextBlank();
+  renderCard();
+  renderStats();
+  renderThemes();
+  renderDialogues();
+  renderQuizTopics();
+  renderQuiz();
+  renderSentence();
+  renderPairs();
+  renderBlank();
+  registerServiceWorker();
+}
+
+async function loadData() {
+  const [
+    wordsResponse,
+    dialoguesResponse,
+    quizzesResponse,
+    sentencesResponse,
+    pairsResponse,
+    blanksResponse,
+  ] = await Promise.all([
+    fetch("data/words.json"),
+    fetch("data/dialogues.json"),
+    fetch("data/quizzes.json"),
+    fetch("data/sentences.json"),
+    fetch("data/pairs.json"),
+    fetch("data/blanks.json"),
+  ]);
+  state.words = await wordsResponse.json();
+  state.dialogues = await dialoguesResponse.json();
+  state.quizzes = await quizzesResponse.json();
+  state.sentences = await sentencesResponse.json();
+  state.pairs = await pairsResponse.json();
+  state.blanks = await blanksResponse.json();
+}
+
+function bindNavigation() {
+  document.querySelectorAll(".nav-item[data-view]").forEach((button) => {
+    button.addEventListener("click", () => setView(button.dataset.view));
+  });
+}
+
+function bindCardActions() {
+  els.revealButton.addEventListener("click", () => {
+    state.translationVisible = true;
+    renderCard();
+  });
+
+  els.knownButton.addEventListener("click", () => reviewCurrentWord(true));
+  els.unknownButton.addEventListener("click", () => reviewCurrentWord(false));
+  els.speakButton.addEventListener("click", speakCurrentWord);
+}
+
+function bindVoiceControls() {
+  document.querySelectorAll(".voice-mode-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.voiceSettings.mode = button.dataset.voiceMode;
+      state.voiceSettings.voiceURI = "";
+      saveVoiceSettings();
+      syncBestVoiceForMode();
+      renderVoiceControls();
+    });
+  });
+
+  els.voiceSelect.addEventListener("change", () => {
+    state.voiceSettings.voiceURI = els.voiceSelect.value;
+    saveVoiceSettings();
+    renderVoiceControls();
+  });
+
+  els.voiceTestButton.addEventListener("click", () => speakText("Hello. This is your EnglishFlow voice."));
+}
+
+function bindQuizControls() {
+  els.nextQuizButton.addEventListener("click", () => {
+    chooseNextQuiz();
+    renderQuiz();
+  });
+
+  els.speakQuizButton.addEventListener("click", () => {
+    if (state.currentQuiz) speakText(state.currentQuiz.word);
+  });
+}
+
+function bindSentenceControls() {
+  els.checkSentenceButton.addEventListener("click", checkSentenceAnswer);
+  els.nextSentenceButton.addEventListener("click", () => {
+    chooseNextSentence();
+    renderSentence();
+  });
+}
+
+function bindPairsControls() {
+  els.nextPairsButton.addEventListener("click", () => {
+    chooseNextPairs();
+    renderPairs();
+  });
+}
+
+function bindBlankControls() {
+  els.nextBlankButton.addEventListener("click", () => {
+    chooseNextBlank();
+    renderBlank();
+  });
+}
+
+function setView(viewName) {
+  document.querySelectorAll(".view").forEach((view) => view.classList.remove("active"));
+  document.getElementById(`${viewName}View`).classList.add("active");
+  document.querySelectorAll(".nav-item[data-view]").forEach((button) => {
+    button.classList.toggle("active", button.dataset.view === viewName);
+  });
+  els.viewTitle.textContent = viewTitles[viewName] || "EnglishFlow";
+  renderStats();
+}
+
+function chooseNextWord() {
+  if (!state.words.length) return;
+
+  const weighted = state.words
+    .map((word, index) => {
+      const item = state.progress.words[word.id] || {};
+      const mistakes = item.mistakes || 0;
+      const correct = item.correct || 0;
+      const seenPenalty = Math.min(item.reviews || 0, 5);
+      return {
+        index,
+        weight: 2 + mistakes * 4 - Math.min(correct, 3) + Math.max(0, 3 - seenPenalty),
+      };
+    })
+    .sort((a, b) => b.weight - a.weight);
+
+  const top = weighted.slice(0, Math.min(12, weighted.length));
+  state.currentIndex = top[Math.floor(Math.random() * top.length)].index;
+  state.translationVisible = false;
+}
+
+function currentWord() {
+  return state.words[state.currentIndex];
+}
+
+function renderCard() {
+  const word = currentWord();
+  if (!word) return;
+
+  els.wordText.textContent = word.word;
+  els.wordTranscription.textContent = word.transcription;
+  els.wordEmoji.textContent = word.emoji;
+  els.cardTheme.textContent = word.theme;
+
+  els.translationText.textContent = state.translationVisible
+    ? word.translation
+    : "Нажми «Показать перевод»";
+  els.translationBox.querySelector("p").textContent = state.translationVisible
+    ? "Перевод"
+    : "Перевод скрыт";
+  els.revealButton.textContent = state.translationVisible ? "Перевод открыт" : "Показать перевод";
+}
+
+function reviewCurrentWord(known) {
+  const word = currentWord();
+  if (!word) return;
+
+  const today = getTodayKey();
+  const wordProgress = state.progress.words[word.id] || {
+    reviews: 0,
+    correct: 0,
+    mistakes: 0,
+    lastReviewed: null,
+  };
+
+  wordProgress.reviews += 1;
+  wordProgress.correct += known ? 1 : 0;
+  wordProgress.mistakes += known ? 0 : 1;
+  wordProgress.lastReviewed = today;
+
+  state.progress.words[word.id] = wordProgress;
+  state.progress.xp += known ? 5 : 3;
+  state.progress.totalReviews += 1;
+  state.progress.daily[today] = (state.progress.daily[today] || 0) + 1;
+  updateStreak(today);
+  saveProgress();
+
+  chooseNextWord();
+  renderCard();
+  renderStats();
+}
+
+function speakCurrentWord() {
+  const word = currentWord();
+  if (!word) return;
+  speakText(word.word);
+}
+
+function speakText(text) {
+  if (!("speechSynthesis" in window)) return;
+
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "en-US";
+  utterance.rate = 0.86;
+  utterance.pitch = 1;
+
+  const selectedVoice = resolveSelectedVoice();
+  if (selectedVoice) utterance.voice = selectedVoice;
+
+  window.speechSynthesis.speak(utterance);
+}
+
+function setupVoices() {
+  if (!("speechSynthesis" in window)) {
+    els.voiceSelect.innerHTML = `<option value="">SpeechSynthesis недоступен</option>`;
+    els.voiceSelect.disabled = true;
+    els.voiceTestButton.disabled = true;
+    els.voiceNote.textContent = "Этот браузер не поддерживает браузерную озвучку.";
+    return;
+  }
+
+  refreshVoices();
+  window.speechSynthesis.onvoiceschanged = refreshVoices;
+  setTimeout(refreshVoices, 300);
+}
+
+function refreshVoices() {
+  state.voices = window.speechSynthesis
+    .getVoices()
+    .filter((voice) => voice.lang && voice.lang.toLowerCase().startsWith("en"))
+    .sort((a, b) => {
+      const aUS = a.lang.toLowerCase().startsWith("en-us") ? 0 : 1;
+      const bUS = b.lang.toLowerCase().startsWith("en-us") ? 0 : 1;
+      return aUS - bUS || a.name.localeCompare(b.name);
+    });
+
+  if (!state.voiceSettings.voiceURI) syncBestVoiceForMode();
+  renderVoiceControls();
+}
+
+function syncBestVoiceForMode() {
+  const bestVoice = resolveBestVoiceForMode(state.voiceSettings.mode);
+  state.voiceSettings.voiceURI = bestVoice ? bestVoice.voiceURI : "";
+  saveVoiceSettings();
+}
+
+function renderVoiceControls() {
+  document.querySelectorAll(".voice-mode-button").forEach((button) => {
+    button.classList.toggle("active", button.dataset.voiceMode === state.voiceSettings.mode);
+  });
+
+  els.voiceSelect.innerHTML = "";
+
+  if (!state.voices.length) {
+    const option = document.createElement("option");
+    option.value = "";
+    option.textContent = "Английские голоса пока не найдены";
+    els.voiceSelect.appendChild(option);
+    els.voiceNote.textContent = "Если список пустой, попробуй нажать озвучку или обновить страницу.";
+    return;
+  }
+
+  const visibleVoices = voicesForCurrentMode();
+  visibleVoices.forEach((voice) => {
+    const option = document.createElement("option");
+    option.value = voice.voiceURI;
+    option.textContent = `${voice.name} (${voice.lang})${voice.localService ? "" : " · online"}`;
+    els.voiceSelect.appendChild(option);
+  });
+
+  const selectedVoice = resolveSelectedVoice();
+  els.voiceSelect.value = selectedVoice ? selectedVoice.voiceURI : "";
+  els.voiceNote.textContent = buildVoiceNote(selectedVoice);
+}
+
+function resolveSelectedVoice() {
+  if (!state.voices.length) return null;
+
+  const visibleVoices = voicesForCurrentMode();
+  const explicit = visibleVoices.find((voice) => voice.voiceURI === state.voiceSettings.voiceURI);
+  if (explicit) return explicit;
+
+  return resolveBestVoiceForMode(state.voiceSettings.mode);
+}
+
+function resolveBestVoiceForMode(mode) {
+  if (!state.voices.length) return null;
+
+  const pool = voicesForCurrentMode(mode);
+
+  if (mode === "male") {
+    return pool.find((voice) => voiceMatchesHints(voice, MALE_VOICE_HINTS)) || pool[0] || null;
+  }
+
+  if (mode === "female") {
+    return pool.find((voice) => voiceMatchesHints(voice, FEMALE_VOICE_HINTS)) || pool[0] || null;
+  }
+
+  return pool[0] || null;
+}
+
+function voicesForCurrentMode(mode = state.voiceSettings.mode) {
+  const usVoices = state.voices.filter((voice) => voice.lang.toLowerCase().startsWith("en-us"));
+  const base = usVoices.length ? usVoices : state.voices;
+  const hints = mode === "female" ? FEMALE_VOICE_HINTS : MALE_VOICE_HINTS;
+  const matching = base.filter((voice) => voiceMatchesHints(voice, hints));
+  return matching.length ? matching : base;
+}
+
+function voiceMatchesHints(voice, hints) {
+  const label = `${voice.name} ${voice.voiceURI}`.toLowerCase();
+  return hints.some((hint) => label.includes(hint));
+}
+
+function buildVoiceNote(voice) {
+  if (!voice) return "Голоса зависят от устройства и браузера.";
+
+  const guessedType = voiceMatchesHints(voice, MALE_VOICE_HINTS)
+    ? "похоже на мужской"
+    : voiceMatchesHints(voice, FEMALE_VOICE_HINTS)
+      ? "похоже на женский"
+      : "тип голоса не определён браузером";
+
+  return `${voice.name}: ${guessedType}. Можно проверить и выбрать другой.`;
+}
+
+function renderStats() {
+  const today = getTodayKey();
+  const wordValues = Object.values(state.progress.words);
+  const known = wordValues.filter((item) => item.correct > item.mistakes).length;
+  const weak = wordValues.filter((item) => item.mistakes > 0 && item.mistakes >= item.correct).length;
+  const todayCount = state.progress.daily[today] || 0;
+
+  els.xpValue.textContent = state.progress.xp;
+  els.streakValue.textContent = state.progress.streak;
+  els.levelValue.textContent = Math.max(1, Math.floor(state.progress.xp / 100) + 1);
+  els.dailyCount.textContent = todayCount;
+  els.todayReviewed.textContent = todayCount;
+  els.knownWords.textContent = known;
+  els.weakWords.textContent = weak;
+  els.totalReviewed.textContent = state.progress.totalReviews;
+
+  renderActivityBars();
+  renderWeakList();
+}
+
+function renderThemes() {
+  const counts = state.words.reduce((acc, word) => {
+    acc[word.theme] = (acc[word.theme] || 0) + 1;
+    return acc;
+  }, {});
+
+  els.themeList.innerHTML = Object.entries(counts)
+    .map(([theme, count]) => `<div class="theme-pill"><span>${theme}</span><strong>${count}</strong></div>`)
+    .join("");
+}
+
+function renderDialogues() {
+  els.dialogueScenarios.innerHTML = state.dialogues
+    .map((item) => `<div class="scenario-pill"><span>${item.title}</span><strong>${item.level}</strong></div>`)
+    .join("");
+}
+
+function renderQuizTopics() {
+  const topics = ["Все", ...new Set(state.quizzes.map((item) => item.theme))];
+  els.quizTopicList.innerHTML = topics
+    .map(
+      (topic) =>
+        `<button class="quiz-topic${topic === state.quizTopic ? " active" : ""}" data-quiz-topic="${topic}" type="button">${topic}</button>`,
+    )
+    .join("");
+
+  els.quizTopicList.querySelectorAll(".quiz-topic").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.quizTopic = button.dataset.quizTopic;
+      chooseNextQuiz();
+      renderQuizTopics();
+      renderQuiz();
+    });
+  });
+}
+
+function chooseNextQuiz() {
+  const pool = filteredQuizzes();
+  if (!pool.length) return;
+  state.currentQuiz = pool[Math.floor(Math.random() * pool.length)];
+  state.quizAnswered = false;
+}
+
+function filteredQuizzes() {
+  if (state.quizTopic === "Все") return state.quizzes;
+  return state.quizzes.filter((item) => item.theme === state.quizTopic);
+}
+
+function renderQuiz() {
+  if (!state.currentQuiz) return;
+  const options = buildQuizOptions(state.currentQuiz);
+  els.quizWord.textContent = state.currentQuiz.word;
+  els.quizTheme.textContent = state.currentQuiz.theme;
+  els.quizEmoji.textContent = state.currentQuiz.emoji;
+  els.quizFeedback.textContent = "Выбери правильный перевод.";
+  els.quizOptions.innerHTML = options
+    .map((option) => `<button class="quiz-option" data-answer="${option}" type="button">${option}</button>`)
+    .join("");
+
+  els.quizOptions.querySelectorAll(".quiz-option").forEach((button) => {
+    button.addEventListener("click", () => handleQuizAnswer(button));
+  });
+
+  renderQuizStats();
+}
+
+function buildQuizOptions(quiz) {
+  const distractors = state.quizzes
+    .filter((item) => item.id !== quiz.id)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 3)
+    .map((item) => item.translation);
+
+  return [quiz.translation, ...distractors].sort(() => Math.random() - 0.5);
+}
+
+function handleQuizAnswer(button) {
+  if (state.quizAnswered || !state.currentQuiz) return;
+  state.quizAnswered = true;
+
+  const isCorrect = button.dataset.answer === state.currentQuiz.translation;
+  button.classList.add(isCorrect ? "correct" : "wrong");
+
+  els.quizOptions.querySelectorAll(".quiz-option").forEach((optionButton) => {
+    optionButton.disabled = true;
+    if (optionButton.dataset.answer === state.currentQuiz.translation) {
+      optionButton.classList.add("correct");
+    }
+  });
+
+  if (isCorrect) {
+    state.quizStats.correct += 1;
+    state.quizStats.streak += 1;
+    state.progress.xp += 10;
+    els.quizFeedback.textContent = `Верно: ${state.currentQuiz.word} — ${state.currentQuiz.translation}. +10 XP`;
+  } else {
+    state.quizStats.wrong += 1;
+    state.quizStats.streak = 0;
+    state.progress.xp += 2;
+    els.quizFeedback.textContent = `Почти. Правильно: ${state.currentQuiz.translation}. +2 XP за попытку`;
+  }
+
+  state.progress.totalReviews += 1;
+  state.progress.daily[getTodayKey()] = (state.progress.daily[getTodayKey()] || 0) + 1;
+  updateStreak(getTodayKey());
+  saveProgress();
+  renderQuizStats();
+  renderStats();
+}
+
+function renderQuizStats() {
+  els.quizCorrect.textContent = state.quizStats.correct;
+  els.quizWrong.textContent = state.quizStats.wrong;
+  els.quizStreak.textContent = state.quizStats.streak;
+}
+
+function chooseNextSentence() {
+  if (!state.sentences.length) return;
+  state.currentSentence = state.sentences[Math.floor(Math.random() * state.sentences.length)];
+  state.sentenceAnswer = [];
+  state.sentenceBank = shuffle([...state.currentSentence.words]);
+  state.sentenceSolved = false;
+}
+
+function renderSentence() {
+  if (!state.currentSentence) return;
+
+  const punctuation = state.currentSentence.type === "Вопрос" ? "?" : ".";
+  els.sentenceTranslation.textContent = `${state.currentSentence.translation}${punctuation}`;
+  els.sentenceFeedback.textContent = "Собери английскую фразу в правильном порядке.";
+  els.sentenceBuild.innerHTML = state.sentenceAnswer.length
+    ? state.sentenceAnswer
+        .map((word, index) => `<button class="word-chip" data-answer-index="${index}" type="button">${word}</button>`)
+        .join("")
+    : `<span class="voice-note">Нажимай слова снизу.</span>`;
+  els.sentenceBank.innerHTML = state.sentenceBank
+    .map((word, index) => `<button class="word-chip" data-bank-index="${index}" type="button">${word}</button>`)
+    .join("");
+
+  els.sentenceBuild.querySelectorAll(".word-chip[data-answer-index]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const index = Number(button.dataset.answerIndex);
+      const [word] = state.sentenceAnswer.splice(index, 1);
+      state.sentenceBank.push(word);
+      renderSentence();
+    });
+  });
+
+  els.sentenceBank.querySelectorAll(".word-chip[data-bank-index]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const index = Number(button.dataset.bankIndex);
+      const [word] = state.sentenceBank.splice(index, 1);
+      state.sentenceAnswer.push(word);
+      renderSentence();
+    });
+  });
+}
+
+function checkSentenceAnswer() {
+  if (!state.currentSentence) return;
+  if (state.sentenceSolved) {
+    els.sentenceFeedback.textContent = "Это предложение уже засчитано. Нажми «Следующая».";
+    return;
+  }
+  const answer = state.sentenceAnswer.join(" ");
+  const correct = state.currentSentence.sentence;
+  const isCorrect = answer === correct;
+
+  if (isCorrect) {
+    state.sentenceSolved = true;
+    state.progress.xp += 12;
+    state.progress.totalReviews += 1;
+    state.progress.daily[getTodayKey()] = (state.progress.daily[getTodayKey()] || 0) + 1;
+    updateStreak(getTodayKey());
+    saveProgress();
+    renderStats();
+    els.sentenceFeedback.textContent = `Верно: ${correct}. +12 XP`;
+  } else {
+    els.sentenceFeedback.textContent = `Пока нет. Правильно: ${correct}.`;
+  }
+}
+
+function chooseNextPairs() {
+  state.currentPairs = shuffle([...state.pairs]).slice(0, 6);
+  state.pairWordsOrder = shuffle([...state.currentPairs]);
+  state.pairsMessage = "";
+  state.selectedPairImage = null;
+  state.selectedPairWord = null;
+  state.matchedPairs = new Set();
+}
+
+function renderPairs() {
+  if (!state.currentPairs.length) return;
+
+  const images = state.currentPairs;
+  const words = state.pairWordsOrder;
+
+  els.pairImages.innerHTML = images
+    .map(
+      (item) =>
+        `<button class="pair-card${pairClass(item.id, "image")}" data-pair-image="${item.id}" type="button"><strong>${item.emoji}</strong><span>${item.translation}</span></button>`,
+    )
+    .join("");
+  els.pairWords.innerHTML = words
+    .map(
+      (item) =>
+        `<button class="pair-word${pairClass(item.id, "word")}" data-pair-word="${item.id}" type="button">${item.word}</button>`,
+    )
+    .join("");
+
+  els.pairImages.querySelectorAll(".pair-card").forEach((button) => {
+    button.addEventListener("click", () => selectPairImage(button.dataset.pairImage));
+  });
+  els.pairWords.querySelectorAll(".pair-word").forEach((button) => {
+    button.addEventListener("click", () => selectPairWord(button.dataset.pairWord));
+  });
+
+  const matchedCount = state.matchedPairs.size;
+  els.pairsFeedback.textContent =
+    state.pairsMessage ||
+    (matchedCount === state.currentPairs.length
+      ? `Набор готов. +${matchedCount * 4} XP`
+      : `Найдено пар: ${matchedCount}/${state.currentPairs.length}`);
+}
+
+function chooseNextBlank() {
+  if (!state.blanks.length) return;
+  state.currentBlank = state.blanks[Math.floor(Math.random() * state.blanks.length)];
+  state.blankAnswered = false;
+}
+
+function renderBlank() {
+  if (!state.currentBlank) return;
+
+  els.blankTheme.textContent = state.currentBlank.theme;
+  els.blankTemplate.textContent = state.currentBlank.template;
+  els.blankTranslation.textContent = state.currentBlank.translation;
+  els.blankFeedback.textContent = "Выбери слово для пропуска.";
+  els.blankOptions.innerHTML = shuffle([...state.currentBlank.options])
+    .map((option) => `<button class="blank-option" data-blank-answer="${option}" type="button">${option}</button>`)
+    .join("");
+
+  els.blankOptions.querySelectorAll(".blank-option").forEach((button) => {
+    button.addEventListener("click", () => handleBlankAnswer(button));
+  });
+}
+
+function handleBlankAnswer(button) {
+  if (state.blankAnswered || !state.currentBlank) return;
+  state.blankAnswered = true;
+
+  const isCorrect = button.dataset.blankAnswer === state.currentBlank.answer;
+  button.classList.add(isCorrect ? "correct" : "wrong");
+
+  els.blankOptions.querySelectorAll(".blank-option").forEach((optionButton) => {
+    optionButton.disabled = true;
+    if (optionButton.dataset.blankAnswer === state.currentBlank.answer) {
+      optionButton.classList.add("correct");
+    }
+  });
+
+  if (isCorrect) {
+    state.progress.xp += 8;
+    els.blankFeedback.textContent = `Верно: ${state.currentBlank.template.replace("___", state.currentBlank.answer)}. +8 XP`;
+  } else {
+    state.progress.xp += 2;
+    els.blankFeedback.textContent = `Почти. Правильно: ${state.currentBlank.answer}. +2 XP`;
+  }
+
+  state.progress.totalReviews += 1;
+  state.progress.daily[getTodayKey()] = (state.progress.daily[getTodayKey()] || 0) + 1;
+  updateStreak(getTodayKey());
+  saveProgress();
+  renderStats();
+}
+
+function pairClass(id, type) {
+  if (state.matchedPairs.has(id)) return " matched";
+  if (type === "image" && state.selectedPairImage === id) return " selected";
+  if (type === "word" && state.selectedPairWord === id) return " selected";
+  return "";
+}
+
+function selectPairImage(id) {
+  if (state.matchedPairs.has(id)) return;
+  state.selectedPairImage = id;
+  checkPairSelection();
+  renderPairs();
+}
+
+function selectPairWord(id) {
+  if (state.matchedPairs.has(id)) return;
+  state.selectedPairWord = id;
+  checkPairSelection();
+  renderPairs();
+}
+
+function checkPairSelection() {
+  if (!state.selectedPairImage || !state.selectedPairWord) return;
+
+  if (state.selectedPairImage === state.selectedPairWord) {
+    state.matchedPairs.add(state.selectedPairImage);
+    const pair = state.currentPairs.find((item) => item.id === state.selectedPairImage);
+    state.pairsMessage = pair ? `Верно: ${pair.emoji} — ${pair.word}. +4 XP` : "Верно. +4 XP";
+    state.progress.xp += 4;
+    state.progress.totalReviews += 1;
+    state.progress.daily[getTodayKey()] = (state.progress.daily[getTodayKey()] || 0) + 1;
+    updateStreak(getTodayKey());
+    saveProgress();
+    renderStats();
+  } else {
+    state.pairsMessage = "Не пара. Попробуй ещё раз.";
+  }
+
+  state.selectedPairImage = null;
+  state.selectedPairWord = null;
+}
+
+function shuffle(items) {
+  return items
+    .map((item) => ({ item, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ item }) => item);
+}
+
+function renderActivityBars() {
+  const days = Array.from({ length: 7 }, (_, offset) => {
+    const date = new Date(Date.now() - (6 - offset) * DAY_MS);
+    const key = toDateKey(date);
+    return { key, label: date.toLocaleDateString("ru-RU", { weekday: "short" }) };
+  });
+
+  const max = Math.max(10, ...days.map((day) => state.progress.daily[day.key] || 0));
+  els.activityBars.innerHTML = days
+    .map((day) => {
+      const count = state.progress.daily[day.key] || 0;
+      const height = Math.max(10, Math.round((count / max) * 120));
+      return `<div class="activity-bar"><span style="height:${height}px"></span><strong>${count}</strong><small>${day.label}</small></div>`;
+    })
+    .join("");
+}
+
+function renderWeakList() {
+  const weakWords = state.words
+    .map((word) => ({ word, progress: state.progress.words[word.id] }))
+    .filter((item) => item.progress && item.progress.mistakes > 0)
+    .sort((a, b) => b.progress.mistakes - a.progress.mistakes)
+    .slice(0, 8);
+
+  if (!weakWords.length) {
+    els.weakList.innerHTML = `<div class="weak-pill"><span>Пока нет слабых слов</span><strong>0</strong></div>`;
+    return;
+  }
+
+  els.weakList.innerHTML = weakWords
+    .map(
+      (item) =>
+        `<div class="weak-pill"><span>${item.word.word} — ${item.word.translation}</span><strong>${item.progress.mistakes}</strong></div>`,
+    )
+    .join("");
+}
+
+function updateStreak(today) {
+  const last = state.progress.lastStudyDate;
+  if (last === today) return;
+
+  const yesterday = toDateKey(new Date(Date.now() - DAY_MS));
+  state.progress.streak = last === yesterday ? state.progress.streak + 1 : 1;
+  state.progress.bestStreak = Math.max(state.progress.bestStreak, state.progress.streak);
+  state.progress.lastStudyDate = today;
+}
+
+function loadProgress() {
+  const defaults = {
+    xp: 0,
+    streak: 0,
+    bestStreak: 0,
+    totalReviews: 0,
+    lastStudyDate: null,
+    daily: {},
+    words: {},
+  };
+
+  try {
+    return { ...defaults, ...JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}") };
+  } catch {
+    return defaults;
+  }
+}
+
+function saveProgress() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state.progress));
+}
+
+function loadVoiceSettings() {
+  const defaults = {
+    mode: "male",
+    voiceURI: "",
+  };
+
+  try {
+    const saved = { ...defaults, ...JSON.parse(localStorage.getItem(VOICE_SETTINGS_KEY) || "{}") };
+    if (!["male", "female"].includes(saved.mode)) saved.mode = "male";
+    return saved;
+  } catch {
+    return defaults;
+  }
+}
+
+function saveVoiceSettings() {
+  localStorage.setItem(VOICE_SETTINGS_KEY, JSON.stringify(state.voiceSettings));
+}
+
+function getTodayKey() {
+  return toDateKey(new Date());
+}
+
+function toDateKey(date) {
+  return date.toISOString().slice(0, 10);
+}
+
+function registerServiceWorker() {
+  if (!("serviceWorker" in navigator)) return;
+  navigator.serviceWorker.register("sw.js").catch((error) => {
+    console.warn("Service worker registration failed", error);
+  });
+}
