@@ -4,6 +4,10 @@ EnglishFlow is static-first. The current app can be hosted without a backend bec
 
 ## Recommended First Deployment: GitHub Pages
 
+Repository:
+
+    https://github.com/stealtva-byte/EnglishFlow_PWA.git
+
 1. Create a GitHub repository, for example `englishflow-pwa`.
 2. Push this folder to the repository.
 3. In GitHub, open repository settings.
@@ -13,6 +17,21 @@ EnglishFlow is static-first. The current app can be hosted without a backend bec
 7. Install the PWA from the browser menu if the browser supports installation.
 
 The included `.nojekyll` file tells GitHub Pages to serve files as-is.
+
+For this repository, the code is already pushed to `main`. To publish with GitHub Pages manually:
+
+1. Open `https://github.com/stealtva-byte/EnglishFlow_PWA`.
+2. Open `Settings`.
+3. Open `Pages`.
+4. In `Build and deployment`, choose `Deploy from a branch`.
+5. Select branch `main`.
+6. Select folder `/root`.
+7. Save.
+8. Wait until GitHub shows the Pages URL.
+
+Expected URL format:
+
+    https://stealtva-byte.github.io/EnglishFlow_PWA/
 
 ## Alternative: Cloudflare Pages
 
@@ -49,4 +68,3 @@ The server-side endpoint stores the OpenAI API key. The static PWA never stores 
 - The Games tab loads all four games.
 - Progress survives a page reload on the same device.
 - No OpenAI key or other secret appears in committed frontend files.
-
