@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="theme-color" content="#f6f7ff" />
     <meta
       name="description"
       content="EnglishFlow is a personal PWA for learning practical English from A0 to A2."
@@ -13,7 +13,7 @@
     <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
     <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
-    <link rel="stylesheet" href="style.css?v=9" />
+    <link rel="stylesheet" href="style.css?v=11" />
   </head>
   <body>
     <div class="app-shell">
@@ -27,7 +27,7 @@
         </div>
 
         <div class="sidebar-panel">
-          <p class="section-label">Сегодня</p>
+          <p class="section-label">Daily goal</p>
           <div class="daily-ring" aria-label="Прогресс ежедневной цели">
             <strong id="dailyCount">0</strong>
             <span>/ 10 карточек</span>
@@ -36,20 +36,20 @@
 
         <nav class="nav-list">
           <button class="nav-item active" data-view="cards" type="button">
-            <span aria-hidden="true">□</span>
-            Карточки
+            <span aria-hidden="true">⌂</span>
+            Learn
           </button>
           <button class="nav-item" data-view="games" type="button">
-            <span aria-hidden="true">◇</span>
-            Игры
+            <span aria-hidden="true">◈</span>
+            Games
           </button>
           <button class="nav-item" data-view="dialogues" type="button">
             <span aria-hidden="true">◌</span>
-            Диалоги
+            Dialogues
           </button>
           <button class="nav-item" data-view="progress" type="button">
             <span aria-hidden="true">▦</span>
-            Прогресс
+            Progress
           </button>
         </nav>
 
@@ -62,8 +62,8 @@
       <main class="main">
         <header class="topbar">
           <div>
-            <p class="eyebrow">Learning Console</p>
-            <h2 id="viewTitle">Карточки слов</h2>
+            <p class="eyebrow">EnglishFlow</p>
+            <h2 id="viewTitle">Learn</h2>
           </div>
           <div class="stats-strip" aria-label="Краткая статистика">
             <div>
@@ -82,6 +82,83 @@
         </header>
 
         <section class="view active" id="cardsView" aria-labelledby="cardsHeading">
+          <section class="home-hero" aria-label="Главный прогресс">
+            <div class="hero-copy">
+              <div class="hero-brand">
+                <img src="icons/icon-192.png" alt="" aria-hidden="true" />
+                <span>EnglishFlow</span>
+              </div>
+              <p class="eyebrow">Today's flow</p>
+              <h3>Учись короткими сессиями и видь, как растёт запас слов.</h3>
+              <div class="level-progress">
+                <div class="level-progress-head">
+                  <span id="heroLevel">Level 1</span>
+                  <strong id="heroXp">0 XP</strong>
+                </div>
+                <div class="progress-track" aria-hidden="true">
+                  <span id="levelProgressBar"></span>
+                </div>
+                <p id="nextLevelText">До следующего уровня: 100 XP</p>
+              </div>
+            </div>
+            <div class="hero-metrics" aria-label="Ключевые показатели">
+              <div class="hero-metric accent">
+                <span>Streak</span>
+                <strong id="heroStreak">0</strong>
+                <small>дней подряд</small>
+              </div>
+              <div class="hero-metric">
+                <span>Daily goal</span>
+                <strong id="heroDaily">0/10</strong>
+                <small>карточек сегодня</small>
+              </div>
+              <div class="hero-metric">
+                <span>Known words</span>
+                <strong id="heroKnown">0</strong>
+                <small>из 1000 цели</small>
+              </div>
+            </div>
+          </section>
+
+          <section class="stage-card" aria-label="Этапы словарного запаса">
+            <div class="stage-current">
+              <p class="section-label">Vocabulary journey</p>
+              <div class="stage-title-row">
+                <span id="stageIcon" aria-hidden="true">🏕️</span>
+                <h3 id="stageTitle">Этап 1 — Выживание</h3>
+              </div>
+              <p id="stageText">Первые слова для простых бытовых ситуаций.</p>
+              <div class="stage-long-progress">
+                <div class="stage-long-head">
+                  <strong id="stageWordCount">0 / 300 слов</strong>
+                  <span id="stagePercent">0%</span>
+                </div>
+                <div class="progress-track stage-track" aria-hidden="true">
+                  <span id="stageProgressBar"></span>
+                </div>
+                <p id="stageRemaining">Осталось 300 слов до следующего этапа</p>
+              </div>
+              <div class="stage-reward" id="stageReward">Награда: открыть больше тем для уверенного старта.</div>
+            </div>
+            <div class="stage-steps">
+              <div class="stage-step active" data-stage-step="1">
+                <span>1</span>
+                <strong>Выживание</strong>
+                <small>300 слов</small>
+              </div>
+              <div class="stage-step" data-stage-step="2">
+                <span>2</span>
+                <strong>Маршрут</strong>
+                <small>600 слов</small>
+              </div>
+              <div class="stage-step" data-stage-step="3">
+                <span>3</span>
+                <strong>Свобода</strong>
+                <small>1000 слов</small>
+              </div>
+            </div>
+          </section>
+
           <div class="learning-grid">
             <article class="word-card">
               <div class="card-top">
@@ -289,7 +366,20 @@
       <button class="nav-item" data-view="progress" type="button">Прогресс</button>
     </nav>
 
-    <script src="config.js?v=9"></script>
-    <script src="app.js?v=9"></script>
+    <div class="stage-celebration" id="stageCelebration" hidden>
+      <div class="confetti-field" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="celebration-card" role="status" aria-live="polite">
+        <p class="section-label">Stage complete</p>
+        <h2 id="celebrationTitle">Этап пройден</h2>
+        <p id="celebrationText">Ты открыл следующий большой рубеж EnglishFlow.</p>
+        <button class="primary-button" id="celebrationButton" type="button">Продолжить</button>
+      </div>
+    </div>
+
+    <script src="config.js?v=11"></script>
+    <script src="app.js?v=11"></script>
   </body>
 </html>

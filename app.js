@@ -1,5 +1,6 @@
 const STORAGE_KEY = "englishflow.progress.v1";
 const VOICE_SETTINGS_KEY = "englishflow.voice.v1";
+const CELEBRATED_STAGES_KEY = "englishflow.celebratedStages.v1";
 const DAY_MS = 24 * 60 * 60 * 1000;
 const MALE_VOICE_HINTS = ["alex", "daniel", "fred", "tom", "thomas", "arthur", "george", "oliver", "male"];
 const FEMALE_VOICE_HINTS = [
@@ -103,13 +104,32 @@ const els = {
   installCard: document.getElementById("installCard"),
   installText: document.getElementById("installText"),
   installButton: document.getElementById("installButton"),
+  heroLevel: document.getElementById("heroLevel"),
+  heroXp: document.getElementById("heroXp"),
+  heroStreak: document.getElementById("heroStreak"),
+  heroDaily: document.getElementById("heroDaily"),
+  heroKnown: document.getElementById("heroKnown"),
+  levelProgressBar: document.getElementById("levelProgressBar"),
+  nextLevelText: document.getElementById("nextLevelText"),
+  stageTitle: document.getElementById("stageTitle"),
+  stageText: document.getElementById("stageText"),
+  stageIcon: document.getElementById("stageIcon"),
+  stageWordCount: document.getElementById("stageWordCount"),
+  stagePercent: document.getElementById("stagePercent"),
+  stageProgressBar: document.getElementById("stageProgressBar"),
+  stageRemaining: document.getElementById("stageRemaining"),
+  stageReward: document.getElementById("stageReward"),
+  stageCelebration: document.getElementById("stageCelebration"),
+  celebrationTitle: document.getElementById("celebrationTitle"),
+  celebrationText: document.getElementById("celebrationText"),
+  celebrationButton: document.getElementById("celebrationButton"),
 };
 
 const viewTitles = {
-  cards: "Карточки слов",
-  games: "Мини-игры",
-  dialogues: "Диалоги",
-  progress: "Прогресс",
+  cards: "Learn",
+  games: "Games",
+  dialogues: "Dialogues",
+  progress: "Progress",
 };
 
 document.addEventListener("DOMContentLoaded", init);
@@ -123,6 +143,7 @@ async function init() {
   bindPairsControls();
   bindBlankControls();
   bindInstallControls();
+  bindCelebrationControls();
   await loadData();
   setupVoices();
   chooseNextWord();
@@ -256,6 +277,10 @@ function bindInstallControls() {
     state.deferredInstallPrompt = null;
     renderInstallCard();
   });
+}
+
+function bindCelebrationControls() {
+  els.celebrationButton.addEventListener("click", hideStageCelebration);
 }
 
 function setView(viewName) {
@@ -481,18 +506,121 @@ function renderStats() {
   const known = wordValues.filter((item) => item.correct > item.mistakes).length;
   const weak = wordValues.filter((item) => item.mistakes > 0 && item.mistakes >= item.correct).length;
   const todayCount = state.progress.daily[today] || 0;
+  const level = Math.max(1, Math.floor(state.progress.xp / 100) + 1);
+  const xpIntoLevel = state.progress.xp % 100;
+  const nextLevelXp = 100 - xpIntoLevel;
 
   els.xpValue.textContent = state.progress.xp;
   els.streakValue.textContent = state.progress.streak;
-  els.levelValue.textContent = Math.max(1, Math.floor(state.progress.xp / 100) + 1);
+  els.levelValue.textContent = level;
   els.dailyCount.textContent = todayCount;
   els.todayReviewed.textContent = todayCount;
   els.knownWords.textContent = known;
   els.weakWords.textContent = weak;
   els.totalReviewed.textContent = state.progress.totalReviews;
+  els.heroLevel.textContent = `Level ${level}`;
+  els.heroXp.textContent = `${state.progress.xp} XP`;
+  els.heroStreak.textContent = state.progress.streak;
+  els.heroDaily.textContent = `${todayCount}/10`;
+  els.heroKnown.textContent = known;
+  els.levelProgressBar.style.width = `${xpIntoLevel}%`;
+  els.nextLevelText.textContent = `До следующего уровня: ${nextLevelXp === 100 ? 100 : nextLevelXp} XP`;
 
+  renderVocabularyStage(known);
   renderActivityBars();
   renderWeakList();
+}
+
+function renderVocabularyStage(known) {
+  const stages = [
+    {
+      number: 1,
+      target: 300,
+      icon: "🏕️",
+      title: "Этап 1 — Выживание",
+      text: "Первые слова для простых бытовых ситуаций: дом, еда, семья, числа, цвета и короткие фразы.",
+      reward: "Награда: уверенный старт и открытие более широких повседневных тем.",
+    },
+    {
+      number: 2,
+      target: 600,
+      icon: "🧭",
+      title: "Этап 2 — Маршрут",
+      text: "Словарь расширяется: путешествия, город, школа, транспорт, эмоции, вопросы и полезные действия.",
+      reward: "Награда: больше игровых тем, фраз и заданий без постоянных визуальных подсказок.",
+    },
+    {
+      number: 3,
+      target: 1000,
+      icon: "🚀",
+      title: "Этап 3 — Свобода",
+      text: "Крепкая beginner-база для чтения, поездок, разговорной практики и уверенного движения дальше.",
+      reward: "Награда: цель EnglishFlow достигнута — 1000 слов активного словаря.",
+    },
+  ];
+  const currentStage = stages.find((stage) => known < stage.target) || stages[stages.length - 1];
+  const previousTarget = stages[currentStage.number - 2]?.target || 0;
+  const stageSpan = currentStage.target - previousTarget;
+  const stageKnown = Math.max(0, known - previousTarget);
+  const stagePercent = Math.min(100, Math.round((stageKnown / stageSpan) * 100));
+  const remaining = Math.max(0, currentStage.target - known);
+
+  els.stageIcon.textContent = currentStage.icon;
+  els.stageTitle.textContent = currentStage.title;
+  els.stageText.textContent = currentStage.text;
+  els.stageWordCount.textContent = `${known} / ${currentStage.target} слов`;
+  els.stagePercent.textContent = `${stagePercent}%`;
+  els.stageProgressBar.style.width = `${stagePercent}%`;
+  els.stageRemaining.textContent = remaining
+    ? `Осталось ${remaining} слов до следующего этапа`
+    : "Этап завершён";
+  els.stageReward.textContent = currentStage.reward;
+  document.querySelectorAll(".stage-step").forEach((step) => {
+    const stageNumber = Number(step.dataset.stageStep);
+    const stage = stages[stageNumber - 1];
+    step.classList.toggle("active", stageNumber === currentStage.number);
+    step.classList.toggle("done", known >= stage.target);
+  });
+  maybeCelebrateCompletedStage(known, stages);
+}
+
+function maybeCelebrateCompletedStage(known, stages) {
+  const completed = stages.filter((stage) => known >= stage.target);
+  if (!completed.length) return;
+
+  const celebrated = loadCelebratedStages();
+  const freshStage = completed.find((stage) => !celebrated.includes(stage.number));
+  if (!freshStage) return;
+
+  celebrated.push(freshStage.number);
+  saveCelebratedStages(celebrated);
+  showStageCelebration(freshStage);
+}
+
+function showStageCelebration(stage) {
+  els.celebrationTitle.textContent = `${stage.title} пройден`;
+  els.celebrationText.textContent = `${stage.reward} Следующий рубеж уже открыт.`;
+  els.stageCelebration.hidden = false;
+  window.setTimeout(() => els.stageCelebration.classList.add("show"), 20);
+}
+
+function hideStageCelebration() {
+  els.stageCelebration.classList.remove("show");
+  window.setTimeout(() => {
+    els.stageCelebration.hidden = true;
+  }, 220);
+}
+
+function loadCelebratedStages() {
+  try {
+    return JSON.parse(localStorage.getItem(CELEBRATED_STAGES_KEY) || "[]");
+  } catch {
+    return [];
+  }
+}
+
+function saveCelebratedStages(stages) {
+  localStorage.setItem(CELEBRATED_STAGES_KEY, JSON.stringify(stages));
 }
 
 function renderThemes() {
