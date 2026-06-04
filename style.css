@@ -67,14 +67,12 @@ button {
 }
 
 .brand-mark {
-  display: grid;
   width: 44px;
   height: 44px;
-  place-items: center;
-  color: #06201d;
-  font-weight: 800;
-  background: linear-gradient(135deg, #c7fff5, #f2b84b);
+  object-fit: cover;
+  background: #0f172a;
   border-radius: var(--radius);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
 }
 
 .brand h1,
