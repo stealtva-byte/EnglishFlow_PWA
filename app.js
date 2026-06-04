@@ -109,6 +109,8 @@ const els = {
   heroStreak: document.getElementById("heroStreak"),
   heroDaily: document.getElementById("heroDaily"),
   heroKnown: document.getElementById("heroKnown"),
+  heroStageTitle: document.getElementById("heroStageTitle"),
+  heroStageWords: document.getElementById("heroStageWords"),
   levelProgressBar: document.getElementById("levelProgressBar"),
   nextLevelText: document.getElementById("nextLevelText"),
   stageTitle: document.getElementById("stageTitle"),
@@ -123,9 +125,14 @@ const els = {
   celebrationTitle: document.getElementById("celebrationTitle"),
   celebrationText: document.getElementById("celebrationText"),
   celebrationButton: document.getElementById("celebrationButton"),
+  splashScreen: document.getElementById("splashScreen"),
+  continueLearningButton: document.getElementById("continueLearningButton"),
+  avatarButton: document.getElementById("avatarButton"),
+  profilePopover: document.getElementById("profilePopover"),
 };
 
 const viewTitles = {
+  home: "Главная",
   cards: "Карточки",
   games: "Игры",
   dialogues: "Диалоги",
@@ -135,6 +142,7 @@ const viewTitles = {
 document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
+  document.body.classList.add("home-active");
   bindNavigation();
   bindCardActions();
   bindVoiceControls();
@@ -144,6 +152,8 @@ async function init() {
   bindBlankControls();
   bindInstallControls();
   bindCelebrationControls();
+  bindHomeControls();
+  bindProfileMenu();
   await loadData();
   setupVoices();
   chooseNextWord();
@@ -161,6 +171,7 @@ async function init() {
   renderPairs();
   renderBlank();
   renderInstallCard();
+  hideSplashScreen();
   registerServiceWorker();
 }
 
@@ -283,12 +294,37 @@ function bindCelebrationControls() {
   els.celebrationButton.addEventListener("click", hideStageCelebration);
 }
 
+function bindHomeControls() {
+  els.continueLearningButton.addEventListener("click", () => setView("cards"));
+  document.querySelectorAll("[data-go-view]").forEach((button) => {
+    button.addEventListener("click", () => setView(button.dataset.goView));
+  });
+}
+
+function bindProfileMenu() {
+  els.avatarButton.addEventListener("click", () => {
+    const isOpen = !els.profilePopover.hidden;
+    els.profilePopover.hidden = isOpen;
+    els.avatarButton.setAttribute("aria-expanded", String(!isOpen));
+  });
+
+  document.addEventListener("click", (event) => {
+    if (els.profilePopover.hidden) return;
+    if (event.target.closest(".profile-menu")) return;
+    els.profilePopover.hidden = true;
+    els.avatarButton.setAttribute("aria-expanded", "false");
+  });
+}
+
 function setView(viewName) {
   document.querySelectorAll(".view").forEach((view) => view.classList.remove("active"));
   document.getElementById(`${viewName}View`).classList.add("active");
   document.querySelectorAll(".nav-item[data-view]").forEach((button) => {
     button.classList.toggle("active", button.dataset.view === viewName);
   });
+  document.body.classList.toggle("home-active", viewName === "home");
+  els.profilePopover.hidden = true;
+  els.avatarButton.setAttribute("aria-expanded", "false");
   els.viewTitle.textContent = viewTitles[viewName] || "EnglishFlow";
   renderStats();
 }
@@ -544,18 +580,26 @@ function renderVocabularyStage(known) {
     {
       number: 2,
       target: 600,
-      icon: "🧭",
-      title: "Этап 2 — Маршрут",
+      icon: "✈️",
+      title: "Этап 2 — Туризм",
       text: "Словарь расширяется: путешествия, город, школа, транспорт, эмоции, вопросы и полезные действия.",
       reward: "Награда: больше игровых тем, фраз и заданий без постоянных визуальных подсказок.",
     },
     {
       number: 3,
       target: 1000,
-      icon: "🚀",
-      title: "Этап 3 — Свобода",
+      icon: "💬",
+      title: "Этап 3 — Общение",
       text: "Крепкая beginner-база для чтения, поездок, разговорной практики и уверенного движения дальше.",
       reward: "Награда: цель EnglishFlow достигнута — 1000 слов активного словаря.",
+    },
+    {
+      number: 4,
+      target: 1500,
+      icon: "🚀",
+      title: "Этап 4 — Свободный английский",
+      text: "Большой запас частых слов для уверенного чтения, поездок, бытовых диалогов и самостоятельной практики.",
+      reward: "Награда: EnglishFlow Journey завершён — можно переходить к более живым диалогам и сложным темам.",
     },
   ];
   const currentStage = stages.find((stage) => known < stage.target) || stages[stages.length - 1];
@@ -568,6 +612,8 @@ function renderVocabularyStage(known) {
   els.stageIcon.textContent = currentStage.icon;
   els.stageTitle.textContent = currentStage.title;
   els.stageText.textContent = currentStage.text;
+  els.heroStageTitle.textContent = currentStage.title;
+  els.heroStageWords.textContent = `${known} / ${currentStage.target} слов`;
   els.stageWordCount.textContent = `${known} / ${currentStage.target} слов`;
   els.stagePercent.textContent = `${stagePercent}%`;
   els.stageProgressBar.style.width = `${stagePercent}%`;
@@ -1075,4 +1121,12 @@ function registerServiceWorker() {
   navigator.serviceWorker.register("sw.js").catch((error) => {
     console.warn("Service worker registration failed", error);
   });
+}
+
+function hideSplashScreen() {
+  if (!els.splashScreen) return;
+  els.splashScreen.classList.add("hide");
+  window.setTimeout(() => {
+    els.splashScreen.hidden = true;
+  }, 520);
 }

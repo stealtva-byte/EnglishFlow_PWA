@@ -13,9 +13,16 @@
     <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
     <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
-    <link rel="stylesheet" href="style.css?v=12" />
+    <link rel="stylesheet" href="style.css?v=13" />
   </head>
   <body>
+    <div class="splash-screen" id="splashScreen" aria-hidden="true">
+      <div class="splash-mark">
+        <img src="icons/icon-192.png" alt="" />
+        <strong>EnglishFlow</strong>
+      </div>
+    </div>
+
     <div class="app-shell">
       <aside class="sidebar" aria-label="Основная навигация">
         <div class="brand">
@@ -35,7 +42,11 @@
         </div>
 
         <nav class="nav-list">
-          <button class="nav-item active" data-view="cards" type="button">
+          <button class="nav-item active" data-view="home" type="button">
+            <span aria-hidden="true">⌂</span>
+            Главная
+          </button>
+          <button class="nav-item" data-view="cards" type="button">
             <span aria-hidden="true">⌂</span>
             Карточки
           </button>
@@ -63,7 +74,18 @@
         <header class="topbar">
           <div>
             <p class="eyebrow">EnglishFlow</p>
-            <h2 id="viewTitle">Карточки</h2>
+            <h2 id="viewTitle">Главная</h2>
+          </div>
+          <div class="profile-menu">
+            <button class="avatar-button" id="avatarButton" type="button" aria-expanded="false" aria-label="Открыть настройки">
+              🙂
+            </button>
+            <div class="profile-popover" id="profilePopover" hidden>
+              <button type="button" data-go-view="progress">Настройки</button>
+              <button type="button" data-go-view="cards">Голос</button>
+              <button type="button">Тема</button>
+              <button type="button">Сброс прогресса</button>
+            </div>
           </div>
           <div class="stats-strip" aria-label="Краткая статистика">
             <div>
@@ -81,7 +103,7 @@
           </div>
         </header>
 
-        <section class="view active" id="cardsView" aria-labelledby="cardsHeading">
+        <section class="view active" id="homeView" aria-labelledby="homeHeading">
           <section class="home-hero" aria-label="Главный прогресс">
             <div class="hero-copy">
               <div class="hero-brand">
@@ -100,6 +122,13 @@
                 </div>
                 <p id="nextLevelText">До следующего уровня: 100 XP</p>
               </div>
+              <div class="hero-stage-summary">
+                <span id="heroStageTitle">Этап 1 — Выживание</span>
+                <strong id="heroStageWords">0 / 300 слов</strong>
+              </div>
+              <button class="primary-button continue-button" id="continueLearningButton" type="button">
+                Продолжить обучение
+              </button>
             </div>
             <div class="hero-metrics" aria-label="Ключевые показатели">
               <div class="hero-metric accent">
@@ -142,22 +171,45 @@
             </div>
             <div class="stage-steps">
               <div class="stage-step active" data-stage-step="1">
-                <span>1</span>
+                <span>🏕️</span>
                 <strong>Выживание</strong>
                 <small>300 слов</small>
               </div>
               <div class="stage-step" data-stage-step="2">
-                <span>2</span>
-                <strong>Маршрут</strong>
+                <span>✈️</span>
+                <strong>Туризм</strong>
                 <small>600 слов</small>
               </div>
               <div class="stage-step" data-stage-step="3">
-                <span>3</span>
-                <strong>Свобода</strong>
+                <span>💬</span>
+                <strong>Общение</strong>
                 <small>1000 слов</small>
+              </div>
+              <div class="stage-step" data-stage-step="4">
+                <span>🚀</span>
+                <strong>Свободный английский</strong>
+                <small>1500 слов</small>
               </div>
             </div>
           </section>
+
+          <section class="home-actions" aria-label="Быстрый старт">
+            <article class="home-action-card">
+              <p class="section-label">Сегодня</p>
+              <h3>10 карточек — хороший минимум</h3>
+              <p>Короткая сессия сохраняет стрик и двигает этап вперёд.</p>
+              <button class="primary-button" data-go-view="cards" type="button">Открыть карточки</button>
+            </article>
+            <article class="home-action-card soft">
+              <p class="section-label">Практика</p>
+              <h3>Закрепить через игры</h3>
+              <p>Мини-игры помогают проверить слова без ощущения теста.</p>
+              <button class="ghost-button" data-go-view="games" type="button">Перейти к играм</button>
+            </article>
+          </section>
+        </section>
+
+        <section class="view" id="cardsView" aria-labelledby="cardsHeading">
 
           <div class="learning-grid">
             <article class="word-card">
@@ -326,15 +378,31 @@
         </section>
 
         <section class="view" id="dialoguesView" aria-labelledby="dialoguesHeading">
-          <div class="dialogue-board">
-            <div>
+          <div class="dialogue-board ai-dialogue-board">
+            <div class="ai-dialogue-copy">
               <p class="section-label">Разговорная практика</p>
-              <h3>Диалоги скоро появятся</h3>
+              <h3>AI-диалоги скоро появятся</h3>
               <p>
-                Здесь будут короткие сценарии для аэропорта, отеля, кафе, магазина,
-                знакомства и поездок. Начнём с готовых реплик и озвучки, а затем добавим
-                более живую практику.
+                Это будет отдельный режим тренировки: сценарий, реплики, подсказки,
+                озвучка и в будущем голосовое общение.
               </p>
+              <div class="ai-mode-panel" aria-label="Будущий режим диалогов">
+                <div>
+                  <span>1</span>
+                  <strong>Выбери сценарий</strong>
+                  <small>кафе, отель, аэропорт, магазин</small>
+                </div>
+                <div>
+                  <span>2</span>
+                  <strong>Отвечай репликами</strong>
+                  <small>с подсказками и переводом</small>
+                </div>
+                <div>
+                  <span>3</span>
+                  <strong>Говори голосом</strong>
+                  <small>подключим позже через AI</small>
+                </div>
+              </div>
             </div>
             <div id="dialogueScenarios" class="scenario-list"></div>
           </div>
@@ -361,7 +429,8 @@
     </div>
 
     <nav class="mobile-nav" aria-label="Мобильная навигация">
-      <button class="nav-item active" data-view="cards" type="button">Карточки</button>
+      <button class="nav-item active" data-view="home" type="button">Домой</button>
+      <button class="nav-item" data-view="cards" type="button">Учить</button>
       <button class="nav-item" data-view="games" type="button">Игры</button>
       <button class="nav-item" data-view="dialogues" type="button">Диалоги</button>
       <button class="nav-item" data-view="progress" type="button">Прогресс</button>
@@ -380,7 +449,7 @@
       </div>
     </div>
 
-    <script src="config.js?v=12"></script>
-    <script src="app.js?v=12"></script>
+    <script src="config.js?v=13"></script>
+    <script src="app.js?v=13"></script>
   </body>
 </html>
