@@ -126,10 +126,10 @@ const els = {
 };
 
 const viewTitles = {
-  cards: "Learn",
-  games: "Games",
-  dialogues: "Dialogues",
-  progress: "Progress",
+  cards: "Карточки",
+  games: "Игры",
+  dialogues: "Диалоги",
+  progress: "Прогресс",
 };
 
 document.addEventListener("DOMContentLoaded", init);
@@ -518,7 +518,7 @@ function renderStats() {
   els.knownWords.textContent = known;
   els.weakWords.textContent = weak;
   els.totalReviewed.textContent = state.progress.totalReviews;
-  els.heroLevel.textContent = `Level ${level}`;
+  els.heroLevel.textContent = `Уровень ${level}`;
   els.heroXp.textContent = `${state.progress.xp} XP`;
   els.heroStreak.textContent = state.progress.streak;
   els.heroDaily.textContent = `${todayCount}/10`;

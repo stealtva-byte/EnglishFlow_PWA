@@ -13,7 +13,7 @@
     <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
     <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
-    <link rel="stylesheet" href="style.css?v=11" />
+    <link rel="stylesheet" href="style.css?v=12" />
   </head>
   <body>
     <div class="app-shell">
@@ -27,7 +27,7 @@
         </div>
 
         <div class="sidebar-panel">
-          <p class="section-label">Daily goal</p>
+          <p class="section-label">Цель на день</p>
           <div class="daily-ring" aria-label="Прогресс ежедневной цели">
             <strong id="dailyCount">0</strong>
             <span>/ 10 карточек</span>
@@ -37,25 +37,25 @@
         <nav class="nav-list">
           <button class="nav-item active" data-view="cards" type="button">
             <span aria-hidden="true">⌂</span>
-            Learn
+            Карточки
           </button>
           <button class="nav-item" data-view="games" type="button">
             <span aria-hidden="true">◈</span>
-            Games
+            Игры
           </button>
           <button class="nav-item" data-view="dialogues" type="button">
             <span aria-hidden="true">◌</span>
-            Dialogues
+            Диалоги
           </button>
           <button class="nav-item" data-view="progress" type="button">
             <span aria-hidden="true">▦</span>
-            Progress
+            Прогресс
           </button>
         </nav>
 
         <div class="sidebar-footer">
-          <p>Remote-ready PWA</p>
-          <span>GitHub Pages + OpenAI proxy later</span>
+          <p>Путь к 1000 словам</p>
+          <span>Короткие занятия каждый день</span>
         </div>
       </aside>
 
@@ -63,7 +63,7 @@
         <header class="topbar">
           <div>
             <p class="eyebrow">EnglishFlow</p>
-            <h2 id="viewTitle">Learn</h2>
+            <h2 id="viewTitle">Карточки</h2>
           </div>
           <div class="stats-strip" aria-label="Краткая статистика">
             <div>
@@ -88,11 +88,11 @@
                 <img src="icons/icon-192.png" alt="" aria-hidden="true" />
                 <span>EnglishFlow</span>
               </div>
-              <p class="eyebrow">Today's flow</p>
+              <p class="eyebrow">Сегодня</p>
               <h3>Учись короткими сессиями и видь, как растёт запас слов.</h3>
               <div class="level-progress">
                 <div class="level-progress-head">
-                  <span id="heroLevel">Level 1</span>
+                  <span id="heroLevel">Уровень 1</span>
                   <strong id="heroXp">0 XP</strong>
                 </div>
                 <div class="progress-track" aria-hidden="true">
@@ -103,17 +103,17 @@
             </div>
             <div class="hero-metrics" aria-label="Ключевые показатели">
               <div class="hero-metric accent">
-                <span>Streak</span>
+                <span>Стрик</span>
                 <strong id="heroStreak">0</strong>
                 <small>дней подряд</small>
               </div>
               <div class="hero-metric">
-                <span>Daily goal</span>
+                <span>Цель дня</span>
                 <strong id="heroDaily">0/10</strong>
                 <small>карточек сегодня</small>
               </div>
               <div class="hero-metric">
-                <span>Known words</span>
+                <span>Освоено слов</span>
                 <strong id="heroKnown">0</strong>
                 <small>из 1000 цели</small>
               </div>
@@ -122,7 +122,7 @@
 
           <section class="stage-card" aria-label="Этапы словарного запаса">
             <div class="stage-current">
-              <p class="section-label">Vocabulary journey</p>
+              <p class="section-label">Большой путь</p>
               <div class="stage-title-row">
                 <span id="stageIcon" aria-hidden="true">🏕️</span>
                 <h3 id="stageTitle">Этап 1 — Выживание</h3>
@@ -328,11 +328,12 @@
         <section class="view" id="dialoguesView" aria-labelledby="dialoguesHeading">
           <div class="dialogue-board">
             <div>
-              <p class="section-label">OpenAI later</p>
-              <h3>Диалоги появятся после MVP карточек</h3>
+              <p class="section-label">Разговорная практика</p>
+              <h3>Диалоги скоро появятся</h3>
               <p>
-                Здесь будут аэропорт, отель, кафе, магазин, знакомство и транспорт. Запросы
-                к OpenAI пойдут через защищённый прокси, чтобы ключ не попадал в браузер.
+                Здесь будут короткие сценарии для аэропорта, отеля, кафе, магазина,
+                знакомства и поездок. Начнём с готовых реплик и озвучки, а затем добавим
+                более живую практику.
               </p>
             </div>
             <div id="dialogueScenarios" class="scenario-list"></div>
@@ -372,14 +373,14 @@
         <span></span><span></span><span></span><span></span><span></span>
       </div>
       <div class="celebration-card" role="status" aria-live="polite">
-        <p class="section-label">Stage complete</p>
+        <p class="section-label">Этап завершён</p>
         <h2 id="celebrationTitle">Этап пройден</h2>
         <p id="celebrationText">Ты открыл следующий большой рубеж EnglishFlow.</p>
         <button class="primary-button" id="celebrationButton" type="button">Продолжить</button>
       </div>
     </div>
 
-    <script src="config.js?v=11"></script>
-    <script src="app.js?v=11"></script>
+    <script src="config.js?v=12"></script>
+    <script src="app.js?v=12"></script>
   </body>
 </html>
