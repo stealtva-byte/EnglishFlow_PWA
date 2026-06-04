@@ -338,6 +338,16 @@ button {
   padding: 18px;
 }
 
+.install-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+}
+
+.install-button {
+  width: 100%;
+  margin-top: 10px;
+}
+
 .metric-row {
   display: flex;
   align-items: center;

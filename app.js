@@ -40,6 +40,7 @@ const state = {
   matchedPairs: new Set(),
   currentBlank: null,
   blankAnswered: false,
+  deferredInstallPrompt: null,
   progress: loadProgress(),
   voiceSettings: loadVoiceSettings(),
   voices: [],
@@ -99,6 +100,9 @@ const els = {
   blankOptions: document.getElementById("blankOptions"),
   blankFeedback: document.getElementById("blankFeedback"),
   nextBlankButton: document.getElementById("nextBlankButton"),
+  installCard: document.getElementById("installCard"),
+  installText: document.getElementById("installText"),
+  installButton: document.getElementById("installButton"),
 };
 
 const viewTitles = {
@@ -118,6 +122,7 @@ async function init() {
   bindSentenceControls();
   bindPairsControls();
   bindBlankControls();
+  bindInstallControls();
   await loadData();
   setupVoices();
   chooseNextWord();
@@ -134,6 +139,7 @@ async function init() {
   renderSentence();
   renderPairs();
   renderBlank();
+  renderInstallCard();
   registerServiceWorker();
 }
 
@@ -228,6 +234,27 @@ function bindBlankControls() {
   els.nextBlankButton.addEventListener("click", () => {
     chooseNextBlank();
     renderBlank();
+  });
+}
+
+function bindInstallControls() {
+  window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    state.deferredInstallPrompt = event;
+    renderInstallCard();
+  });
+
+  window.addEventListener("appinstalled", () => {
+    state.deferredInstallPrompt = null;
+    renderInstallCard();
+  });
+
+  els.installButton.addEventListener("click", async () => {
+    if (!state.deferredInstallPrompt) return;
+    state.deferredInstallPrompt.prompt();
+    await state.deferredInstallPrompt.userChoice;
+    state.deferredInstallPrompt = null;
+    renderInstallCard();
   });
 }
 
@@ -713,6 +740,32 @@ function renderBlank() {
   els.blankOptions.querySelectorAll(".blank-option").forEach((button) => {
     button.addEventListener("click", () => handleBlankAnswer(button));
   });
+}
+
+function renderInstallCard() {
+  const isStandalone =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true;
+
+  if (isStandalone) {
+    els.installText.textContent = "Приложение уже открыто как установленная PWA.";
+    els.installButton.hidden = true;
+    return;
+  }
+
+  if (state.deferredInstallPrompt) {
+    els.installText.textContent = "Можно установить EnglishFlow как отдельное приложение.";
+    els.installButton.hidden = false;
+    return;
+  }
+
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  if (isIOS) {
+    els.installText.textContent = "iPhone: нажми «Поделиться», затем «На экран Домой».";
+  } else {
+    els.installText.textContent = "Android/Chrome: открой меню браузера и выбери «Установить приложение» или «Добавить на главный экран».";
+  }
+  els.installButton.hidden = true;
 }
 
 function handleBlankAnswer(button) {

@@ -25,6 +25,7 @@ EnglishFlow should become an installable web app for one learner who studies Eng
 - [x] (2026-06-04 12:21Z) Add picture/word matching data and a working tap-pairs game.
 - [x] (2026-06-04 14:23Z) Prepare deployment files: README, deployment guide, `.gitignore`, and `.nojekyll`.
 - [x] (2026-06-04 14:23Z) Initialize local Git repository, commit the MVP, and push `main` to `https://github.com/stealtva-byte/EnglishFlow_PWA.git`.
+- [x] (2026-06-04 14:40Z) Add in-app phone install guidance and PNG PWA icons for mobile home screens.
 
 ## Surprises & Discoveries
 
@@ -51,6 +52,9 @@ EnglishFlow should become an installable web app for one learner who studies Eng
 
 - Observation: The available GitHub credential can push code but cannot create or update workflow files.
   Evidence: pushing `.github/workflows/pages.yml` was rejected because the token lacks `workflow` scope. The workflow commit was removed locally, leaving `main` aligned with `origin/main`.
+
+- Observation: The first PWA manifest used only an SVG icon.
+  Evidence: `manifest.json` listed `icons/icon.svg` only. PNG icons were added for broader mobile home-screen compatibility.
 
 ## Decision Log
 
@@ -106,11 +110,17 @@ EnglishFlow should become an installable web app for one learner who studies Eng
   Rationale: The current GitHub credential cannot push workflow files, but the repository is pushed successfully and can be published from `main` via GitHub Pages settings.
   Date/Author: 2026-06-04 / Codex
 
+- Decision: Add visible install instructions inside the Cards screen.
+  Rationale: Users who receive the link need to know that EnglishFlow can be installed as a phone app, especially on iPhone where installation is hidden behind the Share menu.
+  Date/Author: 2026-06-04 / Codex
+
 ## Outcomes & Retrospective
 
 Phase 1 is implemented and browser-verified locally. The app has a static PWA shell, Neuform-inspired learning-console styling, 100 starter words, browser speech synthesis, card review actions, local progress persistence, placeholder sections for dialogues, a progress dashboard, saved voice selection, and four working games: "Guess the translation", "Build the sentence", "Fill the blank", and "Tap pairs". Desktop and mobile viewport checks passed with no console warnings or errors reported by the browser tool.
 
 The MVP source is pushed to GitHub at `https://github.com/stealtva-byte/EnglishFlow_PWA.git`. GitHub Pages still needs to be enabled manually in repository settings because the current Git credential cannot create GitHub Actions workflow files.
+
+GitHub Pages is now expected at `https://stealtva-byte.github.io/EnglishFlow_PWA/`. The app includes install guidance and mobile PNG icons.
 
 ## Context and Orientation
 
@@ -196,3 +206,5 @@ The future OpenAI proxy interface should expose public HTTPS endpoints such as `
 2026-06-04: Added "Fill the blank" with 20 short phrase prompts across base, cafe, travel, car, Minecraft, body, and politeness themes. Verified correct and incorrect answer feedback in the browser.
 
 2026-06-04: Prepared deployment docs, initialized Git, committed the MVP, and pushed `main` to `stealtva-byte/EnglishFlow_PWA`. GitHub Pages publication remains a manual settings step.
+
+2026-06-04: Added app-install polish: PNG icons, Apple touch icon, updated manifest entries, and an in-app install guidance card.

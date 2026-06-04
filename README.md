@@ -14,6 +14,7 @@ EnglishFlow is a personal Progressive Web App for learning practical English fro
   - Fill the blank.
   - Tap pairs.
 - PWA manifest and service worker for installability and offline caching.
+- Install guidance inside the app, plus PNG icons for mobile home screens.
 
 ## Local Run
 
@@ -24,6 +25,16 @@ From this folder:
 Open:
 
     http://localhost:4173
+
+## Install On A Phone
+
+Open the deployed URL on the phone:
+
+    https://stealtva-byte.github.io/EnglishFlow_PWA/
+
+On iPhone, use Safari, tap Share, then choose "Add to Home Screen".
+
+On Android, use Chrome and choose "Install app" or "Add to Home screen" from the browser menu.
 
 ## User Progress
 
@@ -40,4 +51,3 @@ Never put an OpenAI API key in frontend files. When AI features are added, the P
 ## Deployment
 
 This app can be hosted as static files on GitHub Pages, Cloudflare Pages, Netlify, Vercel, or a VPS. See `DEPLOYMENT.md`.
-

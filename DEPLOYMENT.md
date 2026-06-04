@@ -66,5 +66,6 @@ The server-side endpoint stores the OpenAI API key. The static PWA never stores 
 - `data/*.json` files are reachable.
 - The Cards tab loads words.
 - The Games tab loads all four games.
+- The install guidance card appears on the Cards tab.
 - Progress survives a page reload on the same device.
 - No OpenAI key or other secret appears in committed frontend files.

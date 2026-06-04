@@ -11,8 +11,8 @@
     <title>EnglishFlow PWA</title>
     <link rel="manifest" href="manifest.json" />
     <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="icons/icon.svg" />
-    <link rel="stylesheet" href="style.css?v=7" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="style.css?v=8" />
   </head>
   <body>
     <div class="app-shell">
@@ -109,6 +109,17 @@
             </article>
 
             <aside class="study-panel">
+              <div class="panel-card install-card" id="installCard">
+                <p class="section-label">Установка</p>
+                <h3>Поставить на телефон</h3>
+                <p id="installText">
+                  iPhone: Поделиться → На экран «Домой». Android: Установить приложение.
+                </p>
+                <button class="primary-button install-button" id="installButton" type="button" hidden>
+                  Установить приложение
+                </button>
+              </div>
+
               <div class="panel-card">
                 <p class="section-label">Сессия</p>
                 <div class="metric-row">
@@ -277,7 +288,7 @@
       <button class="nav-item" data-view="progress" type="button">Прогресс</button>
     </nav>
 
-    <script src="config.js?v=7"></script>
-    <script src="app.js?v=7"></script>
+    <script src="config.js?v=8"></script>
+    <script src="app.js?v=8"></script>
   </body>
 </html>

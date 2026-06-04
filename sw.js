@@ -1,10 +1,10 @@
-const CACHE_NAME = "englishflow-v7";
+const CACHE_NAME = "englishflow-v8";
 const ASSETS = [
   "./",
   "./index.html",
-  "./style.css?v=7",
-  "./app.js?v=7",
-  "./config.js?v=7",
+  "./style.css?v=8",
+  "./app.js?v=8",
+  "./config.js?v=8",
   "./manifest.json",
   "./data/words.json",
   "./data/phrases.json",
@@ -14,6 +14,9 @@ const ASSETS = [
   "./data/pairs.json",
   "./data/blanks.json",
   "./icons/icon.svg",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
+  "./icons/apple-touch-icon.png",
 ];
 
 self.addEventListener("install", (event) => {
