@@ -855,11 +855,25 @@ function speakText(text) {
   utterance.lang = "en-US";
   utterance.rate = isMaleMode ? 0.82 : 0.9;
   utterance.pitch = isMaleMode ? 0.68 : 1.08;
+  utterance.volume = 1;
 
   const selectedVoice = resolveSelectedVoice();
-  if (selectedVoice && !shouldHideVoicePicker()) utterance.voice = selectedVoice;
+  if (selectedVoice && canUseExplicitVoice()) utterance.voice = selectedVoice;
 
+  window.speechSynthesis.resume();
   window.speechSynthesis.speak(utterance);
+
+  setTimeout(() => {
+    if (!window.speechSynthesis.speaking && !window.speechSynthesis.pending) {
+      const fallback = new SpeechSynthesisUtterance(text);
+      fallback.lang = "en-GB";
+      fallback.rate = 0.88;
+      fallback.pitch = isMaleMode ? 0.74 : 1.05;
+      fallback.volume = 1;
+      window.speechSynthesis.resume();
+      window.speechSynthesis.speak(fallback);
+    }
+  }, 300);
 }
 
 function setupVoices() {
@@ -907,14 +921,16 @@ function renderVoiceControls() {
     button.classList.toggle("active", button.dataset.voiceMode === state.voiceSettings.mode);
   });
 
-  const hideVoicePicker = shouldHideVoicePicker();
+  const hideVoicePicker = true;
   toggleVoicePicker(els.voiceSelect, hideVoicePicker);
   toggleVoicePicker(els.modalVoiceSelect, hideVoicePicker);
   els.voiceSelect.innerHTML = "";
 
   if (hideVoicePicker) {
     const note =
-      "На Android браузер не показывает настоящий пол голосов. Оставляем два режима: мужской ниже по тону, женский выше и мягче.";
+      isAndroidLikeDevice()
+        ? "Android часто даёт только один системный голос. Женский режим использует системную озвучку; если тишина, проверь Google Speech Services в настройках телефона."
+        : "Оставляем два режима: мужской ниже по тону, женский выше и мягче.";
     const option = document.createElement("option");
     option.value = "";
     option.textContent = state.voiceSettings.mode === "male" ? "Мужской режим" : "Женский режим";
@@ -1010,8 +1026,17 @@ function findVoiceByHints(voices, hints) {
   return hints.map((hint) => voices.find((voice) => voiceMatchesHints(voice, [hint]))).find(Boolean) || null;
 }
 
-function shouldHideVoicePicker() {
-  return /android/i.test(navigator.userAgent);
+function canUseExplicitVoice() {
+  return !isAndroidLikeDevice();
+}
+
+function isAndroidLikeDevice() {
+  const userAgent = navigator.userAgent || "";
+  const userAgentPlatform = navigator.userAgentData?.platform || "";
+  const platform = navigator.platform || "";
+  const isIOS = /iphone|ipad|ipod/i.test(userAgent) || (/mac/i.test(platform) && navigator.maxTouchPoints > 1);
+  const isTouch = navigator.maxTouchPoints > 0 || window.matchMedia?.("(pointer: coarse)")?.matches;
+  return !isIOS && (/android/i.test(userAgent) || /android/i.test(userAgentPlatform) || (/linux/i.test(platform) && isTouch));
 }
 
 function toggleVoicePicker(select, hidden) {

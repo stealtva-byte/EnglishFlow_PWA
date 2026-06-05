@@ -1,9 +1,9 @@
-const CACHE_NAME = "englishflow-v23";
+const CACHE_NAME = "englishflow-v24";
 const ASSETS = [
   "./",
   "./index.html",
   "./style.css?v=20",
-  "./app.js?v=23",
+  "./app.js?v=24",
   "./config.js?v=20",
   "./manifest.json",
   "./data/words.json",
