@@ -570,7 +570,7 @@ function showProfileSection(section) {
 }
 
 function renderProfile() {
-  const avatar = state.profile.avatar || "🙂";
+  const avatar = String(state.profile.avatar || "🙂");
   const isImage = avatar.startsWith("data:image/");
   renderAvatarElement(els.avatarButton, avatar, isImage);
   renderAvatarElement(els.profileAvatarButton, avatar, isImage);
@@ -635,7 +635,7 @@ function createProfile() {
 
 function switchProfile(profileId, force = false) {
   if (profileId === state.profile.id && !force) return;
-  saveCurrentProfile();
+  if (!force) saveCurrentProfile();
   localStorage.setItem(ACTIVE_PROFILE_KEY, profileId);
   const profile = loadProfiles().find((item) => item.id === profileId);
   if (!profile) return;
@@ -909,6 +909,8 @@ function renderVoiceControls() {
   els.voiceSelect.innerHTML = "";
 
   if (!state.voices.length) {
+    const note =
+      "На Android список голосов часто скрыт. Мужской/женский режим всё равно меняет тон озвучки.";
     const option = document.createElement("option");
     option.value = "";
     option.textContent = "Авто: голос браузера";
@@ -917,10 +919,9 @@ function renderVoiceControls() {
     if (els.modalVoiceSelect) {
       els.modalVoiceSelect.innerHTML = `<option value="">Авто: голос браузера</option>`;
       els.modalVoiceSelect.disabled = true;
-      els.modalVoiceNote.textContent = els.voiceNote.textContent;
+      els.modalVoiceNote.textContent = note;
     }
-    els.voiceNote.textContent =
-      "На Android список голосов часто скрыт. Мужской/женский режим всё равно меняет тон озвучки.";
+    els.voiceNote.textContent = note;
     return;
   }
 
