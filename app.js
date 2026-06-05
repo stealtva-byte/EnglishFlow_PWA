@@ -69,20 +69,21 @@ const ABSTRACT_PICTURE_WORDS = new Set([
 ]);
 const BAD_VISUAL_SYMBOLS = new Set(["▦", "⬒", "▥", "✦", "⌂", "▤", "▣", "◇", "▾", "✚", "○", "═", "≡", "◉", "▱", "↗", "!", "▭", "→", "□", "▰", "≈", "?", "✓", "×"]);
 const MALE_VOICE_HINTS = [
-  "alex",
   "daniel",
-  "fred",
-  "tom",
-  "thomas",
   "arthur",
-  "george",
   "oliver",
+  "george",
+  "thomas",
+  "aaron",
   "david",
   "mark",
   "james",
   "matthew",
   "male",
   "man",
+  "alex",
+  "fred",
+  "tom",
 ];
 const FEMALE_VOICE_HINTS = [
   "samantha",
@@ -852,11 +853,11 @@ function speakText(text) {
   const utterance = new SpeechSynthesisUtterance(text);
   const isMaleMode = state.voiceSettings.mode === "male";
   utterance.lang = "en-US";
-  utterance.rate = isMaleMode ? 0.84 : 0.9;
-  utterance.pitch = isMaleMode ? 0.86 : 1.08;
+  utterance.rate = isMaleMode ? 0.82 : 0.9;
+  utterance.pitch = isMaleMode ? 0.68 : 1.08;
 
   const selectedVoice = resolveSelectedVoice();
-  if (selectedVoice) utterance.voice = selectedVoice;
+  if (selectedVoice && !shouldHideVoicePicker()) utterance.voice = selectedVoice;
 
   window.speechSynthesis.speak(utterance);
 }
@@ -906,7 +907,27 @@ function renderVoiceControls() {
     button.classList.toggle("active", button.dataset.voiceMode === state.voiceSettings.mode);
   });
 
+  const hideVoicePicker = shouldHideVoicePicker();
+  toggleVoicePicker(els.voiceSelect, hideVoicePicker);
+  toggleVoicePicker(els.modalVoiceSelect, hideVoicePicker);
   els.voiceSelect.innerHTML = "";
+
+  if (hideVoicePicker) {
+    const note =
+      "На Android браузер не показывает настоящий пол голосов. Оставляем два режима: мужской ниже по тону, женский выше и мягче.";
+    const option = document.createElement("option");
+    option.value = "";
+    option.textContent = state.voiceSettings.mode === "male" ? "Мужской режим" : "Женский режим";
+    els.voiceSelect.appendChild(option);
+    els.voiceSelect.disabled = true;
+    if (els.modalVoiceSelect) {
+      els.modalVoiceSelect.innerHTML = `<option value="">${option.textContent}</option>`;
+      els.modalVoiceSelect.disabled = true;
+      els.modalVoiceNote.textContent = note;
+    }
+    els.voiceNote.textContent = note;
+    return;
+  }
 
   if (!state.voices.length) {
     const note =
@@ -962,11 +983,11 @@ function resolveBestVoiceForMode(mode) {
   const pool = voicesForCurrentMode(mode);
 
   if (mode === "male") {
-    return pool.find((voice) => voiceMatchesHints(voice, MALE_VOICE_HINTS)) || pool[0] || null;
+    return findVoiceByHints(pool, MALE_VOICE_HINTS) || pool[0] || null;
   }
 
   if (mode === "female") {
-    return pool.find((voice) => voiceMatchesHints(voice, FEMALE_VOICE_HINTS)) || pool[0] || null;
+    return findVoiceByHints(pool, FEMALE_VOICE_HINTS) || pool[0] || null;
   }
 
   return pool[0] || null;
@@ -983,6 +1004,21 @@ function voicesForCurrentMode(mode = state.voiceSettings.mode) {
 function voiceMatchesHints(voice, hints) {
   const label = `${voice.name} ${voice.voiceURI}`.toLowerCase();
   return hints.some((hint) => label.includes(hint));
+}
+
+function findVoiceByHints(voices, hints) {
+  return hints.map((hint) => voices.find((voice) => voiceMatchesHints(voice, [hint]))).find(Boolean) || null;
+}
+
+function shouldHideVoicePicker() {
+  return /android/i.test(navigator.userAgent);
+}
+
+function toggleVoicePicker(select, hidden) {
+  if (!select) return;
+  select.hidden = hidden;
+  const label = document.querySelector(`label[for="${select.id}"]`);
+  if (label) label.hidden = hidden;
 }
 
 function buildVoiceNote(voice) {
