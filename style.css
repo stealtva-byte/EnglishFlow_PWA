@@ -898,6 +898,20 @@ button:active {
   border-radius: 8px;
 }
 
+.quiz-feedback.success {
+  color: #064235;
+  background: #dffbf3;
+  border-color: rgba(18, 185, 129, 0.34);
+  box-shadow: 0 12px 28px rgba(18, 185, 129, 0.12);
+}
+
+.quiz-feedback.error {
+  color: #681626;
+  background: #ffe8ec;
+  border-color: rgba(239, 95, 115, 0.34);
+  box-shadow: 0 12px 28px rgba(239, 95, 115, 0.12);
+}
+
 .quiz-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;

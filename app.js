@@ -5,7 +5,6 @@ const CELEBRATED_STAGES_KEY = "englishflow.celebratedStages.v1";
 const DAY_MS = 24 * 60 * 60 * 1000;
 const NOVICE_HINT_WORD_LIMIT = 200;
 const VISUAL_HINTS = {
-  airport: "✈️",
   apple: "🍎",
   bag: "🎒",
   beach: "🏖️",
@@ -18,13 +17,10 @@ const VISUAL_HINTS = {
   city: "🏙️",
   coffee: "☕",
   diamond: "💎",
-  driver: "👨‍✈️",
   engine: "⚙️",
   eye: "👁️",
-  farm: "🚜",
+  farm: "🌾",
   fuel: "⛽",
-  garage: "🏠",
-  gate: "🚪",
   hand: "✋",
   head: "🙂",
   hello: "👋",
@@ -33,7 +29,6 @@ const VISUAL_HINTS = {
   leg: "🦵",
   map: "🗺️",
   milk: "🥛",
-  mine: "⛏️",
   passport: "🛂",
   pickaxe: "⛏️",
   road: "🛣️",
@@ -53,9 +48,14 @@ const ABSTRACT_PICTURE_WORDS = new Set([
   "bad",
   "brake",
   "craft",
+  "airport",
+  "driver",
   "friend",
+  "garage",
+  "gate",
   "good",
   "help",
+  "mine",
   "no",
   "please",
   "sorry",
@@ -116,6 +116,7 @@ const state = {
   currentPairs: [],
   pairWordsOrder: [],
   pairsMessage: "",
+  pairsFeedbackStatus: "neutral",
   selectedPairImage: null,
   selectedPairWord: null,
   matchedPairs: new Set(),
@@ -530,6 +531,16 @@ function hasConcreteVisual(item) {
   return Boolean(word && VISUAL_HINTS[word] && !ABSTRACT_PICTURE_WORDS.has(word));
 }
 
+function pictureWordPool() {
+  return state.quizzes.filter((item) => item.word && item.translation && hasConcreteVisual(item));
+}
+
+function setFeedback(element, message, status = "neutral") {
+  element.textContent = message;
+  element.classList.remove("success", "error", "neutral");
+  element.classList.add(status);
+}
+
 function renderHintControls() {
   document.querySelectorAll(".hint-mode-button").forEach((button) => {
     button.classList.toggle("active", button.dataset.hintMode === state.appSettings.hintMode);
@@ -913,7 +924,7 @@ function renderQuiz() {
   els.quizWord.textContent = state.currentQuiz.word;
   els.quizTheme.textContent = state.currentQuiz.theme;
   els.quizEmoji.textContent = visualFor(state.currentQuiz);
-  els.quizFeedback.textContent = "Выбери правильный перевод.";
+  setFeedback(els.quizFeedback, "Выбери правильный перевод.");
   els.quizOptions.innerHTML = options
     .map((option) => `<button class="quiz-option" data-answer="${option}" type="button">${option}</button>`)
     .join("");
@@ -953,12 +964,12 @@ function handleQuizAnswer(button) {
     state.quizStats.correct += 1;
     state.quizStats.streak += 1;
     state.progress.xp += 10;
-    els.quizFeedback.textContent = `Верно: ${state.currentQuiz.word} — ${state.currentQuiz.translation}. +10 XP`;
+    setFeedback(els.quizFeedback, `Верно: ${state.currentQuiz.word} — ${state.currentQuiz.translation}. +10 XP`, "success");
   } else {
     state.quizStats.wrong += 1;
     state.quizStats.streak = 0;
     state.progress.xp += 2;
-    els.quizFeedback.textContent = `Почти. Правильно: ${state.currentQuiz.translation}. +2 XP за попытку`;
+    setFeedback(els.quizFeedback, `Почти. Правильно: ${state.currentQuiz.translation}. +2 XP за попытку`, "error");
   }
 
   state.progress.totalReviews += 1;
@@ -988,7 +999,7 @@ function renderSentence() {
 
   const punctuation = state.currentSentence.type === "Вопрос" ? "?" : ".";
   els.sentenceTranslation.textContent = `${state.currentSentence.translation}${punctuation}`;
-  els.sentenceFeedback.textContent = "Собери английскую фразу в правильном порядке.";
+  setFeedback(els.sentenceFeedback, "Собери английскую фразу в правильном порядке.");
   els.sentenceBuild.innerHTML = state.sentenceAnswer.length
     ? state.sentenceAnswer
         .map((word, index) => `<button class="word-chip" data-answer-index="${index}" type="button">${word}</button>`)
@@ -1020,7 +1031,7 @@ function renderSentence() {
 function checkSentenceAnswer() {
   if (!state.currentSentence) return;
   if (state.sentenceSolved) {
-    els.sentenceFeedback.textContent = "Это предложение уже засчитано. Нажми «Следующая».";
+    setFeedback(els.sentenceFeedback, "Это предложение уже засчитано. Нажми «Следующая».");
     return;
   }
   const answer = state.sentenceAnswer.join(" ");
@@ -1035,9 +1046,9 @@ function checkSentenceAnswer() {
     updateStreak(getTodayKey());
     saveProgress();
     renderStats();
-    els.sentenceFeedback.textContent = `Верно: ${correct}. +12 XP`;
+    setFeedback(els.sentenceFeedback, `Верно: ${correct}. +12 XP`, "success");
   } else {
-    els.sentenceFeedback.textContent = `Пока нет. Правильно: ${correct}.`;
+    setFeedback(els.sentenceFeedback, `Пока нет. Правильно: ${correct}.`, "error");
   }
 }
 
@@ -1045,6 +1056,7 @@ function chooseNextPairs() {
   state.currentPairs = shuffle([...state.pairs]).slice(0, 6);
   state.pairWordsOrder = shuffle([...state.currentPairs]);
   state.pairsMessage = "";
+  state.pairsFeedbackStatus = "neutral";
   state.selectedPairImage = null;
   state.selectedPairWord = null;
   state.matchedPairs = new Set();
@@ -1077,11 +1089,17 @@ function renderPairs() {
   });
 
   const matchedCount = state.matchedPairs.size;
-  els.pairsFeedback.textContent =
+  const pairsMessage =
     state.pairsMessage ||
     (matchedCount === state.currentPairs.length
       ? `Набор готов. +${matchedCount * 4} XP`
       : `Найдено пар: ${matchedCount}/${state.currentPairs.length}`);
+  const pairsStatus = state.pairsMessage
+    ? state.pairsFeedbackStatus
+    : matchedCount === state.currentPairs.length
+      ? "success"
+      : "neutral";
+  setFeedback(els.pairsFeedback, pairsMessage, pairsStatus);
 }
 
 function chooseNextBlank() {
@@ -1096,7 +1114,7 @@ function renderBlank() {
   els.blankTheme.textContent = state.currentBlank.theme;
   els.blankTemplate.textContent = state.currentBlank.template;
   els.blankTranslation.textContent = state.currentBlank.translation;
-  els.blankFeedback.textContent = "Выбери слово для пропуска.";
+  setFeedback(els.blankFeedback, "Выбери слово для пропуска.");
   els.blankOptions.innerHTML = shuffle([...state.currentBlank.options])
     .map((option) => `<button class="blank-option" data-blank-answer="${option}" type="button">${option}</button>`)
     .join("");
@@ -1148,10 +1166,10 @@ function handleBlankAnswer(button) {
 
   if (isCorrect) {
     state.progress.xp += 8;
-    els.blankFeedback.textContent = `Верно: ${state.currentBlank.template.replace("___", state.currentBlank.answer)}. +8 XP`;
+    setFeedback(els.blankFeedback, `Верно: ${state.currentBlank.template.replace("___", state.currentBlank.answer)}. +8 XP`, "success");
   } else {
     state.progress.xp += 2;
-    els.blankFeedback.textContent = `Почти. Правильно: ${state.currentBlank.answer}. +2 XP`;
+    setFeedback(els.blankFeedback, `Почти. Правильно: ${state.currentBlank.answer}. +2 XP`, "error");
   }
 
   state.progress.totalReviews += 1;
@@ -1162,7 +1180,7 @@ function handleBlankAnswer(button) {
 }
 
 function chooseNextPicture() {
-  const pool = state.quizzes.filter((item) => item.word && item.translation && hasConcreteVisual(item));
+  const pool = pictureWordPool();
   if (!pool.length) return;
   state.currentPicture = pool[Math.floor(Math.random() * pool.length)];
   state.pictureAnswered = false;
@@ -1174,7 +1192,7 @@ function renderPicture() {
   const options = buildWordOptions(state.currentPicture);
   els.pictureTheme.textContent = state.currentPicture.theme;
   els.picturePrompt.textContent = visualFor(state.currentPicture);
-  els.pictureFeedback.textContent = "Выбери английское слово.";
+  setFeedback(els.pictureFeedback, "Выбери английское слово.");
   els.pictureOptions.innerHTML = options
     .map((option) => `<button class="quiz-option" data-picture-answer="${option}" type="button">${option}</button>`)
     .join("");
@@ -1186,7 +1204,7 @@ function renderPicture() {
 
 function buildWordOptions(target) {
   const distractors = [...new Set(
-    state.quizzes
+    pictureWordPool()
       .filter((item) => item.id !== target.id && item.word !== target.word)
       .sort(() => Math.random() - 0.5)
       .map((item) => item.word),
@@ -1211,15 +1229,15 @@ function handlePictureAnswer(button) {
 
   if (isCorrect) {
     addStudyProgress(9);
-    els.pictureFeedback.textContent = `Верно: ${visualFor(state.currentPicture)} — ${state.currentPicture.word}. +9 XP`;
+    setFeedback(els.pictureFeedback, `Верно: ${visualFor(state.currentPicture)} — ${state.currentPicture.word}. +9 XP`, "success");
   } else {
     addStudyProgress(2);
-    els.pictureFeedback.textContent = `Почти. Правильно: ${state.currentPicture.word}. +2 XP`;
+    setFeedback(els.pictureFeedback, `Почти. Правильно: ${state.currentPicture.word}. +2 XP`, "error");
   }
 }
 
 function chooseNextWordBuild() {
-  const pool = state.quizzes.filter((item) => /^[a-z]{3,8}$/.test(item.word) && hasConcreteVisual(item));
+  const pool = pictureWordPool().filter((item) => /^[a-z]{3,8}$/.test(item.word));
   if (!pool.length) return;
   state.currentWordBuild = pool[Math.floor(Math.random() * pool.length)];
   state.wordBuildAnswer = [];
@@ -1233,7 +1251,7 @@ function renderWordBuild() {
   const targetLength = state.currentWordBuild.word.length;
   els.wordBuildTheme.textContent = state.currentWordBuild.theme;
   els.wordBuildPrompt.textContent = visualFor(state.currentWordBuild);
-  els.wordBuildFeedback.textContent = "Собери слово из букв.";
+  setFeedback(els.wordBuildFeedback, "Собери слово из букв.");
   els.letterSlots.innerHTML = Array.from({ length: targetLength }, (_, index) => {
     const letter = state.wordBuildAnswer[index] || "";
     return `<button class="letter-slot${letter ? " filled" : ""}" data-letter-slot="${index}" type="button">${letter}</button>`;
@@ -1265,7 +1283,7 @@ function renderWordBuild() {
 function checkWordBuildAnswer() {
   if (!state.currentWordBuild) return;
   if (state.wordBuildSolved) {
-    els.wordBuildFeedback.textContent = "Это слово уже засчитано. Нажми «Следующее».";
+    setFeedback(els.wordBuildFeedback, "Это слово уже засчитано. Нажми «Следующее».");
     return;
   }
 
@@ -1275,11 +1293,11 @@ function checkWordBuildAnswer() {
   if (answer === correct) {
     state.wordBuildSolved = true;
     addStudyProgress(11);
-    els.wordBuildFeedback.textContent = `Верно: ${correct}. +11 XP`;
+    setFeedback(els.wordBuildFeedback, `Верно: ${correct}. +11 XP`, "success");
   } else if (answer.length < correct.length) {
-    els.wordBuildFeedback.textContent = "Добавь все буквы, потом проверь.";
+    setFeedback(els.wordBuildFeedback, "Добавь все буквы, потом проверь.");
   } else {
-    els.wordBuildFeedback.textContent = `Пока нет. Правильно: ${correct}.`;
+    setFeedback(els.wordBuildFeedback, `Пока нет. Правильно: ${correct}.`, "error");
   }
 }
 
@@ -1320,6 +1338,7 @@ function checkPairSelection() {
     state.matchedPairs.add(state.selectedPairImage);
     const pair = state.currentPairs.find((item) => item.id === state.selectedPairImage);
     state.pairsMessage = pair ? `Верно: ${visualFor(pair)} — ${pair.word}. +4 XP` : "Верно. +4 XP";
+    state.pairsFeedbackStatus = "success";
     state.progress.xp += 4;
     state.progress.totalReviews += 1;
     state.progress.daily[getTodayKey()] = (state.progress.daily[getTodayKey()] || 0) + 1;
@@ -1328,6 +1347,7 @@ function checkPairSelection() {
     renderStats();
   } else {
     state.pairsMessage = "Не пара. Попробуй ещё раз.";
+    state.pairsFeedbackStatus = "error";
   }
 
   state.selectedPairImage = null;
