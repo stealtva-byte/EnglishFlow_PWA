@@ -845,6 +845,12 @@ button:active {
   border-radius: 8px;
 }
 
+.quiz-emoji.no-visual,
+.association.no-visual {
+  color: transparent;
+  background: #ffffff;
+}
+
 .quiz-options {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

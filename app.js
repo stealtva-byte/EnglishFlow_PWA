@@ -496,11 +496,14 @@ function renderCard() {
   els.wordText.textContent = word.word;
   els.wordTranscription.textContent = word.transcription;
   if (shouldShowWordHint()) {
-    els.wordEmoji.textContent = visualFor(word);
+    const visual = visualFor(word);
+    els.wordEmoji.textContent = visual;
     els.wordEmoji.classList.remove("hint-hidden");
+    els.wordEmoji.classList.toggle("no-visual", !visual);
   } else {
     els.wordEmoji.textContent = "👁";
     els.wordEmoji.classList.add("hint-hidden");
+    els.wordEmoji.classList.remove("no-visual");
   }
   els.cardTheme.textContent = word.theme;
 
@@ -523,7 +526,7 @@ function visualFor(item) {
   const word = item.word?.toLowerCase();
   if (word && VISUAL_HINTS[word]) return VISUAL_HINTS[word];
   if (item.emoji && !BAD_VISUAL_SYMBOLS.has(item.emoji)) return item.emoji;
-  return "🖼️";
+  return "";
 }
 
 function hasConcreteVisual(item) {
@@ -921,9 +924,11 @@ function filteredQuizzes() {
 function renderQuiz() {
   if (!state.currentQuiz) return;
   const options = buildQuizOptions(state.currentQuiz);
+  const quizVisual = visualFor(state.currentQuiz);
   els.quizWord.textContent = state.currentQuiz.word;
   els.quizTheme.textContent = state.currentQuiz.theme;
-  els.quizEmoji.textContent = visualFor(state.currentQuiz);
+  els.quizEmoji.textContent = quizVisual;
+  els.quizEmoji.classList.toggle("no-visual", !quizVisual);
   setFeedback(els.quizFeedback, "Выбери правильный перевод.");
   els.quizOptions.innerHTML = options
     .map((option) => `<button class="quiz-option" data-answer="${option}" type="button">${option}</button>`)
