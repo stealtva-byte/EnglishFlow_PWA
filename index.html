@@ -13,7 +13,7 @@
     <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
     <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
-    <link rel="stylesheet" href="style.css?v=19" />
+    <link rel="stylesheet" href="style.css?v=20" />
   </head>
   <body>
     <div class="splash-screen" id="splashScreen" aria-hidden="true">
@@ -81,10 +81,12 @@
               🙂
             </button>
             <div class="profile-popover" id="profilePopover" hidden>
-              <button type="button" data-go-view="progress">Настройки</button>
-              <button type="button" data-go-view="cards">Голос</button>
-              <button type="button">Тема</button>
-              <button type="button">Сброс прогресса</button>
+              <button type="button" data-profile-section="profile">👤 Профиль</button>
+              <button type="button" data-profile-section="voice">🎤 Голос</button>
+              <button type="button" data-profile-section="theme">🎨 Тема</button>
+              <button type="button" data-profile-section="stats">📊 Статистика</button>
+              <button type="button" data-profile-section="backup">☁️ Резервная копия</button>
+              <button type="button" data-profile-section="reset">🔄 Сброс прогресса</button>
             </div>
           </div>
           <div class="stats-strip" aria-label="Краткая статистика">
@@ -485,7 +487,96 @@
       </div>
     </div>
 
-    <script src="config.js?v=19"></script>
-    <script src="app.js?v=19"></script>
+    <div class="profile-modal" id="profileModal" hidden>
+      <div class="profile-modal-card" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
+        <div class="profile-modal-head">
+          <div>
+            <p class="section-label">EnglishFlow</p>
+            <h2 id="profileModalTitle">Профиль</h2>
+          </div>
+          <button class="icon-button" id="profileModalClose" type="button" aria-label="Закрыть">×</button>
+        </div>
+
+        <div class="profile-tabs" aria-label="Разделы профиля">
+          <button class="active" data-profile-tab="profile" type="button">👤 Профиль</button>
+          <button data-profile-tab="voice" type="button">🎤 Голос</button>
+          <button data-profile-tab="theme" type="button">🎨 Тема</button>
+          <button data-profile-tab="stats" type="button">📊 Статистика</button>
+          <button data-profile-tab="backup" type="button">☁️ Бэкап</button>
+          <button data-profile-tab="reset" type="button">🔄 Сброс</button>
+        </div>
+
+        <section class="profile-section active" data-profile-panel="profile">
+          <div class="profile-card-large">
+            <button class="profile-avatar-large" id="profileAvatarButton" type="button">🙂</button>
+            <input id="avatarFileInput" type="file" accept="image/*" hidden />
+            <label>
+              Имя
+              <input class="profile-input" id="profileNameInput" type="text" maxlength="32" />
+            </label>
+            <label>
+              Текущий профиль
+              <select class="voice-select" id="profileSelect"></select>
+            </label>
+            <button class="ghost-button" id="createProfileButton" type="button">Создать профиль</button>
+          </div>
+          <div class="profile-stat-grid">
+            <div><span>Этап</span><strong id="profileStageValue">Этап 1</strong></div>
+            <div><span>Уровень</span><strong id="profileLevelValue">1</strong></div>
+            <div><span>XP</span><strong id="profileXpValue">0</strong></div>
+          </div>
+        </section>
+
+        <section class="profile-section" data-profile-panel="voice">
+          <p class="voice-note">Голос сохраняется отдельно для текущего профиля.</p>
+          <div class="voice-mode" aria-label="Голос профиля">
+            <button class="voice-mode-button active" data-voice-mode="male" type="button">Мужской</button>
+            <button class="voice-mode-button" data-voice-mode="female" type="button">Женский</button>
+          </div>
+          <label class="voice-select-label" for="modalVoiceSelect">Голос устройства</label>
+          <select id="modalVoiceSelect" class="voice-select">
+            <option value="">Загрузка голосов...</option>
+          </select>
+          <button class="ghost-button voice-test-button" id="modalVoiceTestButton" type="button">Проверить голос</button>
+          <p class="voice-note" id="modalVoiceNote">Голоса зависят от устройства и браузера.</p>
+        </section>
+
+        <section class="profile-section" data-profile-panel="theme">
+          <p class="voice-note">Dark mode подготовлен как режим интерфейса. Выбор сохраняется в профиле.</p>
+          <div class="voice-mode" aria-label="Тема приложения">
+            <button class="theme-mode-button active" data-theme-mode="light" type="button">Светлая</button>
+            <button class="theme-mode-button" data-theme-mode="dark" type="button">Тёмная</button>
+            <button class="theme-mode-button" data-theme-mode="auto" type="button">Авто</button>
+          </div>
+        </section>
+
+        <section class="profile-section" data-profile-panel="stats">
+          <div class="profile-stat-grid stats-expanded">
+            <div><span>Всего изучено слов</span><strong id="statsKnownWords">0</strong></div>
+            <div><span>Лучший стрик</span><strong id="statsBestStreak">0</strong></div>
+            <div><span>Карточек пройдено</span><strong id="statsTotalReviews">0</strong></div>
+            <div><span>Игр сыграно</span><strong id="statsGamesPlayed">0</strong></div>
+            <div><span>Любимая тема</span><strong id="statsFavoriteTheme">—</strong></div>
+          </div>
+        </section>
+
+        <section class="profile-section" data-profile-panel="backup">
+          <p class="voice-note">Экспорт сохраняет текущий профиль, прогресс, голос и настройки в JSON-файл.</p>
+          <div class="profile-actions-row">
+            <button class="primary-button" id="exportBackupButton" type="button">Экспортировать JSON</button>
+            <button class="ghost-button" id="importBackupButton" type="button">Импортировать JSON</button>
+            <input id="backupFileInput" type="file" accept="application/json,.json" hidden />
+          </div>
+        </section>
+
+        <section class="profile-section" data-profile-panel="reset">
+          <p class="voice-note">Сброс очищает прогресс только текущего профиля. Другие профили не затрагиваются.</p>
+          <button class="ghost-button danger-button" id="resetProgressButton" type="button">Сбросить прогресс профиля</button>
+        </section>
+      </div>
+    </div>
+
+    <script src="config.js?v=20"></script>
+    <script src="app.js?v=20"></script>
   </body>
 </html>

@@ -1,6 +1,8 @@
 const STORAGE_KEY = "englishflow.progress.v1";
 const VOICE_SETTINGS_KEY = "englishflow.voice.v1";
 const APP_SETTINGS_KEY = "englishflow.settings.v1";
+const PROFILES_KEY = "englishflow.profiles.v1";
+const ACTIVE_PROFILE_KEY = "englishflow.activeProfile.v1";
 const CELEBRATED_STAGES_KEY = "englishflow.celebratedStages.v1";
 const DAY_MS = 24 * 60 * 60 * 1000;
 const NOVICE_HINT_WORD_LIMIT = 200;
@@ -96,7 +98,10 @@ const FEMALE_VOICE_HINTS = [
   "ava",
 ];
 
+const initialProfile = loadActiveProfile();
+
 const state = {
+  profile: initialProfile,
   words: [],
   dialogues: [],
   quizzes: [],
@@ -230,6 +235,29 @@ const els = {
   continueLearningButton: document.getElementById("continueLearningButton"),
   avatarButton: document.getElementById("avatarButton"),
   profilePopover: document.getElementById("profilePopover"),
+  profileModal: document.getElementById("profileModal"),
+  profileModalClose: document.getElementById("profileModalClose"),
+  profileModalTitle: document.getElementById("profileModalTitle"),
+  profileAvatarButton: document.getElementById("profileAvatarButton"),
+  avatarFileInput: document.getElementById("avatarFileInput"),
+  profileNameInput: document.getElementById("profileNameInput"),
+  profileSelect: document.getElementById("profileSelect"),
+  createProfileButton: document.getElementById("createProfileButton"),
+  profileStageValue: document.getElementById("profileStageValue"),
+  profileLevelValue: document.getElementById("profileLevelValue"),
+  profileXpValue: document.getElementById("profileXpValue"),
+  modalVoiceSelect: document.getElementById("modalVoiceSelect"),
+  modalVoiceTestButton: document.getElementById("modalVoiceTestButton"),
+  modalVoiceNote: document.getElementById("modalVoiceNote"),
+  statsKnownWords: document.getElementById("statsKnownWords"),
+  statsBestStreak: document.getElementById("statsBestStreak"),
+  statsTotalReviews: document.getElementById("statsTotalReviews"),
+  statsGamesPlayed: document.getElementById("statsGamesPlayed"),
+  statsFavoriteTheme: document.getElementById("statsFavoriteTheme"),
+  exportBackupButton: document.getElementById("exportBackupButton"),
+  importBackupButton: document.getElementById("importBackupButton"),
+  backupFileInput: document.getElementById("backupFileInput"),
+  resetProgressButton: document.getElementById("resetProgressButton"),
 };
 
 const viewTitles = {
@@ -258,7 +286,9 @@ async function init() {
   bindCelebrationControls();
   bindHomeControls();
   bindProfileMenu();
+  bindProfileModal();
   await loadData();
+  applyTheme();
   setupVoices();
   chooseNextWord();
   chooseNextQuiz();
@@ -279,6 +309,7 @@ async function init() {
   renderPicture();
   renderWordBuild();
   renderHintControls();
+  renderProfile();
   renderInstallCard();
   hideSplashScreen();
   registerServiceWorker();
@@ -449,6 +480,50 @@ function bindProfileMenu() {
     els.profilePopover.hidden = true;
     els.avatarButton.setAttribute("aria-expanded", "false");
   });
+
+  els.profilePopover.querySelectorAll("[data-profile-section]").forEach((button) => {
+    button.addEventListener("click", () => openProfileModal(button.dataset.profileSection));
+  });
+}
+
+function bindProfileModal() {
+  els.profileModalClose.addEventListener("click", closeProfileModal);
+  els.profileModal.addEventListener("click", (event) => {
+    if (event.target === els.profileModal) closeProfileModal();
+  });
+
+  document.querySelectorAll("[data-profile-tab]").forEach((button) => {
+    button.addEventListener("click", () => showProfileSection(button.dataset.profileTab));
+  });
+
+  els.profileNameInput.addEventListener("change", () => {
+    state.profile.name = els.profileNameInput.value.trim() || "Мой профиль";
+    saveCurrentProfile();
+    renderProfile();
+  });
+
+  els.profileAvatarButton.addEventListener("click", () => els.avatarFileInput.click());
+  els.avatarFileInput.addEventListener("change", handleAvatarUpload);
+  els.profileSelect.addEventListener("change", () => switchProfile(els.profileSelect.value));
+  els.createProfileButton.addEventListener("click", createProfile);
+  els.modalVoiceSelect.addEventListener("change", () => {
+    state.voiceSettings.voiceURI = els.modalVoiceSelect.value;
+    saveVoiceSettings();
+    renderVoiceControls();
+  });
+  els.modalVoiceTestButton.addEventListener("click", () => speakText("Hello. This is your EnglishFlow profile voice."));
+  document.querySelectorAll(".theme-mode-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.appSettings.themeMode = button.dataset.themeMode;
+      saveAppSettings();
+      applyTheme();
+      renderProfile();
+    });
+  });
+  els.exportBackupButton.addEventListener("click", exportBackup);
+  els.importBackupButton.addEventListener("click", () => els.backupFileInput.click());
+  els.backupFileInput.addEventListener("change", importBackup);
+  els.resetProgressButton.addEventListener("click", resetCurrentProfileProgress);
 }
 
 function setView(viewName) {
@@ -462,6 +537,172 @@ function setView(viewName) {
   els.avatarButton.setAttribute("aria-expanded", "false");
   els.viewTitle.textContent = viewTitles[viewName] || "EnglishFlow";
   renderStats();
+}
+
+function openProfileModal(section = "profile") {
+  els.profilePopover.hidden = true;
+  els.avatarButton.setAttribute("aria-expanded", "false");
+  els.profileModal.hidden = false;
+  showProfileSection(section);
+  renderProfile();
+}
+
+function closeProfileModal() {
+  els.profileModal.hidden = true;
+}
+
+function showProfileSection(section) {
+  document.querySelectorAll("[data-profile-tab]").forEach((button) => {
+    button.classList.toggle("active", button.dataset.profileTab === section);
+  });
+  document.querySelectorAll("[data-profile-panel]").forEach((panel) => {
+    panel.classList.toggle("active", panel.dataset.profilePanel === section);
+  });
+  const titles = {
+    profile: "Профиль",
+    voice: "Голос",
+    theme: "Тема",
+    stats: "Статистика",
+    backup: "Резервная копия",
+    reset: "Сброс прогресса",
+  };
+  els.profileModalTitle.textContent = titles[section] || "Профиль";
+}
+
+function renderProfile() {
+  const avatar = state.profile.avatar || "🙂";
+  const isImage = avatar.startsWith("data:image/");
+  renderAvatarElement(els.avatarButton, avatar, isImage);
+  renderAvatarElement(els.profileAvatarButton, avatar, isImage);
+  els.profileNameInput.value = state.profile.name;
+
+  const profiles = loadProfiles();
+  els.profileSelect.innerHTML = profiles
+    .map((profile) => `<option value="${profile.id}">${profile.name}</option>`)
+    .join("");
+  els.profileSelect.value = state.profile.id;
+
+  const level = Math.max(1, Math.floor(state.progress.xp / 100) + 1);
+  const known = getKnownWordCount();
+  const stage = getVocabularyStage(known);
+  els.profileStageValue.textContent = stage.shortTitle;
+  els.profileLevelValue.textContent = level;
+  els.profileXpValue.textContent = state.progress.xp;
+  els.statsKnownWords.textContent = known;
+  els.statsBestStreak.textContent = state.progress.bestStreak || 0;
+  els.statsTotalReviews.textContent = state.progress.totalReviews || 0;
+  els.statsGamesPlayed.textContent = state.progress.gamesPlayed || 0;
+  els.statsFavoriteTheme.textContent = getFavoriteTheme();
+
+  document.querySelectorAll(".theme-mode-button").forEach((button) => {
+    button.classList.toggle("active", button.dataset.themeMode === state.appSettings.themeMode);
+  });
+}
+
+function renderAvatarElement(element, avatar, isImage) {
+  element.textContent = "";
+  if (isImage) {
+    const image = document.createElement("img");
+    image.src = avatar;
+    image.alt = "";
+    element.appendChild(image);
+  } else {
+    element.textContent = avatar;
+  }
+}
+
+function handleAvatarUpload() {
+  const file = els.avatarFileInput.files?.[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.addEventListener("load", () => {
+    state.profile.avatar = String(reader.result);
+    saveCurrentProfile();
+    renderProfile();
+  });
+  reader.readAsDataURL(file);
+}
+
+function createProfile() {
+  const name = window.prompt("Имя нового профиля", "Новый ученик");
+  if (!name) return;
+  const profiles = loadProfiles();
+  const profile = createProfileRecord(name.trim() || "Новый ученик");
+  profiles.push(profile);
+  saveProfiles(profiles);
+  switchProfile(profile.id);
+}
+
+function switchProfile(profileId, force = false) {
+  if (profileId === state.profile.id && !force) return;
+  saveCurrentProfile();
+  localStorage.setItem(ACTIVE_PROFILE_KEY, profileId);
+  const profile = loadProfiles().find((item) => item.id === profileId);
+  if (!profile) return;
+  state.profile = profile;
+  state.progress = normalizeProgress(profile.progress);
+  state.voiceSettings = normalizeVoiceSettings(profile.voiceSettings);
+  state.appSettings = normalizeAppSettings(profile.appSettings);
+  saveProgress();
+  saveVoiceSettings();
+  saveAppSettings();
+  applyTheme();
+  chooseNextWord();
+  renderCard();
+  renderStats();
+  renderVoiceControls();
+  renderHintControls();
+  renderProfile();
+}
+
+function resetCurrentProfileProgress() {
+  if (!window.confirm("Сбросить прогресс только текущего профиля?")) return;
+  state.progress = normalizeProgress({});
+  saveProgress();
+  saveCurrentProfile();
+  renderCard();
+  renderStats();
+  renderProfile();
+}
+
+function exportBackup() {
+  saveCurrentProfile();
+  const backup = {
+    app: "EnglishFlow",
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    activeProfileId: state.profile.id,
+    profiles: loadProfiles(),
+  };
+  const blob = new Blob([JSON.stringify(backup, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "EnglishFlow_Backup.json";
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+function importBackup() {
+  const file = els.backupFileInput.files?.[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.addEventListener("load", () => {
+    try {
+      const backup = JSON.parse(String(reader.result));
+      if (!Array.isArray(backup.profiles)) throw new Error("Invalid backup");
+      saveProfiles(backup.profiles.map(normalizeProfile));
+      const nextId = backup.activeProfileId || backup.profiles[0]?.id;
+      localStorage.setItem(ACTIVE_PROFILE_KEY, nextId);
+      switchProfile(nextId, true);
+      renderProfile();
+    } catch {
+      window.alert("Не удалось импортировать файл резервной копии.");
+    } finally {
+      els.backupFileInput.value = "";
+    }
+  });
+  reader.readAsText(file);
 }
 
 function chooseNextWord() {
@@ -542,6 +783,13 @@ function setFeedback(element, message, status = "neutral") {
   element.textContent = message;
   element.classList.remove("success", "error", "neutral");
   element.classList.add(status);
+}
+
+function applyTheme() {
+  const mode = state.appSettings.themeMode || "light";
+  const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
+  const isDark = mode === "dark" || (mode === "auto" && prefersDark);
+  document.body.classList.toggle("dark-theme", isDark);
 }
 
 function renderHintControls() {
@@ -666,23 +914,35 @@ function renderVoiceControls() {
     option.textContent = "Авто: голос браузера";
     els.voiceSelect.appendChild(option);
     els.voiceSelect.disabled = true;
+    if (els.modalVoiceSelect) {
+      els.modalVoiceSelect.innerHTML = `<option value="">Авто: голос браузера</option>`;
+      els.modalVoiceSelect.disabled = true;
+      els.modalVoiceNote.textContent = els.voiceNote.textContent;
+    }
     els.voiceNote.textContent =
       "На Android список голосов часто скрыт. Мужской/женский режим всё равно меняет тон озвучки.";
     return;
   }
 
   els.voiceSelect.disabled = false;
+  if (els.modalVoiceSelect) {
+    els.modalVoiceSelect.innerHTML = "";
+    els.modalVoiceSelect.disabled = false;
+  }
   const visibleVoices = voicesForCurrentMode();
   visibleVoices.forEach((voice) => {
     const option = document.createElement("option");
     option.value = voice.voiceURI;
     option.textContent = `${voice.name} (${voice.lang})${voice.localService ? "" : " · online"}`;
     els.voiceSelect.appendChild(option);
+    if (els.modalVoiceSelect) els.modalVoiceSelect.appendChild(option.cloneNode(true));
   });
 
   const selectedVoice = resolveSelectedVoice();
   els.voiceSelect.value = selectedVoice ? selectedVoice.voiceURI : "";
+  if (els.modalVoiceSelect) els.modalVoiceSelect.value = selectedVoice ? selectedVoice.voiceURI : "";
   els.voiceNote.textContent = buildVoiceNote(selectedVoice);
+  if (els.modalVoiceNote) els.modalVoiceNote.textContent = els.voiceNote.textContent;
 }
 
 function resolveSelectedVoice() {
@@ -765,10 +1025,29 @@ function renderStats() {
   renderVocabularyStage(known);
   renderActivityBars();
   renderWeakList();
+  renderProfile();
 }
 
 function getKnownWordCount() {
   return Object.values(state.progress.words).filter((item) => item.correct > item.mistakes).length;
+}
+
+function getVocabularyStage(known) {
+  if (known >= 1000) return { shortTitle: "Этап 4", target: 1500 };
+  if (known >= 600) return { shortTitle: "Этап 3", target: 1000 };
+  if (known >= 300) return { shortTitle: "Этап 2", target: 600 };
+  return { shortTitle: "Этап 1", target: 300 };
+}
+
+function getFavoriteTheme() {
+  const counts = {};
+  Object.entries(state.progress.words).forEach(([wordId, progress]) => {
+    const word = state.words.find((item) => item.id === wordId);
+    if (!word || !progress.reviews) return;
+    counts[word.theme] = (counts[word.theme] || 0) + progress.reviews;
+  });
+  const [theme] = Object.entries(counts).sort((a, b) => b[1] - a[1])[0] || [];
+  return theme || "—";
 }
 
 function renderVocabularyStage(known) {
@@ -969,11 +1248,13 @@ function handleQuizAnswer(button) {
     state.quizStats.correct += 1;
     state.quizStats.streak += 1;
     state.progress.xp += 10;
+    state.progress.gamesPlayed = (state.progress.gamesPlayed || 0) + 1;
     setFeedback(els.quizFeedback, `Верно: ${state.currentQuiz.word} — ${state.currentQuiz.translation}. +10 XP`, "success");
   } else {
     state.quizStats.wrong += 1;
     state.quizStats.streak = 0;
     state.progress.xp += 2;
+    state.progress.gamesPlayed = (state.progress.gamesPlayed || 0) + 1;
     setFeedback(els.quizFeedback, `Почти. Правильно: ${state.currentQuiz.translation}. +2 XP за попытку`, "error");
   }
 
@@ -1046,6 +1327,7 @@ function checkSentenceAnswer() {
   if (isCorrect) {
     state.sentenceSolved = true;
     state.progress.xp += 12;
+    state.progress.gamesPlayed = (state.progress.gamesPlayed || 0) + 1;
     state.progress.totalReviews += 1;
     state.progress.daily[getTodayKey()] = (state.progress.daily[getTodayKey()] || 0) + 1;
     updateStreak(getTodayKey());
@@ -1171,9 +1453,11 @@ function handleBlankAnswer(button) {
 
   if (isCorrect) {
     state.progress.xp += 8;
+    state.progress.gamesPlayed = (state.progress.gamesPlayed || 0) + 1;
     setFeedback(els.blankFeedback, `Верно: ${state.currentBlank.template.replace("___", state.currentBlank.answer)}. +8 XP`, "success");
   } else {
     state.progress.xp += 2;
+    state.progress.gamesPlayed = (state.progress.gamesPlayed || 0) + 1;
     setFeedback(els.blankFeedback, `Почти. Правильно: ${state.currentBlank.answer}. +2 XP`, "error");
   }
 
@@ -1308,6 +1592,7 @@ function checkWordBuildAnswer() {
 
 function addStudyProgress(xp) {
   state.progress.xp += xp;
+  state.progress.gamesPlayed = (state.progress.gamesPlayed || 0) + 1;
   state.progress.totalReviews += 1;
   state.progress.daily[getTodayKey()] = (state.progress.daily[getTodayKey()] || 0) + 1;
   updateStreak(getTodayKey());
@@ -1345,6 +1630,7 @@ function checkPairSelection() {
     state.pairsMessage = pair ? `Верно: ${visualFor(pair)} — ${pair.word}. +4 XP` : "Верно. +4 XP";
     state.pairsFeedbackStatus = "success";
     state.progress.xp += 4;
+    state.progress.gamesPlayed = (state.progress.gamesPlayed || 0) + 1;
     state.progress.totalReviews += 1;
     state.progress.daily[getTodayKey()] = (state.progress.daily[getTodayKey()] || 0) + 1;
     updateStreak(getTodayKey());
@@ -1414,62 +1700,147 @@ function updateStreak(today) {
 }
 
 function loadProgress() {
+  return normalizeProgress(initialProfile.progress);
+}
+
+function normalizeProgress(progress = {}) {
   const defaults = {
     xp: 0,
     streak: 0,
     bestStreak: 0,
     totalReviews: 0,
+    gamesPlayed: 0,
     lastStudyDate: null,
     daily: {},
     words: {},
   };
 
-  try {
-    return { ...defaults, ...JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}") };
-  } catch {
-    return defaults;
-  }
+  return { ...defaults, ...(progress || {}) };
 }
 
 function saveProgress() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state.progress));
+  saveCurrentProfile();
 }
 
 function loadVoiceSettings() {
+  return normalizeVoiceSettings(initialProfile.voiceSettings);
+}
+
+function normalizeVoiceSettings(settings = {}) {
   const defaults = {
     mode: "male",
     voiceURI: "",
   };
 
-  try {
-    const saved = { ...defaults, ...JSON.parse(localStorage.getItem(VOICE_SETTINGS_KEY) || "{}") };
-    if (!["male", "female"].includes(saved.mode)) saved.mode = "male";
-    return saved;
-  } catch {
-    return defaults;
-  }
+  const saved = { ...defaults, ...(settings || {}) };
+  if (!["male", "female"].includes(saved.mode)) saved.mode = "male";
+  return saved;
 }
 
 function loadAppSettings() {
+  return normalizeAppSettings(initialProfile.appSettings);
+}
+
+function normalizeAppSettings(settings = {}) {
   const defaults = {
     hintMode: "novice",
+    themeMode: "light",
   };
 
-  try {
-    const saved = { ...defaults, ...JSON.parse(localStorage.getItem(APP_SETTINGS_KEY) || "{}") };
-    if (!["always", "novice", "never"].includes(saved.hintMode)) saved.hintMode = "novice";
-    return saved;
-  } catch {
-    return defaults;
-  }
+  const saved = { ...defaults, ...(settings || {}) };
+  if (!["always", "novice", "never"].includes(saved.hintMode)) saved.hintMode = "novice";
+  if (!["light", "dark", "auto"].includes(saved.themeMode)) saved.themeMode = "light";
+  return saved;
 }
 
 function saveAppSettings() {
   localStorage.setItem(APP_SETTINGS_KEY, JSON.stringify(state.appSettings));
+  saveCurrentProfile();
 }
 
 function saveVoiceSettings() {
   localStorage.setItem(VOICE_SETTINGS_KEY, JSON.stringify(state.voiceSettings));
+  saveCurrentProfile();
+}
+
+function loadActiveProfile() {
+  const profiles = ensureProfiles();
+  const activeId = localStorage.getItem(ACTIVE_PROFILE_KEY) || profiles[0].id;
+  const profile = profiles.find((item) => item.id === activeId) || profiles[0];
+  localStorage.setItem(ACTIVE_PROFILE_KEY, profile.id);
+  return normalizeProfile(profile);
+}
+
+function ensureProfiles() {
+  const profiles = loadProfiles();
+  if (profiles.length) return profiles;
+
+  const profile = createProfileRecord("Мой профиль", {
+    progress: readLegacyJson(STORAGE_KEY, {}),
+    voiceSettings: readLegacyJson(VOICE_SETTINGS_KEY, {}),
+    appSettings: readLegacyJson(APP_SETTINGS_KEY, {}),
+  });
+  saveProfiles([profile]);
+  localStorage.setItem(ACTIVE_PROFILE_KEY, profile.id);
+  return [profile];
+}
+
+function loadProfiles() {
+  try {
+    const profiles = JSON.parse(localStorage.getItem(PROFILES_KEY) || "[]");
+    return Array.isArray(profiles) ? profiles.map(normalizeProfile) : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveProfiles(profiles) {
+  localStorage.setItem(PROFILES_KEY, JSON.stringify(profiles.map(normalizeProfile)));
+}
+
+function createProfileRecord(name, data = {}) {
+  return normalizeProfile({
+    id: `profile-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+    name,
+    avatar: "🙂",
+    ...data,
+  });
+}
+
+function normalizeProfile(profile) {
+  return {
+    id: profile.id || `profile-${Date.now()}`,
+    name: profile.name || "Мой профиль",
+    avatar: profile.avatar || "🙂",
+    progress: normalizeProgress(profile.progress),
+    voiceSettings: normalizeVoiceSettings(profile.voiceSettings),
+    appSettings: normalizeAppSettings(profile.appSettings),
+  };
+}
+
+function saveCurrentProfile() {
+  if (!state?.profile) return;
+  const profiles = loadProfiles();
+  const current = normalizeProfile({
+    ...state.profile,
+    progress: state.progress,
+    voiceSettings: state.voiceSettings,
+    appSettings: state.appSettings,
+  });
+  const index = profiles.findIndex((profile) => profile.id === current.id);
+  if (index >= 0) profiles[index] = current;
+  else profiles.push(current);
+  state.profile = current;
+  saveProfiles(profiles);
+}
+
+function readLegacyJson(key, fallback) {
+  try {
+    return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback));
+  } catch {
+    return fallback;
+  }
 }
 
 function getTodayKey() {
