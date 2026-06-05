@@ -13,7 +13,7 @@
     <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
     <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
-    <link rel="stylesheet" href="style.css?v=15" />
+    <link rel="stylesheet" href="style.css?v=16" />
   </head>
   <body>
     <div class="splash-screen" id="splashScreen" aria-hidden="true">
@@ -284,6 +284,16 @@
                 </p>
               </div>
 
+              <div class="panel-card hint-card">
+                <p class="section-label">Подсказки</p>
+                <div class="voice-mode" aria-label="Режим подсказок">
+                  <button class="hint-mode-button" data-hint-mode="always" type="button">Всегда</button>
+                  <button class="hint-mode-button active" data-hint-mode="novice" type="button">Новичкам</button>
+                  <button class="hint-mode-button" data-hint-mode="never" type="button">Никогда</button>
+                </div>
+                <p class="voice-note" id="hintNote">Картинки помогают на старте и постепенно уходят.</p>
+              </div>
+
               <div class="panel-card theme-card">
                 <p class="section-label">Темы</p>
                 <div id="themeList" class="theme-list"></div>
@@ -297,7 +307,7 @@
             <article class="quiz-card">
               <div class="quiz-header">
                 <div>
-                  <p class="section-label">Угадай перевод</p>
+                  <p class="section-label">01 · Угадай перевод</p>
                   <h3 id="quizWord">Loading</h3>
                   <p id="quizTheme" class="transcription">Тема</p>
                 </div>
@@ -374,6 +384,30 @@
               <div class="quiz-feedback" id="pairsFeedback">Найди первую пару.</div>
               <button class="primary-button pair-next-button" id="nextPairsButton" type="button">Новый набор</button>
             </article>
+            <article class="picture-card">
+              <span>05</span>
+              <h3>Что на картинке?</h3>
+              <p id="pictureTheme">Тема</p>
+              <div class="picture-prompt" id="picturePrompt">◇</div>
+              <div class="picture-options" id="pictureOptions"></div>
+              <div class="quiz-feedback" id="pictureFeedback">Выбери английское слово.</div>
+              <button class="primary-button picture-next-button" id="nextPictureButton" type="button">
+                Следующая картинка
+              </button>
+            </article>
+            <article class="word-build-card">
+              <span>06</span>
+              <h3>Собери слово</h3>
+              <p id="wordBuildTheme">Тема</p>
+              <div class="word-build-prompt" id="wordBuildPrompt">◇</div>
+              <div class="letter-slots" id="letterSlots"></div>
+              <div class="letter-bank" id="letterBank"></div>
+              <div class="quiz-feedback" id="wordBuildFeedback">Собери слово из букв.</div>
+              <div class="quiz-actions">
+                <button class="primary-button" id="checkWordBuildButton" type="button">Проверить</button>
+                <button class="ghost-button" id="nextWordBuildButton" type="button">Следующее</button>
+              </div>
+            </article>
           </div>
         </section>
 
@@ -449,7 +483,7 @@
       </div>
     </div>
 
-    <script src="config.js?v=15"></script>
-    <script src="app.js?v=15"></script>
+    <script src="config.js?v=16"></script>
+    <script src="app.js?v=16"></script>
   </body>
 </html>

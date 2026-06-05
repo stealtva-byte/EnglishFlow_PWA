@@ -1,7 +1,9 @@
 const STORAGE_KEY = "englishflow.progress.v1";
 const VOICE_SETTINGS_KEY = "englishflow.voice.v1";
+const APP_SETTINGS_KEY = "englishflow.settings.v1";
 const CELEBRATED_STAGES_KEY = "englishflow.celebratedStages.v1";
 const DAY_MS = 24 * 60 * 60 * 1000;
+const NOVICE_HINT_WORD_LIMIT = 200;
 const MALE_VOICE_HINTS = [
   "alex",
   "daniel",
@@ -57,9 +59,16 @@ const state = {
   matchedPairs: new Set(),
   currentBlank: null,
   blankAnswered: false,
+  currentPicture: null,
+  pictureAnswered: false,
+  currentWordBuild: null,
+  wordBuildBank: [],
+  wordBuildAnswer: [],
+  wordBuildSolved: false,
   deferredInstallPrompt: null,
   progress: loadProgress(),
   voiceSettings: loadVoiceSettings(),
+  appSettings: loadAppSettings(),
   voices: [],
 };
 
@@ -90,6 +99,7 @@ const els = {
   voiceSelect: document.getElementById("voiceSelect"),
   voiceTestButton: document.getElementById("voiceTestButton"),
   voiceNote: document.getElementById("voiceNote"),
+  hintNote: document.getElementById("hintNote"),
   quizWord: document.getElementById("quizWord"),
   quizTheme: document.getElementById("quizTheme"),
   quizEmoji: document.getElementById("quizEmoji"),
@@ -117,6 +127,18 @@ const els = {
   blankOptions: document.getElementById("blankOptions"),
   blankFeedback: document.getElementById("blankFeedback"),
   nextBlankButton: document.getElementById("nextBlankButton"),
+  pictureTheme: document.getElementById("pictureTheme"),
+  picturePrompt: document.getElementById("picturePrompt"),
+  pictureOptions: document.getElementById("pictureOptions"),
+  pictureFeedback: document.getElementById("pictureFeedback"),
+  nextPictureButton: document.getElementById("nextPictureButton"),
+  wordBuildTheme: document.getElementById("wordBuildTheme"),
+  wordBuildPrompt: document.getElementById("wordBuildPrompt"),
+  letterSlots: document.getElementById("letterSlots"),
+  letterBank: document.getElementById("letterBank"),
+  wordBuildFeedback: document.getElementById("wordBuildFeedback"),
+  checkWordBuildButton: document.getElementById("checkWordBuildButton"),
+  nextWordBuildButton: document.getElementById("nextWordBuildButton"),
   installCard: document.getElementById("installCard"),
   installText: document.getElementById("installText"),
   installButton: document.getElementById("installButton"),
@@ -162,10 +184,13 @@ async function init() {
   bindNavigation();
   bindCardActions();
   bindVoiceControls();
+  bindHintControls();
   bindQuizControls();
   bindSentenceControls();
   bindPairsControls();
   bindBlankControls();
+  bindPictureControls();
+  bindWordBuildControls();
   bindInstallControls();
   bindCelebrationControls();
   bindHomeControls();
@@ -177,6 +202,8 @@ async function init() {
   chooseNextSentence();
   chooseNextPairs();
   chooseNextBlank();
+  chooseNextPicture();
+  chooseNextWordBuild();
   renderCard();
   renderStats();
   renderThemes();
@@ -186,6 +213,9 @@ async function init() {
   renderSentence();
   renderPairs();
   renderBlank();
+  renderPicture();
+  renderWordBuild();
+  renderHintControls();
   renderInstallCard();
   hideSplashScreen();
   registerServiceWorker();
@@ -252,6 +282,17 @@ function bindVoiceControls() {
   els.voiceTestButton.addEventListener("click", () => speakText("Hello. This is your EnglishFlow voice."));
 }
 
+function bindHintControls() {
+  document.querySelectorAll(".hint-mode-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.appSettings.hintMode = button.dataset.hintMode;
+      saveAppSettings();
+      renderHintControls();
+      renderCard();
+    });
+  });
+}
+
 function bindQuizControls() {
   els.nextQuizButton.addEventListener("click", () => {
     chooseNextQuiz();
@@ -282,6 +323,21 @@ function bindBlankControls() {
   els.nextBlankButton.addEventListener("click", () => {
     chooseNextBlank();
     renderBlank();
+  });
+}
+
+function bindPictureControls() {
+  els.nextPictureButton.addEventListener("click", () => {
+    chooseNextPicture();
+    renderPicture();
+  });
+}
+
+function bindWordBuildControls() {
+  els.checkWordBuildButton.addEventListener("click", checkWordBuildAnswer);
+  els.nextWordBuildButton.addEventListener("click", () => {
+    chooseNextWordBuild();
+    renderWordBuild();
   });
 }
 
@@ -376,7 +432,13 @@ function renderCard() {
 
   els.wordText.textContent = word.word;
   els.wordTranscription.textContent = word.transcription;
-  els.wordEmoji.textContent = word.emoji;
+  if (shouldShowWordHint()) {
+    els.wordEmoji.textContent = word.emoji;
+    els.wordEmoji.classList.remove("hint-hidden");
+  } else {
+    els.wordEmoji.textContent = "👁";
+    els.wordEmoji.classList.add("hint-hidden");
+  }
   els.cardTheme.textContent = word.theme;
 
   els.translationText.textContent = state.translationVisible
@@ -386,6 +448,27 @@ function renderCard() {
     ? "Перевод"
     : "Перевод скрыт";
   els.revealButton.textContent = state.translationVisible ? "Перевод открыт" : "Показать перевод";
+}
+
+function shouldShowWordHint() {
+  if (state.appSettings.hintMode === "always") return true;
+  if (state.appSettings.hintMode === "never") return false;
+  return getKnownWordCount() < NOVICE_HINT_WORD_LIMIT;
+}
+
+function renderHintControls() {
+  document.querySelectorAll(".hint-mode-button").forEach((button) => {
+    button.classList.toggle("active", button.dataset.hintMode === state.appSettings.hintMode);
+  });
+
+  if (!els.hintNote) return;
+  if (state.appSettings.hintMode === "always") {
+    els.hintNote.textContent = "Картинки всегда видны рядом со словами.";
+  } else if (state.appSettings.hintMode === "never") {
+    els.hintNote.textContent = "Картинки скрыты, чтобы тренировать перевод без опоры.";
+  } else {
+    els.hintNote.textContent = `Картинки видны до ${NOVICE_HINT_WORD_LIMIT} знакомых слов, потом скрываются.`;
+  }
 }
 
 function reviewCurrentWord(known) {
@@ -568,7 +651,7 @@ function buildVoiceNote(voice) {
 function renderStats() {
   const today = getTodayKey();
   const wordValues = Object.values(state.progress.words);
-  const known = wordValues.filter((item) => item.correct > item.mistakes).length;
+  const known = getKnownWordCount();
   const weak = wordValues.filter((item) => item.mistakes > 0 && item.mistakes >= item.correct).length;
   const todayCount = state.progress.daily[today] || 0;
   const level = Math.max(1, Math.floor(state.progress.xp / 100) + 1);
@@ -594,6 +677,10 @@ function renderStats() {
   renderVocabularyStage(known);
   renderActivityBars();
   renderWeakList();
+}
+
+function getKnownWordCount() {
+  return Object.values(state.progress.words).filter((item) => item.correct > item.mistakes).length;
 }
 
 function renderVocabularyStage(known) {
@@ -1000,6 +1087,137 @@ function handleBlankAnswer(button) {
   renderStats();
 }
 
+function chooseNextPicture() {
+  const pool = state.quizzes.filter((item) => item.emoji && item.word && item.translation);
+  if (!pool.length) return;
+  state.currentPicture = pool[Math.floor(Math.random() * pool.length)];
+  state.pictureAnswered = false;
+}
+
+function renderPicture() {
+  if (!state.currentPicture) return;
+
+  const options = buildWordOptions(state.currentPicture);
+  els.pictureTheme.textContent = state.currentPicture.theme;
+  els.picturePrompt.textContent = state.currentPicture.emoji;
+  els.pictureFeedback.textContent = "Выбери английское слово.";
+  els.pictureOptions.innerHTML = options
+    .map((option) => `<button class="quiz-option" data-picture-answer="${option}" type="button">${option}</button>`)
+    .join("");
+
+  els.pictureOptions.querySelectorAll(".quiz-option").forEach((button) => {
+    button.addEventListener("click", () => handlePictureAnswer(button));
+  });
+}
+
+function buildWordOptions(target) {
+  const distractors = [...new Set(
+    state.quizzes
+      .filter((item) => item.id !== target.id && item.word !== target.word)
+      .sort(() => Math.random() - 0.5)
+      .map((item) => item.word),
+  )].slice(0, 3);
+
+  return [target.word, ...distractors].sort(() => Math.random() - 0.5);
+}
+
+function handlePictureAnswer(button) {
+  if (state.pictureAnswered || !state.currentPicture) return;
+  state.pictureAnswered = true;
+
+  const isCorrect = button.dataset.pictureAnswer === state.currentPicture.word;
+  button.classList.add(isCorrect ? "correct" : "wrong");
+
+  els.pictureOptions.querySelectorAll(".quiz-option").forEach((optionButton) => {
+    optionButton.disabled = true;
+    if (optionButton.dataset.pictureAnswer === state.currentPicture.word) {
+      optionButton.classList.add("correct");
+    }
+  });
+
+  if (isCorrect) {
+    addStudyProgress(9);
+    els.pictureFeedback.textContent = `Верно: ${state.currentPicture.emoji} — ${state.currentPicture.word}. +9 XP`;
+  } else {
+    addStudyProgress(2);
+    els.pictureFeedback.textContent = `Почти. Правильно: ${state.currentPicture.word}. +2 XP`;
+  }
+}
+
+function chooseNextWordBuild() {
+  const pool = state.quizzes.filter((item) => /^[a-z]{3,8}$/.test(item.word) && item.emoji);
+  if (!pool.length) return;
+  state.currentWordBuild = pool[Math.floor(Math.random() * pool.length)];
+  state.wordBuildAnswer = [];
+  state.wordBuildBank = shuffle(state.currentWordBuild.word.split(""));
+  state.wordBuildSolved = false;
+}
+
+function renderWordBuild() {
+  if (!state.currentWordBuild) return;
+
+  const targetLength = state.currentWordBuild.word.length;
+  els.wordBuildTheme.textContent = state.currentWordBuild.theme;
+  els.wordBuildPrompt.textContent = state.currentWordBuild.emoji;
+  els.wordBuildFeedback.textContent = "Собери слово из букв.";
+  els.letterSlots.innerHTML = Array.from({ length: targetLength }, (_, index) => {
+    const letter = state.wordBuildAnswer[index] || "";
+    return `<button class="letter-slot${letter ? " filled" : ""}" data-letter-slot="${index}" type="button">${letter}</button>`;
+  }).join("");
+  els.letterBank.innerHTML = state.wordBuildBank
+    .map((letter, index) => `<button class="letter-chip" data-letter-index="${index}" type="button">${letter}</button>`)
+    .join("");
+
+  els.letterSlots.querySelectorAll(".letter-slot[data-letter-slot]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const index = Number(button.dataset.letterSlot);
+      const [letter] = state.wordBuildAnswer.splice(index, 1);
+      if (letter) state.wordBuildBank.push(letter);
+      renderWordBuild();
+    });
+  });
+
+  els.letterBank.querySelectorAll(".letter-chip[data-letter-index]").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (state.wordBuildAnswer.length >= targetLength) return;
+      const index = Number(button.dataset.letterIndex);
+      const [letter] = state.wordBuildBank.splice(index, 1);
+      state.wordBuildAnswer.push(letter);
+      renderWordBuild();
+    });
+  });
+}
+
+function checkWordBuildAnswer() {
+  if (!state.currentWordBuild) return;
+  if (state.wordBuildSolved) {
+    els.wordBuildFeedback.textContent = "Это слово уже засчитано. Нажми «Следующее».";
+    return;
+  }
+
+  const answer = state.wordBuildAnswer.join("");
+  const correct = state.currentWordBuild.word;
+
+  if (answer === correct) {
+    state.wordBuildSolved = true;
+    addStudyProgress(11);
+    els.wordBuildFeedback.textContent = `Верно: ${correct}. +11 XP`;
+  } else if (answer.length < correct.length) {
+    els.wordBuildFeedback.textContent = "Добавь все буквы, потом проверь.";
+  } else {
+    els.wordBuildFeedback.textContent = `Пока нет. Правильно: ${correct}.`;
+  }
+}
+
+function addStudyProgress(xp) {
+  state.progress.xp += xp;
+  state.progress.totalReviews += 1;
+  state.progress.daily[getTodayKey()] = (state.progress.daily[getTodayKey()] || 0) + 1;
+  updateStreak(getTodayKey());
+  saveProgress();
+  renderStats();
+}
+
 function pairClass(id, type) {
   if (state.matchedPairs.has(id)) return " matched";
   if (type === "image" && state.selectedPairImage === id) return " selected";
@@ -1131,6 +1349,24 @@ function loadVoiceSettings() {
   } catch {
     return defaults;
   }
+}
+
+function loadAppSettings() {
+  const defaults = {
+    hintMode: "novice",
+  };
+
+  try {
+    const saved = { ...defaults, ...JSON.parse(localStorage.getItem(APP_SETTINGS_KEY) || "{}") };
+    if (!["always", "novice", "never"].includes(saved.hintMode)) saved.hintMode = "novice";
+    return saved;
+  } catch {
+    return defaults;
+  }
+}
+
+function saveAppSettings() {
+  localStorage.setItem(APP_SETTINGS_KEY, JSON.stringify(state.appSettings));
 }
 
 function saveVoiceSettings() {
