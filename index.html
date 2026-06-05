@@ -13,7 +13,7 @@
     <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
     <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
-    <link rel="stylesheet" href="style.css?v=16" />
+    <link rel="stylesheet" href="style.css?v=17" />
   </head>
   <body>
     <div class="splash-screen" id="splashScreen" aria-hidden="true">
@@ -305,9 +305,11 @@
         <section class="view" id="gamesView" aria-labelledby="gamesHeading">
           <div class="game-layout">
             <article class="quiz-card">
+              <span class="game-number">01</span>
               <div class="quiz-header">
                 <div>
-                  <p class="section-label">01 · Угадай перевод</p>
+                  <p class="section-label">Игра</p>
+                  <h3 class="quiz-title">Угадай перевод</h3>
                   <h3 id="quizWord">Loading</h3>
                   <p id="quizTheme" class="transcription">Тема</p>
                 </div>
@@ -350,7 +352,7 @@
 
           <div class="secondary-games">
             <article class="sentence-card">
-              <span>02</span>
+              <span class="game-number">02</span>
               <h3>Собери предложение</h3>
               <p id="sentenceTranslation">Перевод</p>
               <div class="sentence-build" id="sentenceBuild"></div>
@@ -362,7 +364,7 @@
               </div>
             </article>
             <article class="feature-tile">
-              <span>03</span>
+              <span class="game-number">03</span>
               <h3>Заполни пропуск</h3>
               <p id="blankTheme">Тема</p>
               <div class="blank-template" id="blankTemplate">Loading ___</div>
@@ -374,7 +376,7 @@
               </button>
             </article>
             <article class="pairs-card">
-              <span>04</span>
+              <span class="game-number">04</span>
               <h3>Тап-пары</h3>
               <p>Нажми картинку, потом английское слово. Верная пара подсветится зелёным.</p>
               <div class="pairs-board">
@@ -385,7 +387,7 @@
               <button class="primary-button pair-next-button" id="nextPairsButton" type="button">Новый набор</button>
             </article>
             <article class="picture-card">
-              <span>05</span>
+              <span class="game-number">05</span>
               <h3>Что на картинке?</h3>
               <p id="pictureTheme">Тема</p>
               <div class="picture-prompt" id="picturePrompt">◇</div>
@@ -396,7 +398,7 @@
               </button>
             </article>
             <article class="word-build-card">
-              <span>06</span>
+              <span class="game-number">06</span>
               <h3>Собери слово</h3>
               <p id="wordBuildTheme">Тема</p>
               <div class="word-build-prompt" id="wordBuildPrompt">◇</div>
@@ -483,7 +485,7 @@
       </div>
     </div>
 
-    <script src="config.js?v=16"></script>
-    <script src="app.js?v=16"></script>
+    <script src="config.js?v=17"></script>
+    <script src="app.js?v=17"></script>
   </body>
 </html>

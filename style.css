@@ -103,6 +103,8 @@ button:active {
 .feature-tile h3,
 .sentence-card h3,
 .pairs-card h3,
+.picture-card h3,
+.word-build-card h3,
 .dialogue-board h3,
 .home-hero h3,
 .stage-card h3 {
@@ -288,6 +290,8 @@ button:active {
 .feature-tile,
 .sentence-card,
 .pairs-card,
+.picture-card,
+.word-build-card,
 .dialogue-board,
 .quiz-card,
 .home-hero,
@@ -823,6 +827,12 @@ button:active {
   line-height: 0.95;
 }
 
+.quiz-header .quiz-title {
+  margin: 14px 0 10px;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.05;
+}
+
 .quiz-emoji {
   display: grid;
   flex: 0 0 auto;
@@ -916,20 +926,17 @@ button:active {
   padding: 22px;
 }
 
-.feature-tile span,
-.sentence-card > span,
-.pairs-card > span,
-.picture-card > span,
-.word-build-card > span {
+.game-number {
   display: inline-grid;
-  width: 38px;
-  height: 38px;
+  width: 48px;
+  height: 48px;
   margin-bottom: 28px;
   place-items: center;
   color: #ffffff;
   background: linear-gradient(135deg, var(--accent), #5ec8f6);
-  border-radius: 8px;
+  border-radius: 50%;
   font-weight: 850;
+  box-shadow: 0 12px 28px rgba(124, 77, 241, 0.2);
 }
 
 .feature-tile p,
@@ -1369,6 +1376,8 @@ button:active {
 .feature-tile,
 .sentence-card,
 .pairs-card,
+.picture-card,
+.word-build-card,
 .dialogue-board,
 .quiz-card,
 .home-hero,
@@ -1414,12 +1423,14 @@ button:active {
 }
 
 .stage-title-row > span,
-.feature-tile span,
-.sentence-card > span,
-.pairs-card > span,
+.game-number,
 .quiz-emoji,
 .icon-button {
   border-radius: 20px;
+}
+
+.game-number {
+  border-radius: 50%;
 }
 
 .stage-celebration {

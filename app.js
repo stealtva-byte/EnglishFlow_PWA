@@ -4,6 +4,68 @@ const APP_SETTINGS_KEY = "englishflow.settings.v1";
 const CELEBRATED_STAGES_KEY = "englishflow.celebratedStages.v1";
 const DAY_MS = 24 * 60 * 60 * 1000;
 const NOVICE_HINT_WORD_LIMIT = 200;
+const VISUAL_HINTS = {
+  airport: "✈️",
+  apple: "🍎",
+  bag: "🎒",
+  beach: "🏖️",
+  block: "🧱",
+  bread: "🍞",
+  bus: "🚌",
+  car: "🚗",
+  cheese: "🧀",
+  chest: "🧰",
+  city: "🏙️",
+  coffee: "☕",
+  diamond: "💎",
+  driver: "👨‍✈️",
+  engine: "⚙️",
+  eye: "👁️",
+  farm: "🚜",
+  fuel: "⛽",
+  garage: "🏠",
+  gate: "🚪",
+  hand: "✋",
+  head: "🙂",
+  hello: "👋",
+  hotel: "🏨",
+  house: "🏠",
+  leg: "🦵",
+  map: "🗺️",
+  milk: "🥛",
+  mine: "⛏️",
+  passport: "🛂",
+  pickaxe: "⛏️",
+  road: "🛣️",
+  seat: "💺",
+  stone: "🪨",
+  sword: "⚔️",
+  taxi: "🚕",
+  tea: "🍵",
+  ticket: "🎫",
+  torch: "🔦",
+  train: "🚆",
+  water: "💧",
+  wheel: "🛞",
+  wood: "🪵",
+};
+const ABSTRACT_PICTURE_WORDS = new Set([
+  "bad",
+  "brake",
+  "craft",
+  "friend",
+  "good",
+  "help",
+  "no",
+  "please",
+  "sorry",
+  "speed",
+  "thanks",
+  "traffic",
+  "welcome",
+  "yes",
+]);
+const BAD_VISUAL_SYMBOLS = new Set(["▦", "⬒", "▥", "✦", "⌂", "▤", "▣", "◇", "▾", "✚", "○", "═", "≡", "◉", "▱", "↗", "!", "▭", "→", "□", "▰", "≈", "?", "✓", "×"]);
 const MALE_VOICE_HINTS = [
   "alex",
   "daniel",
@@ -433,7 +495,7 @@ function renderCard() {
   els.wordText.textContent = word.word;
   els.wordTranscription.textContent = word.transcription;
   if (shouldShowWordHint()) {
-    els.wordEmoji.textContent = word.emoji;
+    els.wordEmoji.textContent = visualFor(word);
     els.wordEmoji.classList.remove("hint-hidden");
   } else {
     els.wordEmoji.textContent = "👁";
@@ -454,6 +516,18 @@ function shouldShowWordHint() {
   if (state.appSettings.hintMode === "always") return true;
   if (state.appSettings.hintMode === "never") return false;
   return getKnownWordCount() < NOVICE_HINT_WORD_LIMIT;
+}
+
+function visualFor(item) {
+  const word = item.word?.toLowerCase();
+  if (word && VISUAL_HINTS[word]) return VISUAL_HINTS[word];
+  if (item.emoji && !BAD_VISUAL_SYMBOLS.has(item.emoji)) return item.emoji;
+  return "🖼️";
+}
+
+function hasConcreteVisual(item) {
+  const word = item.word?.toLowerCase();
+  return Boolean(word && VISUAL_HINTS[word] && !ABSTRACT_PICTURE_WORDS.has(word));
 }
 
 function renderHintControls() {
@@ -838,7 +912,7 @@ function renderQuiz() {
   const options = buildQuizOptions(state.currentQuiz);
   els.quizWord.textContent = state.currentQuiz.word;
   els.quizTheme.textContent = state.currentQuiz.theme;
-  els.quizEmoji.textContent = state.currentQuiz.emoji;
+  els.quizEmoji.textContent = visualFor(state.currentQuiz);
   els.quizFeedback.textContent = "Выбери правильный перевод.";
   els.quizOptions.innerHTML = options
     .map((option) => `<button class="quiz-option" data-answer="${option}" type="button">${option}</button>`)
@@ -985,7 +1059,7 @@ function renderPairs() {
   els.pairImages.innerHTML = images
     .map(
       (item) =>
-        `<button class="pair-card${pairClass(item.id, "image")}" data-pair-image="${item.id}" type="button"><strong>${item.emoji}</strong><span>${item.translation}</span></button>`,
+        `<button class="pair-card${pairClass(item.id, "image")}" data-pair-image="${item.id}" type="button"><strong>${visualFor(item)}</strong><span>${item.translation}</span></button>`,
     )
     .join("");
   els.pairWords.innerHTML = words
@@ -1088,7 +1162,7 @@ function handleBlankAnswer(button) {
 }
 
 function chooseNextPicture() {
-  const pool = state.quizzes.filter((item) => item.emoji && item.word && item.translation);
+  const pool = state.quizzes.filter((item) => item.word && item.translation && hasConcreteVisual(item));
   if (!pool.length) return;
   state.currentPicture = pool[Math.floor(Math.random() * pool.length)];
   state.pictureAnswered = false;
@@ -1099,7 +1173,7 @@ function renderPicture() {
 
   const options = buildWordOptions(state.currentPicture);
   els.pictureTheme.textContent = state.currentPicture.theme;
-  els.picturePrompt.textContent = state.currentPicture.emoji;
+  els.picturePrompt.textContent = visualFor(state.currentPicture);
   els.pictureFeedback.textContent = "Выбери английское слово.";
   els.pictureOptions.innerHTML = options
     .map((option) => `<button class="quiz-option" data-picture-answer="${option}" type="button">${option}</button>`)
@@ -1137,7 +1211,7 @@ function handlePictureAnswer(button) {
 
   if (isCorrect) {
     addStudyProgress(9);
-    els.pictureFeedback.textContent = `Верно: ${state.currentPicture.emoji} — ${state.currentPicture.word}. +9 XP`;
+    els.pictureFeedback.textContent = `Верно: ${visualFor(state.currentPicture)} — ${state.currentPicture.word}. +9 XP`;
   } else {
     addStudyProgress(2);
     els.pictureFeedback.textContent = `Почти. Правильно: ${state.currentPicture.word}. +2 XP`;
@@ -1145,7 +1219,7 @@ function handlePictureAnswer(button) {
 }
 
 function chooseNextWordBuild() {
-  const pool = state.quizzes.filter((item) => /^[a-z]{3,8}$/.test(item.word) && item.emoji);
+  const pool = state.quizzes.filter((item) => /^[a-z]{3,8}$/.test(item.word) && hasConcreteVisual(item));
   if (!pool.length) return;
   state.currentWordBuild = pool[Math.floor(Math.random() * pool.length)];
   state.wordBuildAnswer = [];
@@ -1158,7 +1232,7 @@ function renderWordBuild() {
 
   const targetLength = state.currentWordBuild.word.length;
   els.wordBuildTheme.textContent = state.currentWordBuild.theme;
-  els.wordBuildPrompt.textContent = state.currentWordBuild.emoji;
+  els.wordBuildPrompt.textContent = visualFor(state.currentWordBuild);
   els.wordBuildFeedback.textContent = "Собери слово из букв.";
   els.letterSlots.innerHTML = Array.from({ length: targetLength }, (_, index) => {
     const letter = state.wordBuildAnswer[index] || "";
@@ -1245,7 +1319,7 @@ function checkPairSelection() {
   if (state.selectedPairImage === state.selectedPairWord) {
     state.matchedPairs.add(state.selectedPairImage);
     const pair = state.currentPairs.find((item) => item.id === state.selectedPairImage);
-    state.pairsMessage = pair ? `Верно: ${pair.emoji} — ${pair.word}. +4 XP` : "Верно. +4 XP";
+    state.pairsMessage = pair ? `Верно: ${visualFor(pair)} — ${pair.word}. +4 XP` : "Верно. +4 XP";
     state.progress.xp += 4;
     state.progress.totalReviews += 1;
     state.progress.daily[getTodayKey()] = (state.progress.daily[getTodayKey()] || 0) + 1;
