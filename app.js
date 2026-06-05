@@ -2,7 +2,22 @@ const STORAGE_KEY = "englishflow.progress.v1";
 const VOICE_SETTINGS_KEY = "englishflow.voice.v1";
 const CELEBRATED_STAGES_KEY = "englishflow.celebratedStages.v1";
 const DAY_MS = 24 * 60 * 60 * 1000;
-const MALE_VOICE_HINTS = ["alex", "daniel", "fred", "tom", "thomas", "arthur", "george", "oliver", "male"];
+const MALE_VOICE_HINTS = [
+  "alex",
+  "daniel",
+  "fred",
+  "tom",
+  "thomas",
+  "arthur",
+  "george",
+  "oliver",
+  "david",
+  "mark",
+  "james",
+  "matthew",
+  "male",
+  "man",
+];
 const FEMALE_VOICE_HINTS = [
   "samantha",
   "victoria",
@@ -12,6 +27,7 @@ const FEMALE_VOICE_HINTS = [
   "tessa",
   "zira",
   "female",
+  "woman",
   "serena",
   "ava",
 ];
@@ -410,11 +426,15 @@ function speakCurrentWord() {
 function speakText(text) {
   if (!("speechSynthesis" in window)) return;
 
+  const latestVoices = readEnglishVoices();
+  if (latestVoices.length) state.voices = latestVoices;
+
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
+  const isMaleMode = state.voiceSettings.mode === "male";
   utterance.lang = "en-US";
-  utterance.rate = 0.86;
-  utterance.pitch = 1;
+  utterance.rate = isMaleMode ? 0.84 : 0.9;
+  utterance.pitch = isMaleMode ? 0.86 : 1.08;
 
   const selectedVoice = resolveSelectedVoice();
   if (selectedVoice) utterance.voice = selectedVoice;
@@ -433,11 +453,20 @@ function setupVoices() {
 
   refreshVoices();
   window.speechSynthesis.onvoiceschanged = refreshVoices;
-  setTimeout(refreshVoices, 300);
+  [300, 1000, 2000].forEach((delay) => setTimeout(refreshVoices, delay));
 }
 
 function refreshVoices() {
-  state.voices = window.speechSynthesis
+  state.voices = readEnglishVoices();
+
+  if (!state.voiceSettings.voiceURI) syncBestVoiceForMode();
+  renderVoiceControls();
+}
+
+function readEnglishVoices() {
+  if (!("speechSynthesis" in window)) return [];
+
+  return window.speechSynthesis
     .getVoices()
     .filter((voice) => voice.lang && voice.lang.toLowerCase().startsWith("en"))
     .sort((a, b) => {
@@ -445,9 +474,6 @@ function refreshVoices() {
       const bUS = b.lang.toLowerCase().startsWith("en-us") ? 0 : 1;
       return aUS - bUS || a.name.localeCompare(b.name);
     });
-
-  if (!state.voiceSettings.voiceURI) syncBestVoiceForMode();
-  renderVoiceControls();
 }
 
 function syncBestVoiceForMode() {
@@ -466,12 +492,15 @@ function renderVoiceControls() {
   if (!state.voices.length) {
     const option = document.createElement("option");
     option.value = "";
-    option.textContent = "Английские голоса пока не найдены";
+    option.textContent = "Авто: голос браузера";
     els.voiceSelect.appendChild(option);
-    els.voiceNote.textContent = "Если список пустой, попробуй нажать озвучку или обновить страницу.";
+    els.voiceSelect.disabled = true;
+    els.voiceNote.textContent =
+      "На Android список голосов часто скрыт. Мужской/женский режим всё равно меняет тон озвучки.";
     return;
   }
 
+  els.voiceSelect.disabled = false;
   const visibleVoices = voicesForCurrentMode();
   visibleVoices.forEach((voice) => {
     const option = document.createElement("option");
@@ -525,7 +554,7 @@ function voiceMatchesHints(voice, hints) {
 }
 
 function buildVoiceNote(voice) {
-  if (!voice) return "Голоса зависят от устройства и браузера.";
+  if (!voice) return "Используется голос браузера. Мужской/женский режим меняет тон озвучки.";
 
   const guessedType = voiceMatchesHints(voice, MALE_VOICE_HINTS)
     ? "похоже на мужской"
@@ -533,7 +562,7 @@ function buildVoiceNote(voice) {
       ? "похоже на женский"
       : "тип голоса не определён браузером";
 
-  return `${voice.name}: ${guessedType}. Можно проверить и выбрать другой.`;
+  return `${voice.name}: ${guessedType}. Если пол не определяется, режим дополнительно меняет тон.`;
 }
 
 function renderStats() {
