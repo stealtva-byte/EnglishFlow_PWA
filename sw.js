@@ -1,4 +1,4 @@
-const CACHE_NAME = "englishflow-v20";
+const CACHE_NAME = "englishflow-v21";
 const ASSETS = [
   "./",
   "./index.html",
@@ -17,8 +17,8 @@ const ASSETS = [
   "./icons/englishflow-logo.png",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
-  "./icons/apple-touch-icon.png",
-  "./icons/favicon-32.png",
+  "./icons/apple-touch-icon.png?v=21",
+  "./icons/favicon-32.png?v=21",
 ];
 
 self.addEventListener("install", (event) => {
