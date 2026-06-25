@@ -709,6 +709,16 @@ function importBackup() {
 function chooseNextWord() {
   if (!state.words.length) return;
 
+  const unseen = state.words
+    .map((word, index) => ({ word, index, progress: state.progress.words[word.id] }))
+    .filter(({ progress }) => !progress || !(progress.reviews || progress.correct || progress.mistakes));
+
+  if (unseen.length) {
+    state.currentIndex = unseen[Math.floor(Math.random() * unseen.length)].index;
+    state.translationVisible = false;
+    return;
+  }
+
   const weighted = state.words
     .map((word, index) => {
       const item = state.progress.words[word.id] || {};
@@ -777,7 +787,18 @@ function hasConcreteVisual(item) {
 }
 
 function pictureWordPool() {
-  return state.quizzes.filter((item) => item.word && item.translation && hasConcreteVisual(item));
+  return quizTrainingPool().filter((item) => item.word && item.translation && hasConcreteVisual(item));
+}
+
+function quizTrainingPool() {
+  const seen = new Set();
+  return [...state.words, ...state.quizzes].filter((item) => {
+    if (!item.word || !item.translation) return false;
+    const key = `${item.word.toLowerCase()}|${item.translation.toLowerCase()}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 function setFeedback(element, message, status = "neutral") {
@@ -1232,7 +1253,7 @@ function renderDialogues() {
 }
 
 function renderQuizTopics() {
-  const topics = ["Все", ...new Set(state.quizzes.map((item) => item.theme))];
+  const topics = ["Все", ...new Set(quizTrainingPool().map((item) => item.theme))];
   els.quizTopicList.innerHTML = topics
     .map(
       (topic) =>
@@ -1258,8 +1279,9 @@ function chooseNextQuiz() {
 }
 
 function filteredQuizzes() {
-  if (state.quizTopic === "Все") return state.quizzes;
-  return state.quizzes.filter((item) => item.theme === state.quizTopic);
+  const pool = quizTrainingPool();
+  if (state.quizTopic === "Все") return pool;
+  return pool.filter((item) => item.theme === state.quizTopic);
 }
 
 function renderQuiz() {
@@ -1283,7 +1305,7 @@ function renderQuiz() {
 }
 
 function buildQuizOptions(quiz) {
-  const distractors = state.quizzes
+  const distractors = quizTrainingPool()
     .filter((item) => item.id !== quiz.id)
     .sort(() => Math.random() - 0.5)
     .slice(0, 3)

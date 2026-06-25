@@ -1,106 +1,1650 @@
 [
-  {"id":"num-001","word":"one","transcription":"/wʌn/","translation":"один","theme":"Числа","emoji":"1"},
-  {"id":"num-002","word":"two","transcription":"/tuː/","translation":"два","theme":"Числа","emoji":"2"},
-  {"id":"num-003","word":"three","transcription":"/θriː/","translation":"три","theme":"Числа","emoji":"3"},
-  {"id":"num-004","word":"four","transcription":"/fɔːr/","translation":"четыре","theme":"Числа","emoji":"4"},
-  {"id":"num-005","word":"five","transcription":"/faɪv/","translation":"пять","theme":"Числа","emoji":"5"},
-  {"id":"num-006","word":"six","transcription":"/sɪks/","translation":"шесть","theme":"Числа","emoji":"6"},
-  {"id":"num-007","word":"seven","transcription":"/ˈsevən/","translation":"семь","theme":"Числа","emoji":"7"},
-  {"id":"num-008","word":"eight","transcription":"/eɪt/","translation":"восемь","theme":"Числа","emoji":"8"},
-  {"id":"num-009","word":"nine","transcription":"/naɪn/","translation":"девять","theme":"Числа","emoji":"9"},
-  {"id":"num-010","word":"ten","transcription":"/ten/","translation":"десять","theme":"Числа","emoji":"10"},
-  {"id":"num-011","word":"eleven","transcription":"/ɪˈlevən/","translation":"одиннадцать","theme":"Числа","emoji":"11"},
-  {"id":"num-012","word":"twelve","transcription":"/twelv/","translation":"двенадцать","theme":"Числа","emoji":"12"},
-  {"id":"num-013","word":"thirteen","transcription":"/ˌθɜːrˈtiːn/","translation":"тринадцать","theme":"Числа","emoji":"13"},
-  {"id":"num-014","word":"fourteen","transcription":"/ˌfɔːrˈtiːn/","translation":"четырнадцать","theme":"Числа","emoji":"14"},
-  {"id":"num-015","word":"fifteen","transcription":"/ˌfɪfˈtiːn/","translation":"пятнадцать","theme":"Числа","emoji":"15"},
-  {"id":"num-016","word":"sixteen","transcription":"/ˌsɪksˈtiːn/","translation":"шестнадцать","theme":"Числа","emoji":"16"},
-  {"id":"num-017","word":"seventeen","transcription":"/ˌsevənˈtiːn/","translation":"семнадцать","theme":"Числа","emoji":"17"},
-  {"id":"num-018","word":"eighteen","transcription":"/ˌeɪˈtiːn/","translation":"восемнадцать","theme":"Числа","emoji":"18"},
-  {"id":"num-019","word":"nineteen","transcription":"/ˌnaɪnˈtiːn/","translation":"девятнадцать","theme":"Числа","emoji":"19"},
-  {"id":"num-020","word":"twenty","transcription":"/ˈtwenti/","translation":"двадцать","theme":"Числа","emoji":"20"},
-  {"id":"num-021","word":"thirty","transcription":"/ˈθɜːrti/","translation":"тридцать","theme":"Числа","emoji":"30"},
-  {"id":"num-022","word":"forty","transcription":"/ˈfɔːrti/","translation":"сорок","theme":"Числа","emoji":"40"},
-  {"id":"num-023","word":"fifty","transcription":"/ˈfɪfti/","translation":"пятьдесят","theme":"Числа","emoji":"50"},
-  {"id":"num-024","word":"sixty","transcription":"/ˈsɪksti/","translation":"шестьдесят","theme":"Числа","emoji":"60"},
-  {"id":"num-025","word":"seventy","transcription":"/ˈsevənti/","translation":"семьдесят","theme":"Числа","emoji":"70"},
-  {"id":"num-026","word":"eighty","transcription":"/ˈeɪti/","translation":"восемьдесят","theme":"Числа","emoji":"80"},
-  {"id":"num-027","word":"ninety","transcription":"/ˈnaɪnti/","translation":"девяносто","theme":"Числа","emoji":"90"},
-  {"id":"num-028","word":"hundred","transcription":"/ˈhʌndrəd/","translation":"сто","theme":"Числа","emoji":"100"},
-  {"id":"num-029","word":"zero","transcription":"/ˈzɪroʊ/","translation":"ноль","theme":"Числа","emoji":"0"},
-  {"id":"num-030","word":"number","transcription":"/ˈnʌmbər/","translation":"число","theme":"Числа","emoji":"#"},
-
-  {"id":"color-001","word":"red","transcription":"/red/","translation":"красный","theme":"Цвета","emoji":"🔴"},
-  {"id":"color-002","word":"blue","transcription":"/bluː/","translation":"синий","theme":"Цвета","emoji":"🔵"},
-  {"id":"color-003","word":"green","transcription":"/ɡriːn/","translation":"зелёный","theme":"Цвета","emoji":"🟢"},
-  {"id":"color-004","word":"yellow","transcription":"/ˈjeloʊ/","translation":"жёлтый","theme":"Цвета","emoji":"🟡"},
-  {"id":"color-005","word":"black","transcription":"/blæk/","translation":"чёрный","theme":"Цвета","emoji":"⚫"},
-  {"id":"color-006","word":"white","transcription":"/waɪt/","translation":"белый","theme":"Цвета","emoji":"⚪"},
-  {"id":"color-007","word":"gray","transcription":"/ɡreɪ/","translation":"серый","theme":"Цвета","emoji":"◯"},
-  {"id":"color-008","word":"orange","transcription":"/ˈɔːrɪndʒ/","translation":"оранжевый","theme":"Цвета","emoji":"🟠"},
-  {"id":"color-009","word":"purple","transcription":"/ˈpɜːrpəl/","translation":"фиолетовый","theme":"Цвета","emoji":"🟣"},
-  {"id":"color-010","word":"pink","transcription":"/pɪŋk/","translation":"розовый","theme":"Цвета","emoji":"🌸"},
-  {"id":"color-011","word":"brown","transcription":"/braʊn/","translation":"коричневый","theme":"Цвета","emoji":"🟤"},
-  {"id":"color-012","word":"light","transcription":"/laɪt/","translation":"светлый","theme":"Цвета","emoji":"◌"},
-  {"id":"color-013","word":"dark","transcription":"/dɑːrk/","translation":"тёмный","theme":"Цвета","emoji":"◍"},
-  {"id":"color-014","word":"color","transcription":"/ˈkʌlər/","translation":"цвет","theme":"Цвета","emoji":"🎨"},
-
-  {"id":"hello-001","word":"hello","transcription":"/həˈloʊ/","translation":"привет","theme":"Приветствия","emoji":"👋"},
-  {"id":"hello-002","word":"hi","transcription":"/haɪ/","translation":"привет","theme":"Приветствия","emoji":"👋"},
-  {"id":"hello-003","word":"goodbye","transcription":"/ˌɡʊdˈbaɪ/","translation":"до свидания","theme":"Приветствия","emoji":"👋"},
-  {"id":"hello-004","word":"bye","transcription":"/baɪ/","translation":"пока","theme":"Приветствия","emoji":"👋"},
-  {"id":"hello-005","word":"morning","transcription":"/ˈmɔːrnɪŋ/","translation":"утро","theme":"Приветствия","emoji":"🌅"},
-  {"id":"hello-006","word":"evening","transcription":"/ˈiːvnɪŋ/","translation":"вечер","theme":"Приветствия","emoji":"🌆"},
-  {"id":"hello-007","word":"night","transcription":"/naɪt/","translation":"ночь","theme":"Приветствия","emoji":"🌙"},
-  {"id":"hello-008","word":"please","transcription":"/pliːz/","translation":"пожалуйста","theme":"Вежливость","emoji":"🙏"},
-  {"id":"hello-009","word":"thanks","transcription":"/θæŋks/","translation":"спасибо","theme":"Вежливость","emoji":"🙏"},
-  {"id":"hello-010","word":"thank you","transcription":"/ˈθæŋk juː/","translation":"спасибо","theme":"Вежливость","emoji":"🙏"},
-  {"id":"hello-011","word":"sorry","transcription":"/ˈsɑːri/","translation":"извините","theme":"Вежливость","emoji":"!"},
-  {"id":"hello-012","word":"yes","transcription":"/jes/","translation":"да","theme":"База","emoji":"✓"},
-  {"id":"hello-013","word":"no","transcription":"/noʊ/","translation":"нет","theme":"База","emoji":"×"},
-  {"id":"hello-014","word":"okay","transcription":"/ˌoʊˈkeɪ/","translation":"хорошо","theme":"База","emoji":"OK"},
-  {"id":"hello-015","word":"good","transcription":"/ɡʊd/","translation":"хорошо / хороший","theme":"База","emoji":"✓"},
-  {"id":"hello-016","word":"bad","transcription":"/bæd/","translation":"плохо / плохой","theme":"База","emoji":"!"},
-  {"id":"hello-017","word":"name","transcription":"/neɪm/","translation":"имя","theme":"Знакомство","emoji":"ID"},
-  {"id":"hello-018","word":"my","transcription":"/maɪ/","translation":"мой","theme":"Знакомство","emoji":"•"},
-  {"id":"hello-019","word":"your","transcription":"/jʊr/","translation":"твой / ваш","theme":"Знакомство","emoji":"•"},
-  {"id":"hello-020","word":"friend","transcription":"/frend/","translation":"друг","theme":"Знакомство","emoji":"👥"},
-  {"id":"hello-021","word":"help","transcription":"/help/","translation":"помощь / помогать","theme":"Вежливость","emoji":"?"},
-  {"id":"hello-022","word":"welcome","transcription":"/ˈwelkəm/","translation":"добро пожаловать","theme":"Приветствия","emoji":"★"},
-
-  {"id":"food-001","word":"water","transcription":"/ˈwɔːtər/","translation":"вода","theme":"Еда и напитки","emoji":"💧"},
-  {"id":"food-002","word":"coffee","transcription":"/ˈkɔːfi/","translation":"кофе","theme":"Еда и напитки","emoji":"☕"},
-  {"id":"food-003","word":"tea","transcription":"/tiː/","translation":"чай","theme":"Еда и напитки","emoji":"🍵"},
-  {"id":"food-004","word":"milk","transcription":"/mɪlk/","translation":"молоко","theme":"Еда и напитки","emoji":"🥛"},
-  {"id":"food-005","word":"juice","transcription":"/dʒuːs/","translation":"сок","theme":"Еда и напитки","emoji":"🧃"},
-  {"id":"food-006","word":"bread","transcription":"/bred/","translation":"хлеб","theme":"Еда и напитки","emoji":"🍞"},
-  {"id":"food-007","word":"rice","transcription":"/raɪs/","translation":"рис","theme":"Еда и напитки","emoji":"🍚"},
-  {"id":"food-008","word":"egg","transcription":"/eɡ/","translation":"яйцо","theme":"Еда и напитки","emoji":"🥚"},
-  {"id":"food-009","word":"cheese","transcription":"/tʃiːz/","translation":"сыр","theme":"Еда и напитки","emoji":"🧀"},
-  {"id":"food-010","word":"meat","transcription":"/miːt/","translation":"мясо","theme":"Еда и напитки","emoji":"🥩"},
-  {"id":"food-011","word":"fish","transcription":"/fɪʃ/","translation":"рыба","theme":"Еда и напитки","emoji":"🐟"},
-  {"id":"food-012","word":"chicken","transcription":"/ˈtʃɪkɪn/","translation":"курица","theme":"Еда и напитки","emoji":"🍗"},
-  {"id":"food-013","word":"soup","transcription":"/suːp/","translation":"суп","theme":"Еда и напитки","emoji":"🥣"},
-  {"id":"food-014","word":"salad","transcription":"/ˈsæləd/","translation":"салат","theme":"Еда и напитки","emoji":"🥗"},
-  {"id":"food-015","word":"apple","transcription":"/ˈæpəl/","translation":"яблоко","theme":"Еда и напитки","emoji":"🍎"},
-  {"id":"food-016","word":"banana","transcription":"/bəˈnænə/","translation":"банан","theme":"Еда и напитки","emoji":"🍌"},
-  {"id":"food-017","word":"orange","transcription":"/ˈɔːrɪndʒ/","translation":"апельсин","theme":"Еда и напитки","emoji":"🍊"},
-  {"id":"food-018","word":"potato","transcription":"/pəˈteɪtoʊ/","translation":"картофель","theme":"Еда и напитки","emoji":"🥔"},
-  {"id":"food-019","word":"tomato","transcription":"/təˈmeɪtoʊ/","translation":"помидор","theme":"Еда и напитки","emoji":"🍅"},
-  {"id":"food-020","word":"sugar","transcription":"/ˈʃʊɡər/","translation":"сахар","theme":"Еда и напитки","emoji":"◇"},
-  {"id":"food-021","word":"salt","transcription":"/sɔːlt/","translation":"соль","theme":"Еда и напитки","emoji":"◇"},
-  {"id":"food-022","word":"breakfast","transcription":"/ˈbrekfəst/","translation":"завтрак","theme":"Еда и напитки","emoji":"🍳"},
-  {"id":"food-023","word":"lunch","transcription":"/lʌntʃ/","translation":"обед","theme":"Еда и напитки","emoji":"🍽"},
-  {"id":"food-024","word":"dinner","transcription":"/ˈdɪnər/","translation":"ужин","theme":"Еда и напитки","emoji":"🍽"},
-  {"id":"food-025","word":"menu","transcription":"/ˈmenjuː/","translation":"меню","theme":"Кафе","emoji":"☰"},
-  {"id":"food-026","word":"bill","transcription":"/bɪl/","translation":"счёт","theme":"Кафе","emoji":"$"},
-  {"id":"food-027","word":"table","transcription":"/ˈteɪbəl/","translation":"стол","theme":"Кафе","emoji":"▭"},
-  {"id":"food-028","word":"fork","transcription":"/fɔːrk/","translation":"вилка","theme":"Кафе","emoji":"🍴"},
-  {"id":"food-029","word":"spoon","transcription":"/spuːn/","translation":"ложка","theme":"Кафе","emoji":"🥄"},
-  {"id":"food-030","word":"cup","transcription":"/kʌp/","translation":"чашка","theme":"Кафе","emoji":"☕"},
-
-  {"id":"verb-001","word":"go","transcription":"/ɡoʊ/","translation":"идти / ехать","theme":"Глаголы","emoji":"→"},
-  {"id":"verb-002","word":"come","transcription":"/kʌm/","translation":"приходить","theme":"Глаголы","emoji":"←"},
-  {"id":"verb-003","word":"eat","transcription":"/iːt/","translation":"есть","theme":"Глаголы","emoji":"🍽"},
-  {"id":"verb-004","word":"drink","transcription":"/drɪŋk/","translation":"пить","theme":"Глаголы","emoji":"🥤"}
+  {
+    "id": "num-001",
+    "word": "one",
+    "transcription": "/wʌn/",
+    "translation": "один",
+    "theme": "Числа",
+    "emoji": "1"
+  },
+  {
+    "id": "num-002",
+    "word": "two",
+    "transcription": "/tuː/",
+    "translation": "два",
+    "theme": "Числа",
+    "emoji": "2"
+  },
+  {
+    "id": "num-003",
+    "word": "three",
+    "transcription": "/θriː/",
+    "translation": "три",
+    "theme": "Числа",
+    "emoji": "3"
+  },
+  {
+    "id": "num-004",
+    "word": "four",
+    "transcription": "/fɔːr/",
+    "translation": "четыре",
+    "theme": "Числа",
+    "emoji": "4"
+  },
+  {
+    "id": "num-005",
+    "word": "five",
+    "transcription": "/faɪv/",
+    "translation": "пять",
+    "theme": "Числа",
+    "emoji": "5"
+  },
+  {
+    "id": "num-006",
+    "word": "six",
+    "transcription": "/sɪks/",
+    "translation": "шесть",
+    "theme": "Числа",
+    "emoji": "6"
+  },
+  {
+    "id": "num-007",
+    "word": "seven",
+    "transcription": "/ˈsevən/",
+    "translation": "семь",
+    "theme": "Числа",
+    "emoji": "7"
+  },
+  {
+    "id": "num-008",
+    "word": "eight",
+    "transcription": "/eɪt/",
+    "translation": "восемь",
+    "theme": "Числа",
+    "emoji": "8"
+  },
+  {
+    "id": "num-009",
+    "word": "nine",
+    "transcription": "/naɪn/",
+    "translation": "девять",
+    "theme": "Числа",
+    "emoji": "9"
+  },
+  {
+    "id": "num-010",
+    "word": "ten",
+    "transcription": "/ten/",
+    "translation": "десять",
+    "theme": "Числа",
+    "emoji": "10"
+  },
+  {
+    "id": "num-011",
+    "word": "eleven",
+    "transcription": "/ɪˈlevən/",
+    "translation": "одиннадцать",
+    "theme": "Числа",
+    "emoji": "11"
+  },
+  {
+    "id": "num-012",
+    "word": "twelve",
+    "transcription": "/twelv/",
+    "translation": "двенадцать",
+    "theme": "Числа",
+    "emoji": "12"
+  },
+  {
+    "id": "num-013",
+    "word": "thirteen",
+    "transcription": "/ˌθɜːrˈtiːn/",
+    "translation": "тринадцать",
+    "theme": "Числа",
+    "emoji": "13"
+  },
+  {
+    "id": "num-014",
+    "word": "fourteen",
+    "transcription": "/ˌfɔːrˈtiːn/",
+    "translation": "четырнадцать",
+    "theme": "Числа",
+    "emoji": "14"
+  },
+  {
+    "id": "num-015",
+    "word": "fifteen",
+    "transcription": "/ˌfɪfˈtiːn/",
+    "translation": "пятнадцать",
+    "theme": "Числа",
+    "emoji": "15"
+  },
+  {
+    "id": "num-016",
+    "word": "sixteen",
+    "transcription": "/ˌsɪksˈtiːn/",
+    "translation": "шестнадцать",
+    "theme": "Числа",
+    "emoji": "16"
+  },
+  {
+    "id": "num-017",
+    "word": "seventeen",
+    "transcription": "/ˌsevənˈtiːn/",
+    "translation": "семнадцать",
+    "theme": "Числа",
+    "emoji": "17"
+  },
+  {
+    "id": "num-018",
+    "word": "eighteen",
+    "transcription": "/ˌeɪˈtiːn/",
+    "translation": "восемнадцать",
+    "theme": "Числа",
+    "emoji": "18"
+  },
+  {
+    "id": "num-019",
+    "word": "nineteen",
+    "transcription": "/ˌnaɪnˈtiːn/",
+    "translation": "девятнадцать",
+    "theme": "Числа",
+    "emoji": "19"
+  },
+  {
+    "id": "num-020",
+    "word": "twenty",
+    "transcription": "/ˈtwenti/",
+    "translation": "двадцать",
+    "theme": "Числа",
+    "emoji": "20"
+  },
+  {
+    "id": "num-021",
+    "word": "thirty",
+    "transcription": "/ˈθɜːrti/",
+    "translation": "тридцать",
+    "theme": "Числа",
+    "emoji": "30"
+  },
+  {
+    "id": "num-022",
+    "word": "forty",
+    "transcription": "/ˈfɔːrti/",
+    "translation": "сорок",
+    "theme": "Числа",
+    "emoji": "40"
+  },
+  {
+    "id": "num-023",
+    "word": "fifty",
+    "transcription": "/ˈfɪfti/",
+    "translation": "пятьдесят",
+    "theme": "Числа",
+    "emoji": "50"
+  },
+  {
+    "id": "num-024",
+    "word": "sixty",
+    "transcription": "/ˈsɪksti/",
+    "translation": "шестьдесят",
+    "theme": "Числа",
+    "emoji": "60"
+  },
+  {
+    "id": "num-025",
+    "word": "seventy",
+    "transcription": "/ˈsevənti/",
+    "translation": "семьдесят",
+    "theme": "Числа",
+    "emoji": "70"
+  },
+  {
+    "id": "num-026",
+    "word": "eighty",
+    "transcription": "/ˈeɪti/",
+    "translation": "восемьдесят",
+    "theme": "Числа",
+    "emoji": "80"
+  },
+  {
+    "id": "num-027",
+    "word": "ninety",
+    "transcription": "/ˈnaɪnti/",
+    "translation": "девяносто",
+    "theme": "Числа",
+    "emoji": "90"
+  },
+  {
+    "id": "num-028",
+    "word": "hundred",
+    "transcription": "/ˈhʌndrəd/",
+    "translation": "сто",
+    "theme": "Числа",
+    "emoji": "100"
+  },
+  {
+    "id": "num-029",
+    "word": "zero",
+    "transcription": "/ˈzɪroʊ/",
+    "translation": "ноль",
+    "theme": "Числа",
+    "emoji": "0"
+  },
+  {
+    "id": "num-030",
+    "word": "number",
+    "transcription": "/ˈnʌmbər/",
+    "translation": "число",
+    "theme": "Числа",
+    "emoji": "#"
+  },
+  {
+    "id": "color-001",
+    "word": "red",
+    "transcription": "/red/",
+    "translation": "красный",
+    "theme": "Цвета",
+    "emoji": "🔴"
+  },
+  {
+    "id": "color-002",
+    "word": "blue",
+    "transcription": "/bluː/",
+    "translation": "синий",
+    "theme": "Цвета",
+    "emoji": "🔵"
+  },
+  {
+    "id": "color-003",
+    "word": "green",
+    "transcription": "/ɡriːn/",
+    "translation": "зелёный",
+    "theme": "Цвета",
+    "emoji": "🟢"
+  },
+  {
+    "id": "color-004",
+    "word": "yellow",
+    "transcription": "/ˈjeloʊ/",
+    "translation": "жёлтый",
+    "theme": "Цвета",
+    "emoji": "🟡"
+  },
+  {
+    "id": "color-005",
+    "word": "black",
+    "transcription": "/blæk/",
+    "translation": "чёрный",
+    "theme": "Цвета",
+    "emoji": "⚫"
+  },
+  {
+    "id": "color-006",
+    "word": "white",
+    "transcription": "/waɪt/",
+    "translation": "белый",
+    "theme": "Цвета",
+    "emoji": "⚪"
+  },
+  {
+    "id": "color-007",
+    "word": "gray",
+    "transcription": "/ɡreɪ/",
+    "translation": "серый",
+    "theme": "Цвета",
+    "emoji": "◯"
+  },
+  {
+    "id": "color-008",
+    "word": "orange",
+    "transcription": "/ˈɔːrɪndʒ/",
+    "translation": "оранжевый",
+    "theme": "Цвета",
+    "emoji": "🟠"
+  },
+  {
+    "id": "color-009",
+    "word": "purple",
+    "transcription": "/ˈpɜːrpəl/",
+    "translation": "фиолетовый",
+    "theme": "Цвета",
+    "emoji": "🟣"
+  },
+  {
+    "id": "color-010",
+    "word": "pink",
+    "transcription": "/pɪŋk/",
+    "translation": "розовый",
+    "theme": "Цвета",
+    "emoji": "🌸"
+  },
+  {
+    "id": "color-011",
+    "word": "brown",
+    "transcription": "/braʊn/",
+    "translation": "коричневый",
+    "theme": "Цвета",
+    "emoji": "🟤"
+  },
+  {
+    "id": "color-012",
+    "word": "light",
+    "transcription": "/laɪt/",
+    "translation": "светлый",
+    "theme": "Цвета",
+    "emoji": "◌"
+  },
+  {
+    "id": "color-013",
+    "word": "dark",
+    "transcription": "/dɑːrk/",
+    "translation": "тёмный",
+    "theme": "Цвета",
+    "emoji": "◍"
+  },
+  {
+    "id": "color-014",
+    "word": "color",
+    "transcription": "/ˈkʌlər/",
+    "translation": "цвет",
+    "theme": "Цвета",
+    "emoji": "🎨"
+  },
+  {
+    "id": "hello-001",
+    "word": "hello",
+    "transcription": "/həˈloʊ/",
+    "translation": "привет",
+    "theme": "Приветствия",
+    "emoji": "👋"
+  },
+  {
+    "id": "hello-002",
+    "word": "hi",
+    "transcription": "/haɪ/",
+    "translation": "привет",
+    "theme": "Приветствия",
+    "emoji": "👋"
+  },
+  {
+    "id": "hello-003",
+    "word": "goodbye",
+    "transcription": "/ˌɡʊdˈbaɪ/",
+    "translation": "до свидания",
+    "theme": "Приветствия",
+    "emoji": "👋"
+  },
+  {
+    "id": "hello-004",
+    "word": "bye",
+    "transcription": "/baɪ/",
+    "translation": "пока",
+    "theme": "Приветствия",
+    "emoji": "👋"
+  },
+  {
+    "id": "hello-005",
+    "word": "morning",
+    "transcription": "/ˈmɔːrnɪŋ/",
+    "translation": "утро",
+    "theme": "Приветствия",
+    "emoji": "🌅"
+  },
+  {
+    "id": "hello-006",
+    "word": "evening",
+    "transcription": "/ˈiːvnɪŋ/",
+    "translation": "вечер",
+    "theme": "Приветствия",
+    "emoji": "🌆"
+  },
+  {
+    "id": "hello-007",
+    "word": "night",
+    "transcription": "/naɪt/",
+    "translation": "ночь",
+    "theme": "Приветствия",
+    "emoji": "🌙"
+  },
+  {
+    "id": "hello-008",
+    "word": "please",
+    "transcription": "/pliːz/",
+    "translation": "пожалуйста",
+    "theme": "Вежливость",
+    "emoji": "🙏"
+  },
+  {
+    "id": "hello-009",
+    "word": "thanks",
+    "transcription": "/θæŋks/",
+    "translation": "спасибо",
+    "theme": "Вежливость",
+    "emoji": "🙏"
+  },
+  {
+    "id": "hello-010",
+    "word": "thank you",
+    "transcription": "/ˈθæŋk juː/",
+    "translation": "спасибо",
+    "theme": "Вежливость",
+    "emoji": "🙏"
+  },
+  {
+    "id": "hello-011",
+    "word": "sorry",
+    "transcription": "/ˈsɑːri/",
+    "translation": "извините",
+    "theme": "Вежливость",
+    "emoji": "!"
+  },
+  {
+    "id": "hello-012",
+    "word": "yes",
+    "transcription": "/jes/",
+    "translation": "да",
+    "theme": "База",
+    "emoji": "✓"
+  },
+  {
+    "id": "hello-013",
+    "word": "no",
+    "transcription": "/noʊ/",
+    "translation": "нет",
+    "theme": "База",
+    "emoji": "×"
+  },
+  {
+    "id": "hello-014",
+    "word": "okay",
+    "transcription": "/ˌoʊˈkeɪ/",
+    "translation": "хорошо",
+    "theme": "База",
+    "emoji": "OK"
+  },
+  {
+    "id": "hello-015",
+    "word": "good",
+    "transcription": "/ɡʊd/",
+    "translation": "хорошо / хороший",
+    "theme": "База",
+    "emoji": "✓"
+  },
+  {
+    "id": "hello-016",
+    "word": "bad",
+    "transcription": "/bæd/",
+    "translation": "плохо / плохой",
+    "theme": "База",
+    "emoji": "!"
+  },
+  {
+    "id": "hello-017",
+    "word": "name",
+    "transcription": "/neɪm/",
+    "translation": "имя",
+    "theme": "Знакомство",
+    "emoji": "ID"
+  },
+  {
+    "id": "hello-018",
+    "word": "my",
+    "transcription": "/maɪ/",
+    "translation": "мой",
+    "theme": "Знакомство",
+    "emoji": "•"
+  },
+  {
+    "id": "hello-019",
+    "word": "your",
+    "transcription": "/jʊr/",
+    "translation": "твой / ваш",
+    "theme": "Знакомство",
+    "emoji": "•"
+  },
+  {
+    "id": "hello-020",
+    "word": "friend",
+    "transcription": "/frend/",
+    "translation": "друг",
+    "theme": "Знакомство",
+    "emoji": "👥"
+  },
+  {
+    "id": "hello-021",
+    "word": "help",
+    "transcription": "/help/",
+    "translation": "помощь / помогать",
+    "theme": "Вежливость",
+    "emoji": "?"
+  },
+  {
+    "id": "hello-022",
+    "word": "welcome",
+    "transcription": "/ˈwelkəm/",
+    "translation": "добро пожаловать",
+    "theme": "Приветствия",
+    "emoji": "★"
+  },
+  {
+    "id": "food-001",
+    "word": "water",
+    "transcription": "/ˈwɔːtər/",
+    "translation": "вода",
+    "theme": "Еда и напитки",
+    "emoji": "💧"
+  },
+  {
+    "id": "food-002",
+    "word": "coffee",
+    "transcription": "/ˈkɔːfi/",
+    "translation": "кофе",
+    "theme": "Еда и напитки",
+    "emoji": "☕"
+  },
+  {
+    "id": "food-003",
+    "word": "tea",
+    "transcription": "/tiː/",
+    "translation": "чай",
+    "theme": "Еда и напитки",
+    "emoji": "🍵"
+  },
+  {
+    "id": "food-004",
+    "word": "milk",
+    "transcription": "/mɪlk/",
+    "translation": "молоко",
+    "theme": "Еда и напитки",
+    "emoji": "🥛"
+  },
+  {
+    "id": "food-005",
+    "word": "juice",
+    "transcription": "/dʒuːs/",
+    "translation": "сок",
+    "theme": "Еда и напитки",
+    "emoji": "🧃"
+  },
+  {
+    "id": "food-006",
+    "word": "bread",
+    "transcription": "/bred/",
+    "translation": "хлеб",
+    "theme": "Еда и напитки",
+    "emoji": "🍞"
+  },
+  {
+    "id": "food-007",
+    "word": "rice",
+    "transcription": "/raɪs/",
+    "translation": "рис",
+    "theme": "Еда и напитки",
+    "emoji": "🍚"
+  },
+  {
+    "id": "food-008",
+    "word": "egg",
+    "transcription": "/eɡ/",
+    "translation": "яйцо",
+    "theme": "Еда и напитки",
+    "emoji": "🥚"
+  },
+  {
+    "id": "food-009",
+    "word": "cheese",
+    "transcription": "/tʃiːz/",
+    "translation": "сыр",
+    "theme": "Еда и напитки",
+    "emoji": "🧀"
+  },
+  {
+    "id": "food-010",
+    "word": "meat",
+    "transcription": "/miːt/",
+    "translation": "мясо",
+    "theme": "Еда и напитки",
+    "emoji": "🥩"
+  },
+  {
+    "id": "food-011",
+    "word": "fish",
+    "transcription": "/fɪʃ/",
+    "translation": "рыба",
+    "theme": "Еда и напитки",
+    "emoji": "🐟"
+  },
+  {
+    "id": "food-012",
+    "word": "chicken",
+    "transcription": "/ˈtʃɪkɪn/",
+    "translation": "курица",
+    "theme": "Еда и напитки",
+    "emoji": "🍗"
+  },
+  {
+    "id": "food-013",
+    "word": "soup",
+    "transcription": "/suːp/",
+    "translation": "суп",
+    "theme": "Еда и напитки",
+    "emoji": "🥣"
+  },
+  {
+    "id": "food-014",
+    "word": "salad",
+    "transcription": "/ˈsæləd/",
+    "translation": "салат",
+    "theme": "Еда и напитки",
+    "emoji": "🥗"
+  },
+  {
+    "id": "food-015",
+    "word": "apple",
+    "transcription": "/ˈæpəl/",
+    "translation": "яблоко",
+    "theme": "Еда и напитки",
+    "emoji": "🍎"
+  },
+  {
+    "id": "food-016",
+    "word": "banana",
+    "transcription": "/bəˈnænə/",
+    "translation": "банан",
+    "theme": "Еда и напитки",
+    "emoji": "🍌"
+  },
+  {
+    "id": "food-017",
+    "word": "orange",
+    "transcription": "/ˈɔːrɪndʒ/",
+    "translation": "апельсин",
+    "theme": "Еда и напитки",
+    "emoji": "🍊"
+  },
+  {
+    "id": "food-018",
+    "word": "potato",
+    "transcription": "/pəˈteɪtoʊ/",
+    "translation": "картофель",
+    "theme": "Еда и напитки",
+    "emoji": "🥔"
+  },
+  {
+    "id": "food-019",
+    "word": "tomato",
+    "transcription": "/təˈmeɪtoʊ/",
+    "translation": "помидор",
+    "theme": "Еда и напитки",
+    "emoji": "🍅"
+  },
+  {
+    "id": "food-020",
+    "word": "sugar",
+    "transcription": "/ˈʃʊɡər/",
+    "translation": "сахар",
+    "theme": "Еда и напитки",
+    "emoji": "◇"
+  },
+  {
+    "id": "food-021",
+    "word": "salt",
+    "transcription": "/sɔːlt/",
+    "translation": "соль",
+    "theme": "Еда и напитки",
+    "emoji": "◇"
+  },
+  {
+    "id": "food-022",
+    "word": "breakfast",
+    "transcription": "/ˈbrekfəst/",
+    "translation": "завтрак",
+    "theme": "Еда и напитки",
+    "emoji": "🍳"
+  },
+  {
+    "id": "food-023",
+    "word": "lunch",
+    "transcription": "/lʌntʃ/",
+    "translation": "обед",
+    "theme": "Еда и напитки",
+    "emoji": "🍽"
+  },
+  {
+    "id": "food-024",
+    "word": "dinner",
+    "transcription": "/ˈdɪnər/",
+    "translation": "ужин",
+    "theme": "Еда и напитки",
+    "emoji": "🍽"
+  },
+  {
+    "id": "food-025",
+    "word": "menu",
+    "transcription": "/ˈmenjuː/",
+    "translation": "меню",
+    "theme": "Кафе",
+    "emoji": "☰"
+  },
+  {
+    "id": "food-026",
+    "word": "bill",
+    "transcription": "/bɪl/",
+    "translation": "счёт",
+    "theme": "Кафе",
+    "emoji": "$"
+  },
+  {
+    "id": "food-027",
+    "word": "table",
+    "transcription": "/ˈteɪbəl/",
+    "translation": "стол",
+    "theme": "Кафе",
+    "emoji": "▭"
+  },
+  {
+    "id": "food-028",
+    "word": "fork",
+    "transcription": "/fɔːrk/",
+    "translation": "вилка",
+    "theme": "Кафе",
+    "emoji": "🍴"
+  },
+  {
+    "id": "food-029",
+    "word": "spoon",
+    "transcription": "/spuːn/",
+    "translation": "ложка",
+    "theme": "Кафе",
+    "emoji": "🥄"
+  },
+  {
+    "id": "food-030",
+    "word": "cup",
+    "transcription": "/kʌp/",
+    "translation": "чашка",
+    "theme": "Кафе",
+    "emoji": "☕"
+  },
+  {
+    "id": "verb-001",
+    "word": "go",
+    "transcription": "/ɡoʊ/",
+    "translation": "идти / ехать",
+    "theme": "Глаголы",
+    "emoji": "→"
+  },
+  {
+    "id": "verb-002",
+    "word": "come",
+    "transcription": "/kʌm/",
+    "translation": "приходить",
+    "theme": "Глаголы",
+    "emoji": "←"
+  },
+  {
+    "id": "verb-003",
+    "word": "eat",
+    "transcription": "/iːt/",
+    "translation": "есть",
+    "theme": "Глаголы",
+    "emoji": "🍽"
+  },
+  {
+    "id": "verb-004",
+    "word": "drink",
+    "transcription": "/drɪŋk/",
+    "translation": "пить",
+    "theme": "Глаголы",
+    "emoji": "🥤"
+  },
+  {
+    "id": "body-001",
+    "word": "body",
+    "transcription": "/bɑːdi/",
+    "translation": "тело",
+    "theme": "Тело",
+    "emoji": "🧍"
+  },
+  {
+    "id": "body-002",
+    "word": "face",
+    "transcription": "/feɪs/",
+    "translation": "лицо",
+    "theme": "Тело",
+    "emoji": "🙂"
+  },
+  {
+    "id": "body-003",
+    "word": "eye",
+    "transcription": "/aɪ/",
+    "translation": "глаз",
+    "theme": "Тело",
+    "emoji": "👁️"
+  },
+  {
+    "id": "body-004",
+    "word": "ear",
+    "transcription": "/ɪr/",
+    "translation": "ухо",
+    "theme": "Тело",
+    "emoji": "👂"
+  },
+  {
+    "id": "body-005",
+    "word": "nose",
+    "transcription": "/noʊz/",
+    "translation": "нос",
+    "theme": "Тело",
+    "emoji": "👃"
+  },
+  {
+    "id": "body-006",
+    "word": "mouth",
+    "transcription": "/maʊθ/",
+    "translation": "рот",
+    "theme": "Тело",
+    "emoji": "👄"
+  },
+  {
+    "id": "body-007",
+    "word": "tooth",
+    "transcription": "/tuːθ/",
+    "translation": "зуб",
+    "theme": "Тело",
+    "emoji": "🦷"
+  },
+  {
+    "id": "body-008",
+    "word": "hair",
+    "transcription": "/her/",
+    "translation": "волосы",
+    "theme": "Тело",
+    "emoji": "💇"
+  },
+  {
+    "id": "body-009",
+    "word": "head",
+    "transcription": "/hed/",
+    "translation": "голова",
+    "theme": "Тело",
+    "emoji": "🙂"
+  },
+  {
+    "id": "body-010",
+    "word": "arm",
+    "transcription": "/ɑːrm/",
+    "translation": "рука",
+    "theme": "Тело",
+    "emoji": "💪"
+  },
+  {
+    "id": "body-011",
+    "word": "hand",
+    "transcription": "/hænd/",
+    "translation": "кисть / рука",
+    "theme": "Тело",
+    "emoji": "✋"
+  },
+  {
+    "id": "body-012",
+    "word": "finger",
+    "transcription": "/fɪŋɡər/",
+    "translation": "палец",
+    "theme": "Тело",
+    "emoji": "☝️"
+  },
+  {
+    "id": "body-013",
+    "word": "leg",
+    "transcription": "/leɡ/",
+    "translation": "нога",
+    "theme": "Тело",
+    "emoji": "🦵"
+  },
+  {
+    "id": "body-014",
+    "word": "foot",
+    "transcription": "/fʊt/",
+    "translation": "ступня",
+    "theme": "Тело",
+    "emoji": "🦶"
+  },
+  {
+    "id": "body-015",
+    "word": "back",
+    "transcription": "/bæk/",
+    "translation": "спина",
+    "theme": "Тело",
+    "emoji": ""
+  },
+  {
+    "id": "family-001",
+    "word": "family",
+    "transcription": "/fæməli/",
+    "translation": "семья",
+    "theme": "Семья",
+    "emoji": "👨‍👩‍👧"
+  },
+  {
+    "id": "family-002",
+    "word": "mother",
+    "transcription": "/mʌðər/",
+    "translation": "мама",
+    "theme": "Семья",
+    "emoji": "👩"
+  },
+  {
+    "id": "family-003",
+    "word": "father",
+    "transcription": "/fɑːðər/",
+    "translation": "папа",
+    "theme": "Семья",
+    "emoji": "👨"
+  },
+  {
+    "id": "family-004",
+    "word": "parent",
+    "transcription": "/perənt/",
+    "translation": "родитель",
+    "theme": "Семья",
+    "emoji": "👪"
+  },
+  {
+    "id": "family-005",
+    "word": "son",
+    "transcription": "/sʌn/",
+    "translation": "сын",
+    "theme": "Семья",
+    "emoji": "👦"
+  },
+  {
+    "id": "family-006",
+    "word": "daughter",
+    "transcription": "/dɔːtər/",
+    "translation": "дочь",
+    "theme": "Семья",
+    "emoji": "👧"
+  },
+  {
+    "id": "family-007",
+    "word": "brother",
+    "transcription": "/brʌðər/",
+    "translation": "брат",
+    "theme": "Семья",
+    "emoji": "👦"
+  },
+  {
+    "id": "family-008",
+    "word": "sister",
+    "transcription": "/sɪstər/",
+    "translation": "сестра",
+    "theme": "Семья",
+    "emoji": "👧"
+  },
+  {
+    "id": "family-009",
+    "word": "baby",
+    "transcription": "/beɪbi/",
+    "translation": "малыш",
+    "theme": "Семья",
+    "emoji": "👶"
+  },
+  {
+    "id": "family-010",
+    "word": "child",
+    "transcription": "/tʃaɪld/",
+    "translation": "ребёнок",
+    "theme": "Семья",
+    "emoji": "🧒"
+  },
+  {
+    "id": "family-011",
+    "word": "children",
+    "transcription": "/tʃɪldrən/",
+    "translation": "дети",
+    "theme": "Семья",
+    "emoji": "🧒"
+  },
+  {
+    "id": "family-012",
+    "word": "grandmother",
+    "transcription": "/ɡrænmʌðər/",
+    "translation": "бабушка",
+    "theme": "Семья",
+    "emoji": "👵"
+  },
+  {
+    "id": "family-013",
+    "word": "grandfather",
+    "transcription": "/ɡrænfɑːðər/",
+    "translation": "дедушка",
+    "theme": "Семья",
+    "emoji": "👴"
+  },
+  {
+    "id": "home-001",
+    "word": "home",
+    "transcription": "/hoʊm/",
+    "translation": "дом",
+    "theme": "Дом",
+    "emoji": "🏠"
+  },
+  {
+    "id": "home-002",
+    "word": "room",
+    "transcription": "/ruːm/",
+    "translation": "комната",
+    "theme": "Дом",
+    "emoji": "🚪"
+  },
+  {
+    "id": "home-003",
+    "word": "kitchen",
+    "transcription": "/kɪtʃən/",
+    "translation": "кухня",
+    "theme": "Дом",
+    "emoji": "🍳"
+  },
+  {
+    "id": "home-004",
+    "word": "bathroom",
+    "transcription": "/bæθruːm/",
+    "translation": "ванная",
+    "theme": "Дом",
+    "emoji": "🚿"
+  },
+  {
+    "id": "home-005",
+    "word": "bedroom",
+    "transcription": "/bedruːm/",
+    "translation": "спальня",
+    "theme": "Дом",
+    "emoji": "🛏️"
+  },
+  {
+    "id": "home-006",
+    "word": "bed",
+    "transcription": "/bed/",
+    "translation": "кровать",
+    "theme": "Дом",
+    "emoji": "🛏️"
+  },
+  {
+    "id": "home-007",
+    "word": "chair",
+    "transcription": "/tʃer/",
+    "translation": "стул",
+    "theme": "Дом",
+    "emoji": "🪑"
+  },
+  {
+    "id": "home-008",
+    "word": "door",
+    "transcription": "/dɔːr/",
+    "translation": "дверь",
+    "theme": "Дом",
+    "emoji": "🚪"
+  },
+  {
+    "id": "home-009",
+    "word": "window",
+    "transcription": "/wɪndoʊ/",
+    "translation": "окно",
+    "theme": "Дом",
+    "emoji": "🪟"
+  },
+  {
+    "id": "home-010",
+    "word": "wall",
+    "transcription": "/wɔːl/",
+    "translation": "стена",
+    "theme": "Дом",
+    "emoji": ""
+  },
+  {
+    "id": "home-011",
+    "word": "floor",
+    "transcription": "/flɔːr/",
+    "translation": "пол",
+    "theme": "Дом",
+    "emoji": ""
+  },
+  {
+    "id": "home-012",
+    "word": "lamp",
+    "transcription": "/læmp/",
+    "translation": "лампа",
+    "theme": "Дом",
+    "emoji": "💡"
+  },
+  {
+    "id": "school-001",
+    "word": "school",
+    "transcription": "/skuːl/",
+    "translation": "школа",
+    "theme": "Школа",
+    "emoji": "🏫"
+  },
+  {
+    "id": "school-002",
+    "word": "teacher",
+    "transcription": "/tiːtʃər/",
+    "translation": "учитель",
+    "theme": "Школа",
+    "emoji": "👩‍🏫"
+  },
+  {
+    "id": "school-003",
+    "word": "student",
+    "transcription": "/stuːdənt/",
+    "translation": "ученик / студент",
+    "theme": "Школа",
+    "emoji": "🧑‍🎓"
+  },
+  {
+    "id": "school-004",
+    "word": "book",
+    "transcription": "/bʊk/",
+    "translation": "книга",
+    "theme": "Школа",
+    "emoji": "📘"
+  },
+  {
+    "id": "school-005",
+    "word": "notebook",
+    "transcription": "/noʊtbʊk/",
+    "translation": "тетрадь",
+    "theme": "Школа",
+    "emoji": "📓"
+  },
+  {
+    "id": "school-006",
+    "word": "pen",
+    "transcription": "/pen/",
+    "translation": "ручка",
+    "theme": "Школа",
+    "emoji": "🖊️"
+  },
+  {
+    "id": "school-007",
+    "word": "pencil",
+    "transcription": "/pensəl/",
+    "translation": "карандаш",
+    "theme": "Школа",
+    "emoji": "✏️"
+  },
+  {
+    "id": "school-008",
+    "word": "desk",
+    "transcription": "/desk/",
+    "translation": "парта / стол",
+    "theme": "Школа",
+    "emoji": "🪑"
+  },
+  {
+    "id": "school-009",
+    "word": "lesson",
+    "transcription": "/lesən/",
+    "translation": "урок",
+    "theme": "Школа",
+    "emoji": "📚"
+  },
+  {
+    "id": "school-010",
+    "word": "homework",
+    "transcription": "/hoʊmwɜːrk/",
+    "translation": "домашняя работа",
+    "theme": "Школа",
+    "emoji": "📝"
+  },
+  {
+    "id": "school-011",
+    "word": "question",
+    "transcription": "/kwestʃən/",
+    "translation": "вопрос",
+    "theme": "Школа",
+    "emoji": ""
+  },
+  {
+    "id": "school-012",
+    "word": "answer",
+    "transcription": "/ænsər/",
+    "translation": "ответ",
+    "theme": "Школа",
+    "emoji": ""
+  },
+  {
+    "id": "time-001",
+    "word": "today",
+    "transcription": "/tədeɪ/",
+    "translation": "сегодня",
+    "theme": "Время",
+    "emoji": "📅"
+  },
+  {
+    "id": "time-002",
+    "word": "tomorrow",
+    "transcription": "/təmɑːroʊ/",
+    "translation": "завтра",
+    "theme": "Время",
+    "emoji": "📅"
+  },
+  {
+    "id": "time-003",
+    "word": "yesterday",
+    "transcription": "/jestərdeɪ/",
+    "translation": "вчера",
+    "theme": "Время",
+    "emoji": "📅"
+  },
+  {
+    "id": "time-004",
+    "word": "day",
+    "transcription": "/deɪ/",
+    "translation": "день",
+    "theme": "Время",
+    "emoji": "☀️"
+  },
+  {
+    "id": "time-005",
+    "word": "week",
+    "transcription": "/wiːk/",
+    "translation": "неделя",
+    "theme": "Время",
+    "emoji": "📆"
+  },
+  {
+    "id": "time-006",
+    "word": "month",
+    "transcription": "/mʌnθ/",
+    "translation": "месяц",
+    "theme": "Время",
+    "emoji": "🗓️"
+  },
+  {
+    "id": "time-007",
+    "word": "year",
+    "transcription": "/jɪr/",
+    "translation": "год",
+    "theme": "Время",
+    "emoji": "🗓️"
+  },
+  {
+    "id": "time-008",
+    "word": "hour",
+    "transcription": "/aʊər/",
+    "translation": "час",
+    "theme": "Время",
+    "emoji": "🕐"
+  },
+  {
+    "id": "time-009",
+    "word": "minute",
+    "transcription": "/mɪnɪt/",
+    "translation": "минута",
+    "theme": "Время",
+    "emoji": "⏱️"
+  },
+  {
+    "id": "time-010",
+    "word": "now",
+    "transcription": "/naʊ/",
+    "translation": "сейчас",
+    "theme": "Время",
+    "emoji": "⏱️"
+  },
+  {
+    "id": "weather-001",
+    "word": "weather",
+    "transcription": "/weðər/",
+    "translation": "погода",
+    "theme": "Погода",
+    "emoji": "🌤️"
+  },
+  {
+    "id": "weather-002",
+    "word": "sun",
+    "transcription": "/sʌn/",
+    "translation": "солнце",
+    "theme": "Погода",
+    "emoji": "☀️"
+  },
+  {
+    "id": "weather-003",
+    "word": "rain",
+    "transcription": "/reɪn/",
+    "translation": "дождь",
+    "theme": "Погода",
+    "emoji": "🌧️"
+  },
+  {
+    "id": "weather-004",
+    "word": "snow",
+    "transcription": "/snoʊ/",
+    "translation": "снег",
+    "theme": "Погода",
+    "emoji": "❄️"
+  },
+  {
+    "id": "weather-005",
+    "word": "wind",
+    "transcription": "/wɪnd/",
+    "translation": "ветер",
+    "theme": "Погода",
+    "emoji": "💨"
+  },
+  {
+    "id": "weather-006",
+    "word": "cloud",
+    "transcription": "/klaʊd/",
+    "translation": "облако",
+    "theme": "Погода",
+    "emoji": "☁️"
+  },
+  {
+    "id": "weather-007",
+    "word": "hot",
+    "transcription": "/hɑːt/",
+    "translation": "жарко / горячий",
+    "theme": "Погода",
+    "emoji": "🔥"
+  },
+  {
+    "id": "weather-008",
+    "word": "cold",
+    "transcription": "/koʊld/",
+    "translation": "холодно / холодный",
+    "theme": "Погода",
+    "emoji": "🧊"
+  },
+  {
+    "id": "weather-009",
+    "word": "warm",
+    "transcription": "/wɔːrm/",
+    "translation": "тёплый",
+    "theme": "Погода",
+    "emoji": "🌤️"
+  },
+  {
+    "id": "weather-010",
+    "word": "cool",
+    "transcription": "/kuːl/",
+    "translation": "прохладный",
+    "theme": "Погода",
+    "emoji": "🧊"
+  },
+  {
+    "id": "clothes-001",
+    "word": "clothes",
+    "transcription": "/kloʊðz/",
+    "translation": "одежда",
+    "theme": "Одежда",
+    "emoji": "👕"
+  },
+  {
+    "id": "clothes-002",
+    "word": "shirt",
+    "transcription": "/ʃɜːrt/",
+    "translation": "рубашка / футболка",
+    "theme": "Одежда",
+    "emoji": "👕"
+  },
+  {
+    "id": "clothes-003",
+    "word": "pants",
+    "transcription": "/pænts/",
+    "translation": "штаны",
+    "theme": "Одежда",
+    "emoji": "👖"
+  },
+  {
+    "id": "clothes-004",
+    "word": "dress",
+    "transcription": "/dres/",
+    "translation": "платье",
+    "theme": "Одежда",
+    "emoji": "👗"
+  },
+  {
+    "id": "clothes-005",
+    "word": "jacket",
+    "transcription": "/dʒækɪt/",
+    "translation": "куртка",
+    "theme": "Одежда",
+    "emoji": "🧥"
+  },
+  {
+    "id": "clothes-006",
+    "word": "shoes",
+    "transcription": "/ʃuːz/",
+    "translation": "обувь",
+    "theme": "Одежда",
+    "emoji": "👟"
+  },
+  {
+    "id": "clothes-007",
+    "word": "hat",
+    "transcription": "/hæt/",
+    "translation": "шапка / кепка",
+    "theme": "Одежда",
+    "emoji": "🧢"
+  },
+  {
+    "id": "clothes-008",
+    "word": "sock",
+    "transcription": "/sɑːk/",
+    "translation": "носок",
+    "theme": "Одежда",
+    "emoji": "🧦"
+  },
+  {
+    "id": "adj-001",
+    "word": "big",
+    "transcription": "/bɪɡ/",
+    "translation": "большой",
+    "theme": "Прилагательные",
+    "emoji": ""
+  },
+  {
+    "id": "adj-002",
+    "word": "small",
+    "transcription": "/smɔːl/",
+    "translation": "маленький",
+    "theme": "Прилагательные",
+    "emoji": ""
+  },
+  {
+    "id": "adj-003",
+    "word": "new",
+    "transcription": "/nuː/",
+    "translation": "новый",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "adj-004",
+    "word": "old",
+    "transcription": "/oʊld/",
+    "translation": "старый",
+    "theme": "Прилагательные",
+    "emoji": ""
+  },
+  {
+    "id": "adj-005",
+    "word": "young",
+    "transcription": "/jʌŋ/",
+    "translation": "молодой",
+    "theme": "Прилагательные",
+    "emoji": "🧒"
+  },
+  {
+    "id": "adj-006",
+    "word": "happy",
+    "transcription": "/hæpi/",
+    "translation": "счастливый",
+    "theme": "Прилагательные",
+    "emoji": "😊"
+  },
+  {
+    "id": "adj-007",
+    "word": "sad",
+    "transcription": "/sæd/",
+    "translation": "грустный",
+    "theme": "Прилагательные",
+    "emoji": "😔"
+  },
+  {
+    "id": "adj-008",
+    "word": "easy",
+    "transcription": "/iːzi/",
+    "translation": "лёгкий / простой",
+    "theme": "Прилагательные",
+    "emoji": "👌"
+  },
+  {
+    "id": "adj-009",
+    "word": "hard",
+    "transcription": "/hɑːrd/",
+    "translation": "сложный / твёрдый",
+    "theme": "Прилагательные",
+    "emoji": "🪨"
+  },
+  {
+    "id": "adj-010",
+    "word": "important",
+    "transcription": "/ɪmpɔːrtənt/",
+    "translation": "важный",
+    "theme": "Прилагательные",
+    "emoji": ""
+  },
+  {
+    "id": "verb-005",
+    "word": "see",
+    "transcription": "/siː/",
+    "translation": "видеть",
+    "theme": "Глаголы",
+    "emoji": "👁️"
+  },
+  {
+    "id": "verb-006",
+    "word": "look",
+    "transcription": "/lʊk/",
+    "translation": "смотреть",
+    "theme": "Глаголы",
+    "emoji": "👀"
+  },
+  {
+    "id": "verb-007",
+    "word": "listen",
+    "transcription": "/lɪsən/",
+    "translation": "слушать",
+    "theme": "Глаголы",
+    "emoji": "👂"
+  },
+  {
+    "id": "verb-008",
+    "word": "speak",
+    "transcription": "/spiːk/",
+    "translation": "говорить",
+    "theme": "Глаголы",
+    "emoji": "💬"
+  },
+  {
+    "id": "verb-009",
+    "word": "read",
+    "transcription": "/riːd/",
+    "translation": "читать",
+    "theme": "Глаголы",
+    "emoji": "📖"
+  },
+  {
+    "id": "verb-010",
+    "word": "write",
+    "transcription": "/raɪt/",
+    "translation": "писать",
+    "theme": "Глаголы",
+    "emoji": "✍️"
+  },
+  {
+    "id": "verb-011",
+    "word": "open",
+    "transcription": "/oʊpən/",
+    "translation": "открывать",
+    "theme": "Глаголы",
+    "emoji": "🔓"
+  },
+  {
+    "id": "verb-012",
+    "word": "close",
+    "transcription": "/kloʊz/",
+    "translation": "закрывать",
+    "theme": "Глаголы",
+    "emoji": "🔒"
+  },
+  {
+    "id": "verb-013",
+    "word": "buy",
+    "transcription": "/baɪ/",
+    "translation": "покупать",
+    "theme": "Глаголы",
+    "emoji": "🛒"
+  },
+  {
+    "id": "verb-014",
+    "word": "pay",
+    "transcription": "/peɪ/",
+    "translation": "платить",
+    "theme": "Глаголы",
+    "emoji": "💳"
+  },
+  {
+    "id": "verb-015",
+    "word": "play",
+    "transcription": "/pleɪ/",
+    "translation": "играть",
+    "theme": "Глаголы",
+    "emoji": "🎮"
+  },
+  {
+    "id": "verb-016",
+    "word": "work",
+    "transcription": "/wɜːrk/",
+    "translation": "работать",
+    "theme": "Глаголы",
+    "emoji": "💼"
+  },
+  {
+    "id": "verb-017",
+    "word": "sleep",
+    "transcription": "/sliːp/",
+    "translation": "спать",
+    "theme": "Глаголы",
+    "emoji": "😴"
+  },
+  {
+    "id": "verb-018",
+    "word": "walk",
+    "transcription": "/wɔːk/",
+    "translation": "гулять / идти пешком",
+    "theme": "Глаголы",
+    "emoji": "🚶"
+  },
+  {
+    "id": "verb-019",
+    "word": "run",
+    "transcription": "/rʌn/",
+    "translation": "бежать",
+    "theme": "Глаголы",
+    "emoji": "🏃"
+  },
+  {
+    "id": "verb-020",
+    "word": "stop",
+    "transcription": "/stɑːp/",
+    "translation": "останавливаться",
+    "theme": "Глаголы",
+    "emoji": "🛑"
+  }
 ]
