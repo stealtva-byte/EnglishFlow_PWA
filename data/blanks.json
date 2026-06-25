@@ -1,22 +1,600 @@
 [
-  {"id":"blank-001","template":"I want ___","answer":"water","translation":"Я хочу воду","theme":"База","options":["water","car","hotel","sword"]},
-  {"id":"blank-002","template":"Can I have ___","answer":"coffee","translation":"Можно мне кофе?","theme":"Кафе","options":["coffee","ticket","engine","stone"]},
-  {"id":"blank-003","template":"Do you have ___","answer":"bread","translation":"У вас есть хлеб?","theme":"Кафе","options":["bread","taxi","diamond","wheel"]},
-  {"id":"blank-004","template":"Where is the ___","answer":"hotel","translation":"Где отель?","theme":"Путешествия","options":["hotel","apple","torch","brake"]},
-  {"id":"blank-005","template":"Where is the ___","answer":"gate","translation":"Где выход?","theme":"Путешествия","options":["gate","coffee","sword","garage"]},
-  {"id":"blank-006","template":"I need a ___","answer":"taxi","translation":"Мне нужно такси","theme":"Путешествия","options":["taxi","banana","block","mouth"]},
-  {"id":"blank-007","template":"I have a ___","answer":"ticket","translation":"У меня есть билет","theme":"Путешествия","options":["ticket","pickaxe","fuel","tea"]},
-  {"id":"blank-008","template":"This is my ___","answer":"bag","translation":"Это моя сумка","theme":"Путешествия","options":["bag","road","farm","salt"]},
-  {"id":"blank-009","template":"The car is ___","answer":"fast","translation":"Машина быстрая","theme":"Автомобили","options":["fast","blue","sorry","hungry"]},
-  {"id":"blank-010","template":"I see a ___","answer":"car","translation":"Я вижу машину","theme":"Автомобили","options":["car","fish","map","ear"]},
-  {"id":"blank-011","template":"Do you have ___","answer":"fuel","translation":"У вас есть топливо?","theme":"Автомобили","options":["fuel","soup","passport","wood"]},
-  {"id":"blank-012","template":"Is this your ___","answer":"car","translation":"Это твоя машина?","theme":"Автомобили","options":["car","egg","gate","torch"]},
-  {"id":"blank-013","template":"I build a ___","answer":"house","translation":"Я строю дом","theme":"Minecraft","options":["house","coffee","driver","beach"]},
-  {"id":"blank-014","template":"I need a ___","answer":"pickaxe","translation":"Мне нужна кирка","theme":"Minecraft","options":["pickaxe","ticket","juice","wheel"]},
-  {"id":"blank-015","template":"This is my ___","answer":"sword","translation":"Это мой меч","theme":"Minecraft","options":["sword","hotel","bread","seat"]},
-  {"id":"blank-016","template":"I found a ___","answer":"diamond","translation":"Я нашёл алмаз","theme":"Minecraft","options":["diamond","taxi","table","milk"]},
-  {"id":"blank-017","template":"My ___ is blue","answer":"shirt","translation":"Моя футболка синяя","theme":"Тело и одежда","options":["shirt","engine","passport","soup"]},
-  {"id":"blank-018","template":"I wash my ___","answer":"hands","translation":"Я мою руки","theme":"Тело","options":["hands","ticket","block","coffee"]},
-  {"id":"blank-019","template":"I am ___","answer":"sorry","translation":"Мне жаль / извини","theme":"Вежливость","options":["sorry","bread","garage","diamond"]},
-  {"id":"blank-020","template":"Thank you very ___","answer":"much","translation":"Большое спасибо","theme":"Вежливость","options":["much","gate","fuel","stone"]}
+  {
+    "id": "blank-001",
+    "template": "I want ___",
+    "answer": "water",
+    "translation": "Я хочу воду",
+    "theme": "База",
+    "options": [
+      "water",
+      "car",
+      "hotel",
+      "sword"
+    ]
+  },
+  {
+    "id": "blank-002",
+    "template": "Can I have ___",
+    "answer": "coffee",
+    "translation": "Можно мне кофе?",
+    "theme": "Кафе",
+    "options": [
+      "coffee",
+      "ticket",
+      "engine",
+      "stone"
+    ]
+  },
+  {
+    "id": "blank-003",
+    "template": "Do you have ___",
+    "answer": "bread",
+    "translation": "У вас есть хлеб?",
+    "theme": "Кафе",
+    "options": [
+      "bread",
+      "taxi",
+      "diamond",
+      "wheel"
+    ]
+  },
+  {
+    "id": "blank-004",
+    "template": "Where is the ___",
+    "answer": "hotel",
+    "translation": "Где отель?",
+    "theme": "Путешествия",
+    "options": [
+      "hotel",
+      "apple",
+      "torch",
+      "brake"
+    ]
+  },
+  {
+    "id": "blank-005",
+    "template": "Where is the ___",
+    "answer": "gate",
+    "translation": "Где выход?",
+    "theme": "Путешествия",
+    "options": [
+      "gate",
+      "coffee",
+      "sword",
+      "garage"
+    ]
+  },
+  {
+    "id": "blank-006",
+    "template": "I need a ___",
+    "answer": "taxi",
+    "translation": "Мне нужно такси",
+    "theme": "Путешествия",
+    "options": [
+      "taxi",
+      "banana",
+      "block",
+      "mouth"
+    ]
+  },
+  {
+    "id": "blank-007",
+    "template": "I have a ___",
+    "answer": "ticket",
+    "translation": "У меня есть билет",
+    "theme": "Путешествия",
+    "options": [
+      "ticket",
+      "pickaxe",
+      "fuel",
+      "tea"
+    ]
+  },
+  {
+    "id": "blank-008",
+    "template": "This is my ___",
+    "answer": "bag",
+    "translation": "Это моя сумка",
+    "theme": "Путешествия",
+    "options": [
+      "bag",
+      "road",
+      "farm",
+      "salt"
+    ]
+  },
+  {
+    "id": "blank-009",
+    "template": "The car is ___",
+    "answer": "fast",
+    "translation": "Машина быстрая",
+    "theme": "Автомобили",
+    "options": [
+      "fast",
+      "blue",
+      "sorry",
+      "hungry"
+    ]
+  },
+  {
+    "id": "blank-010",
+    "template": "I see a ___",
+    "answer": "car",
+    "translation": "Я вижу машину",
+    "theme": "Автомобили",
+    "options": [
+      "car",
+      "fish",
+      "map",
+      "ear"
+    ]
+  },
+  {
+    "id": "blank-011",
+    "template": "Do you have ___",
+    "answer": "fuel",
+    "translation": "У вас есть топливо?",
+    "theme": "Автомобили",
+    "options": [
+      "fuel",
+      "soup",
+      "passport",
+      "wood"
+    ]
+  },
+  {
+    "id": "blank-012",
+    "template": "Is this your ___",
+    "answer": "car",
+    "translation": "Это твоя машина?",
+    "theme": "Автомобили",
+    "options": [
+      "car",
+      "egg",
+      "gate",
+      "torch"
+    ]
+  },
+  {
+    "id": "blank-013",
+    "template": "I build a ___",
+    "answer": "house",
+    "translation": "Я строю дом",
+    "theme": "Minecraft",
+    "options": [
+      "house",
+      "coffee",
+      "driver",
+      "beach"
+    ]
+  },
+  {
+    "id": "blank-014",
+    "template": "I need a ___",
+    "answer": "pickaxe",
+    "translation": "Мне нужна кирка",
+    "theme": "Minecraft",
+    "options": [
+      "pickaxe",
+      "ticket",
+      "juice",
+      "wheel"
+    ]
+  },
+  {
+    "id": "blank-015",
+    "template": "This is my ___",
+    "answer": "sword",
+    "translation": "Это мой меч",
+    "theme": "Minecraft",
+    "options": [
+      "sword",
+      "hotel",
+      "bread",
+      "seat"
+    ]
+  },
+  {
+    "id": "blank-016",
+    "template": "I found a ___",
+    "answer": "diamond",
+    "translation": "Я нашёл алмаз",
+    "theme": "Minecraft",
+    "options": [
+      "diamond",
+      "taxi",
+      "table",
+      "milk"
+    ]
+  },
+  {
+    "id": "blank-017",
+    "template": "My ___ is blue",
+    "answer": "shirt",
+    "translation": "Моя футболка синяя",
+    "theme": "Тело и одежда",
+    "options": [
+      "shirt",
+      "engine",
+      "passport",
+      "soup"
+    ]
+  },
+  {
+    "id": "blank-018",
+    "template": "I wash my ___",
+    "answer": "hands",
+    "translation": "Я мою руки",
+    "theme": "Тело",
+    "options": [
+      "hands",
+      "ticket",
+      "block",
+      "coffee"
+    ]
+  },
+  {
+    "id": "blank-019",
+    "template": "I am ___",
+    "answer": "sorry",
+    "translation": "Мне жаль / извини",
+    "theme": "Вежливость",
+    "options": [
+      "sorry",
+      "bread",
+      "garage",
+      "diamond"
+    ]
+  },
+  {
+    "id": "blank-020",
+    "template": "Thank you very ___",
+    "answer": "much",
+    "translation": "Большое спасибо",
+    "theme": "Вежливость",
+    "options": [
+      "much",
+      "gate",
+      "fuel",
+      "stone"
+    ]
+  },
+  {
+    "id": "blank-021",
+    "template": "My cat is ___",
+    "answer": "small",
+    "translation": "Мой кот маленький",
+    "theme": "Животные",
+    "options": [
+      "small",
+      "river",
+      "ticket",
+      "phone"
+    ]
+  },
+  {
+    "id": "blank-022",
+    "template": "The dog is ___",
+    "answer": "happy",
+    "translation": "Собака счастливая",
+    "theme": "Животные",
+    "options": [
+      "happy",
+      "cold",
+      "station",
+      "iron"
+    ]
+  },
+  {
+    "id": "blank-023",
+    "template": "I see a ___",
+    "answer": "bird",
+    "translation": "Я вижу птицу",
+    "theme": "Животные",
+    "options": [
+      "bird",
+      "chair",
+      "passport",
+      "fuel"
+    ]
+  },
+  {
+    "id": "blank-024",
+    "template": "The ___ is cold",
+    "answer": "river",
+    "translation": "Река холодная",
+    "theme": "Природа",
+    "options": [
+      "river",
+      "mother",
+      "screen",
+      "medicine"
+    ]
+  },
+  {
+    "id": "blank-025",
+    "template": "The sun is ___",
+    "answer": "hot",
+    "translation": "Солнце горячее",
+    "theme": "Погода",
+    "options": [
+      "hot",
+      "busy",
+      "near",
+      "open"
+    ]
+  },
+  {
+    "id": "blank-026",
+    "template": "It is ___ today",
+    "answer": "raining",
+    "translation": "Сегодня идёт дождь",
+    "theme": "Погода",
+    "options": [
+      "raining",
+      "football",
+      "suitcase",
+      "doctor"
+    ]
+  },
+  {
+    "id": "blank-027",
+    "template": "I go to ___",
+    "answer": "school",
+    "translation": "Я иду в школу",
+    "theme": "Школа",
+    "options": [
+      "school",
+      "zombie",
+      "engine",
+      "cash"
+    ]
+  },
+  {
+    "id": "blank-028",
+    "template": "This is my ___",
+    "answer": "book",
+    "translation": "Это моя книга",
+    "theme": "Школа",
+    "options": [
+      "book",
+      "truck",
+      "beach",
+      "mirror"
+    ]
+  },
+  {
+    "id": "blank-029",
+    "template": "I write with a ___",
+    "answer": "pen",
+    "translation": "Я пишу ручкой",
+    "theme": "Школа",
+    "options": [
+      "pen",
+      "hotel",
+      "diamond",
+      "soup"
+    ]
+  },
+  {
+    "id": "blank-030",
+    "template": "My mother is ___",
+    "answer": "kind",
+    "translation": "Моя мама добрая",
+    "theme": "Семья",
+    "options": [
+      "kind",
+      "fast",
+      "ticket",
+      "block"
+    ]
+  },
+  {
+    "id": "blank-031",
+    "template": "I open the ___",
+    "answer": "door",
+    "translation": "Я открываю дверь",
+    "theme": "Дом",
+    "options": [
+      "door",
+      "cow",
+      "song",
+      "route"
+    ]
+  },
+  {
+    "id": "blank-032",
+    "template": "The ___ is big",
+    "answer": "screen",
+    "translation": "Экран большой",
+    "theme": "Техника",
+    "options": [
+      "screen",
+      "rabbit",
+      "receipt",
+      "bridge"
+    ]
+  },
+  {
+    "id": "blank-033",
+    "template": "I need ___",
+    "answer": "medicine",
+    "translation": "Мне нужно лекарство",
+    "theme": "Здоровье",
+    "options": [
+      "medicine",
+      "helmet",
+      "luggage",
+      "apple"
+    ]
+  },
+  {
+    "id": "blank-034",
+    "template": "We play ___",
+    "answer": "football",
+    "translation": "Мы играем в футбол",
+    "theme": "Спорт и хобби",
+    "options": [
+      "football",
+      "window",
+      "cloud",
+      "money"
+    ]
+  },
+  {
+    "id": "blank-035",
+    "template": "I found ___",
+    "answer": "iron",
+    "translation": "Я нашёл железо",
+    "theme": "Minecraft",
+    "options": [
+      "iron",
+      "flower",
+      "teacher",
+      "receipt"
+    ]
+  },
+  {
+    "id": "blank-036",
+    "template": "I need ___",
+    "answer": "fuel",
+    "translation": "Мне нужно топливо",
+    "theme": "Автомобили",
+    "options": [
+      "fuel",
+      "milk",
+      "pencil",
+      "rain"
+    ]
+  },
+  {
+    "id": "blank-037",
+    "template": "Where is the ___",
+    "answer": "station",
+    "translation": "Где станция",
+    "theme": "Город",
+    "options": [
+      "station",
+      "bread",
+      "shield",
+      "father"
+    ]
+  },
+  {
+    "id": "blank-038",
+    "template": "Can I buy a ___",
+    "answer": "ticket",
+    "translation": "Можно купить билет",
+    "theme": "Транспорт",
+    "options": [
+      "ticket",
+      "cat",
+      "floor",
+      "doctor"
+    ]
+  },
+  {
+    "id": "blank-039",
+    "template": "How much is this ___",
+    "answer": "gift",
+    "translation": "Сколько стоит этот подарок",
+    "theme": "Покупки",
+    "options": [
+      "gift",
+      "mouth",
+      "river",
+      "keyboard"
+    ]
+  },
+  {
+    "id": "blank-040",
+    "template": "Where is my ___",
+    "answer": "suitcase",
+    "translation": "Где мой чемодан",
+    "theme": "Путешествия",
+    "options": [
+      "suitcase",
+      "chair",
+      "zebra",
+      "lamp"
+    ]
+  },
+  {
+    "id": "blank-041",
+    "template": "Do you ___ me",
+    "answer": "understand",
+    "translation": "Ты меня понимаешь",
+    "theme": "Глаголы",
+    "options": [
+      "understand",
+      "window",
+      "coffee",
+      "helmet"
+    ]
+  },
+  {
+    "id": "blank-042",
+    "template": "Can you ___ that",
+    "answer": "repeat",
+    "translation": "Можешь повторить это",
+    "theme": "Глаголы",
+    "options": [
+      "repeat",
+      "drive",
+      "buy",
+      "fall"
+    ]
+  },
+  {
+    "id": "blank-043",
+    "template": "Are you ___",
+    "answer": "ready",
+    "translation": "Ты готов",
+    "theme": "Прилагательные",
+    "options": [
+      "ready",
+      "dirty",
+      "left",
+      "cloud"
+    ]
+  },
+  {
+    "id": "blank-044",
+    "template": "I am ___",
+    "answer": "hungry",
+    "translation": "Я голоден",
+    "theme": "Прилагательные",
+    "options": [
+      "hungry",
+      "wrong",
+      "safe",
+      "slow"
+    ]
+  },
+  {
+    "id": "blank-045",
+    "template": "The shop is ___",
+    "answer": "near",
+    "translation": "Магазин рядом",
+    "theme": "Место и время",
+    "options": [
+      "near",
+      "inside",
+      "always",
+      "third"
+    ]
+  },
+  {
+    "id": "blank-046",
+    "template": "We meet ___",
+    "answer": "tomorrow",
+    "translation": "Мы встречаемся завтра",
+    "theme": "Время",
+    "options": [
+      "tomorrow",
+      "yesterday",
+      "month",
+      "hour"
+    ]
+  }
 ]

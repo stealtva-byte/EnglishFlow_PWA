@@ -1,18 +1,749 @@
 [
-  {"id":"s-001","sentence":"I want water","translation":"Я хочу воду","theme":"База","type":"Утверждение","words":["I","want","water"]},
-  {"id":"s-002","sentence":"I need a taxi","translation":"Мне нужно такси","theme":"Путешествия","type":"Утверждение","words":["I","need","a","taxi"]},
-  {"id":"s-003","sentence":"I have a ticket","translation":"У меня есть билет","theme":"Путешествия","type":"Утверждение","words":["I","have","a","ticket"]},
-  {"id":"s-004","sentence":"This is my bag","translation":"Это моя сумка","theme":"Путешествия","type":"Утверждение","words":["This","is","my","bag"]},
-  {"id":"s-005","sentence":"The car is fast","translation":"Машина быстрая","theme":"Автомобили","type":"Утверждение","words":["The","car","is","fast"]},
-  {"id":"s-006","sentence":"I see a car","translation":"Я вижу машину","theme":"Автомобили","type":"Утверждение","words":["I","see","a","car"]},
-  {"id":"s-007","sentence":"I build a house","translation":"Я строю дом","theme":"Minecraft","type":"Утверждение","words":["I","build","a","house"]},
-  {"id":"s-008","sentence":"I need a pickaxe","translation":"Мне нужна кирка","theme":"Minecraft","type":"Утверждение","words":["I","need","a","pickaxe"]},
-  {"id":"s-009","sentence":"Can I have coffee","translation":"Можно мне кофе?","theme":"Кафе","type":"Вопрос","words":["Can","I","have","coffee"]},
-  {"id":"s-010","sentence":"Where is the hotel","translation":"Где отель?","theme":"Путешествия","type":"Вопрос","words":["Where","is","the","hotel"]},
-  {"id":"s-011","sentence":"Where is the gate","translation":"Где выход?","theme":"Путешествия","type":"Вопрос","words":["Where","is","the","gate"]},
-  {"id":"s-012","sentence":"How much is it","translation":"Сколько это стоит?","theme":"Магазин","type":"Вопрос","words":["How","much","is","it"]},
-  {"id":"s-013","sentence":"Do you have bread","translation":"У вас есть хлеб?","theme":"Кафе","type":"Вопрос","words":["Do","you","have","bread"]},
-  {"id":"s-014","sentence":"Do you have fuel","translation":"У вас есть топливо?","theme":"Автомобили","type":"Вопрос","words":["Do","you","have","fuel"]},
-  {"id":"s-015","sentence":"Is this your car","translation":"Это твоя машина?","theme":"Автомобили","type":"Вопрос","words":["Is","this","your","car"]},
-  {"id":"s-016","sentence":"Is this your sword","translation":"Это твой меч?","theme":"Minecraft","type":"Вопрос","words":["Is","this","your","sword"]}
+  {
+    "id": "s-001",
+    "sentence": "I want water",
+    "translation": "Я хочу воду",
+    "theme": "База",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "want",
+      "water"
+    ]
+  },
+  {
+    "id": "s-002",
+    "sentence": "I need a taxi",
+    "translation": "Мне нужно такси",
+    "theme": "Путешествия",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "need",
+      "a",
+      "taxi"
+    ]
+  },
+  {
+    "id": "s-003",
+    "sentence": "I have a ticket",
+    "translation": "У меня есть билет",
+    "theme": "Путешествия",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "have",
+      "a",
+      "ticket"
+    ]
+  },
+  {
+    "id": "s-004",
+    "sentence": "This is my bag",
+    "translation": "Это моя сумка",
+    "theme": "Путешествия",
+    "type": "Утверждение",
+    "words": [
+      "This",
+      "is",
+      "my",
+      "bag"
+    ]
+  },
+  {
+    "id": "s-005",
+    "sentence": "The car is fast",
+    "translation": "Машина быстрая",
+    "theme": "Автомобили",
+    "type": "Утверждение",
+    "words": [
+      "The",
+      "car",
+      "is",
+      "fast"
+    ]
+  },
+  {
+    "id": "s-006",
+    "sentence": "I see a car",
+    "translation": "Я вижу машину",
+    "theme": "Автомобили",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "see",
+      "a",
+      "car"
+    ]
+  },
+  {
+    "id": "s-007",
+    "sentence": "I build a house",
+    "translation": "Я строю дом",
+    "theme": "Minecraft",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "build",
+      "a",
+      "house"
+    ]
+  },
+  {
+    "id": "s-008",
+    "sentence": "I need a pickaxe",
+    "translation": "Мне нужна кирка",
+    "theme": "Minecraft",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "need",
+      "a",
+      "pickaxe"
+    ]
+  },
+  {
+    "id": "s-009",
+    "sentence": "Can I have coffee",
+    "translation": "Можно мне кофе?",
+    "theme": "Кафе",
+    "type": "Вопрос",
+    "words": [
+      "Can",
+      "I",
+      "have",
+      "coffee"
+    ]
+  },
+  {
+    "id": "s-010",
+    "sentence": "Where is the hotel",
+    "translation": "Где отель?",
+    "theme": "Путешествия",
+    "type": "Вопрос",
+    "words": [
+      "Where",
+      "is",
+      "the",
+      "hotel"
+    ]
+  },
+  {
+    "id": "s-011",
+    "sentence": "Where is the gate",
+    "translation": "Где выход?",
+    "theme": "Путешествия",
+    "type": "Вопрос",
+    "words": [
+      "Where",
+      "is",
+      "the",
+      "gate"
+    ]
+  },
+  {
+    "id": "s-012",
+    "sentence": "How much is it",
+    "translation": "Сколько это стоит?",
+    "theme": "Магазин",
+    "type": "Вопрос",
+    "words": [
+      "How",
+      "much",
+      "is",
+      "it"
+    ]
+  },
+  {
+    "id": "s-013",
+    "sentence": "Do you have bread",
+    "translation": "У вас есть хлеб?",
+    "theme": "Кафе",
+    "type": "Вопрос",
+    "words": [
+      "Do",
+      "you",
+      "have",
+      "bread"
+    ]
+  },
+  {
+    "id": "s-014",
+    "sentence": "Do you have fuel",
+    "translation": "У вас есть топливо?",
+    "theme": "Автомобили",
+    "type": "Вопрос",
+    "words": [
+      "Do",
+      "you",
+      "have",
+      "fuel"
+    ]
+  },
+  {
+    "id": "s-015",
+    "sentence": "Is this your car",
+    "translation": "Это твоя машина?",
+    "theme": "Автомобили",
+    "type": "Вопрос",
+    "words": [
+      "Is",
+      "this",
+      "your",
+      "car"
+    ]
+  },
+  {
+    "id": "s-016",
+    "sentence": "Is this your sword",
+    "translation": "Это твой меч?",
+    "theme": "Minecraft",
+    "type": "Вопрос",
+    "words": [
+      "Is",
+      "this",
+      "your",
+      "sword"
+    ]
+  },
+  {
+    "id": "s-017",
+    "sentence": "My cat is small",
+    "translation": "Мой кот маленький",
+    "theme": "Животные",
+    "type": "Утверждение",
+    "words": [
+      "My",
+      "cat",
+      "is",
+      "small"
+    ]
+  },
+  {
+    "id": "s-018",
+    "sentence": "The dog is happy",
+    "translation": "Собака счастливая",
+    "theme": "Животные",
+    "type": "Утверждение",
+    "words": [
+      "The",
+      "dog",
+      "is",
+      "happy"
+    ]
+  },
+  {
+    "id": "s-019",
+    "sentence": "I see a bird",
+    "translation": "Я вижу птицу",
+    "theme": "Животные",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "see",
+      "a",
+      "bird"
+    ]
+  },
+  {
+    "id": "s-020",
+    "sentence": "The horse is fast",
+    "translation": "Лошадь быстрая",
+    "theme": "Животные",
+    "type": "Утверждение",
+    "words": [
+      "The",
+      "horse",
+      "is",
+      "fast"
+    ]
+  },
+  {
+    "id": "s-021",
+    "sentence": "The river is cold",
+    "translation": "Река холодная",
+    "theme": "Природа",
+    "type": "Утверждение",
+    "words": [
+      "The",
+      "river",
+      "is",
+      "cold"
+    ]
+  },
+  {
+    "id": "s-022",
+    "sentence": "The sun is hot",
+    "translation": "Солнце горячее",
+    "theme": "Погода",
+    "type": "Утверждение",
+    "words": [
+      "The",
+      "sun",
+      "is",
+      "hot"
+    ]
+  },
+  {
+    "id": "s-023",
+    "sentence": "It is raining today",
+    "translation": "Сегодня идёт дождь",
+    "theme": "Погода",
+    "type": "Утверждение",
+    "words": [
+      "It",
+      "is",
+      "raining",
+      "today"
+    ]
+  },
+  {
+    "id": "s-024",
+    "sentence": "I go to school",
+    "translation": "Я иду в школу",
+    "theme": "Школа",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "go",
+      "to",
+      "school"
+    ]
+  },
+  {
+    "id": "s-025",
+    "sentence": "This is my book",
+    "translation": "Это моя книга",
+    "theme": "Школа",
+    "type": "Утверждение",
+    "words": [
+      "This",
+      "is",
+      "my",
+      "book"
+    ]
+  },
+  {
+    "id": "s-026",
+    "sentence": "I write with a pen",
+    "translation": "Я пишу ручкой",
+    "theme": "Школа",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "write",
+      "with",
+      "a",
+      "pen"
+    ]
+  },
+  {
+    "id": "s-027",
+    "sentence": "My mother is kind",
+    "translation": "Моя мама добрая",
+    "theme": "Семья",
+    "type": "Утверждение",
+    "words": [
+      "My",
+      "mother",
+      "is",
+      "kind"
+    ]
+  },
+  {
+    "id": "s-028",
+    "sentence": "My brother is young",
+    "translation": "Мой брат молодой",
+    "theme": "Семья",
+    "type": "Утверждение",
+    "words": [
+      "My",
+      "brother",
+      "is",
+      "young"
+    ]
+  },
+  {
+    "id": "s-029",
+    "sentence": "I open the door",
+    "translation": "Я открываю дверь",
+    "theme": "Дом",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "open",
+      "the",
+      "door"
+    ]
+  },
+  {
+    "id": "s-030",
+    "sentence": "The chair is near the table",
+    "translation": "Стул рядом со столом",
+    "theme": "Дом",
+    "type": "Утверждение",
+    "words": [
+      "The",
+      "chair",
+      "is",
+      "near",
+      "the",
+      "table"
+    ]
+  },
+  {
+    "id": "s-031",
+    "sentence": "I have a phone",
+    "translation": "У меня есть телефон",
+    "theme": "Техника",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "have",
+      "a",
+      "phone"
+    ]
+  },
+  {
+    "id": "s-032",
+    "sentence": "The screen is big",
+    "translation": "Экран большой",
+    "theme": "Техника",
+    "type": "Утверждение",
+    "words": [
+      "The",
+      "screen",
+      "is",
+      "big"
+    ]
+  },
+  {
+    "id": "s-033",
+    "sentence": "I need medicine",
+    "translation": "Мне нужно лекарство",
+    "theme": "Здоровье",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "need",
+      "medicine"
+    ]
+  },
+  {
+    "id": "s-034",
+    "sentence": "I feel better",
+    "translation": "Я чувствую себя лучше",
+    "theme": "Здоровье",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "feel",
+      "better"
+    ]
+  },
+  {
+    "id": "s-035",
+    "sentence": "We play football",
+    "translation": "Мы играем в футбол",
+    "theme": "Спорт и хобби",
+    "type": "Утверждение",
+    "words": [
+      "We",
+      "play",
+      "football"
+    ]
+  },
+  {
+    "id": "s-036",
+    "sentence": "I like music",
+    "translation": "Мне нравится музыка",
+    "theme": "Спорт и хобби",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "like",
+      "music"
+    ]
+  },
+  {
+    "id": "s-037",
+    "sentence": "I build a shelter",
+    "translation": "Я строю укрытие",
+    "theme": "Minecraft",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "build",
+      "a",
+      "shelter"
+    ]
+  },
+  {
+    "id": "s-038",
+    "sentence": "I found iron",
+    "translation": "Я нашёл железо",
+    "theme": "Minecraft",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "found",
+      "iron"
+    ]
+  },
+  {
+    "id": "s-039",
+    "sentence": "I drive a car",
+    "translation": "Я вожу машину",
+    "theme": "Автомобили",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "drive",
+      "a",
+      "car"
+    ]
+  },
+  {
+    "id": "s-040",
+    "sentence": "I need fuel",
+    "translation": "Мне нужно топливо",
+    "theme": "Автомобили",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "need",
+      "fuel"
+    ]
+  },
+  {
+    "id": "s-041",
+    "sentence": "Where is the station",
+    "translation": "Где станция",
+    "theme": "Город",
+    "type": "Вопрос",
+    "words": [
+      "Where",
+      "is",
+      "the",
+      "station"
+    ]
+  },
+  {
+    "id": "s-042",
+    "sentence": "Where is the pharmacy",
+    "translation": "Где аптека",
+    "theme": "Город",
+    "type": "Вопрос",
+    "words": [
+      "Where",
+      "is",
+      "the",
+      "pharmacy"
+    ]
+  },
+  {
+    "id": "s-043",
+    "sentence": "Can I buy a ticket",
+    "translation": "Можно купить билет",
+    "theme": "Транспорт",
+    "type": "Вопрос",
+    "words": [
+      "Can",
+      "I",
+      "buy",
+      "a",
+      "ticket"
+    ]
+  },
+  {
+    "id": "s-044",
+    "sentence": "Is the train late",
+    "translation": "Поезд опаздывает",
+    "theme": "Транспорт",
+    "type": "Вопрос",
+    "words": [
+      "Is",
+      "the",
+      "train",
+      "late"
+    ]
+  },
+  {
+    "id": "s-045",
+    "sentence": "How much is this gift",
+    "translation": "Сколько стоит этот подарок",
+    "theme": "Покупки",
+    "type": "Вопрос",
+    "words": [
+      "How",
+      "much",
+      "is",
+      "this",
+      "gift"
+    ]
+  },
+  {
+    "id": "s-046",
+    "sentence": "Do you take cards",
+    "translation": "Вы принимаете карты",
+    "theme": "Покупки",
+    "type": "Вопрос",
+    "words": [
+      "Do",
+      "you",
+      "take",
+      "cards"
+    ]
+  },
+  {
+    "id": "s-047",
+    "sentence": "Where is my suitcase",
+    "translation": "Где мой чемодан",
+    "theme": "Путешествия",
+    "type": "Вопрос",
+    "words": [
+      "Where",
+      "is",
+      "my",
+      "suitcase"
+    ]
+  },
+  {
+    "id": "s-048",
+    "sentence": "Is breakfast included",
+    "translation": "Завтрак включён",
+    "theme": "Путешествия",
+    "type": "Вопрос",
+    "words": [
+      "Is",
+      "breakfast",
+      "included"
+    ]
+  },
+  {
+    "id": "s-049",
+    "sentence": "Do you understand me",
+    "translation": "Ты меня понимаешь",
+    "theme": "Глаголы",
+    "type": "Вопрос",
+    "words": [
+      "Do",
+      "you",
+      "understand",
+      "me"
+    ]
+  },
+  {
+    "id": "s-050",
+    "sentence": "Can you repeat that",
+    "translation": "Можешь повторить это",
+    "theme": "Глаголы",
+    "type": "Вопрос",
+    "words": [
+      "Can",
+      "you",
+      "repeat",
+      "that"
+    ]
+  },
+  {
+    "id": "s-051",
+    "sentence": "Are you ready",
+    "translation": "Ты готов",
+    "theme": "Прилагательные",
+    "type": "Вопрос",
+    "words": [
+      "Are",
+      "you",
+      "ready"
+    ]
+  },
+  {
+    "id": "s-052",
+    "sentence": "Is it dangerous",
+    "translation": "Это опасно",
+    "theme": "Прилагательные",
+    "type": "Вопрос",
+    "words": [
+      "Is",
+      "it",
+      "dangerous"
+    ]
+  },
+  {
+    "id": "s-053",
+    "sentence": "I am hungry",
+    "translation": "Я голоден",
+    "theme": "Прилагательные",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "am",
+      "hungry"
+    ]
+  },
+  {
+    "id": "s-054",
+    "sentence": "She is busy now",
+    "translation": "Она сейчас занята",
+    "theme": "Прилагательные",
+    "type": "Утверждение",
+    "words": [
+      "She",
+      "is",
+      "busy",
+      "now"
+    ]
+  },
+  {
+    "id": "s-055",
+    "sentence": "The park is far",
+    "translation": "Парк далеко",
+    "theme": "Место и время",
+    "type": "Утверждение",
+    "words": [
+      "The",
+      "park",
+      "is",
+      "far"
+    ]
+  },
+  {
+    "id": "s-056",
+    "sentence": "The shop is near",
+    "translation": "Магазин рядом",
+    "theme": "Место и время",
+    "type": "Утверждение",
+    "words": [
+      "The",
+      "shop",
+      "is",
+      "near"
+    ]
+  },
+  {
+    "id": "s-057",
+    "sentence": "We meet tomorrow",
+    "translation": "Мы встречаемся завтра",
+    "theme": "Время",
+    "type": "Утверждение",
+    "words": [
+      "We",
+      "meet",
+      "tomorrow"
+    ]
+  },
+  {
+    "id": "s-058",
+    "sentence": "I work on Monday",
+    "translation": "Я работаю в понедельник",
+    "theme": "Время",
+    "type": "Утверждение",
+    "words": [
+      "I",
+      "work",
+      "on",
+      "Monday"
+    ]
+  }
 ]
