@@ -1646,5 +1646,3157 @@
     "translation": "останавливаться",
     "theme": "Глаголы",
     "emoji": "🛑"
+  },
+  {
+    "id": "stage2-животные-001",
+    "word": "cat",
+    "transcription": "",
+    "translation": "кот",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-002",
+    "word": "dog",
+    "transcription": "",
+    "translation": "собака",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-003",
+    "word": "bird",
+    "transcription": "",
+    "translation": "птица",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-004",
+    "word": "horse",
+    "transcription": "",
+    "translation": "лошадь",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-005",
+    "word": "cow",
+    "transcription": "",
+    "translation": "корова",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-006",
+    "word": "pig",
+    "transcription": "",
+    "translation": "свинья",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-007",
+    "word": "sheep",
+    "transcription": "",
+    "translation": "овца",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-008",
+    "word": "goat",
+    "transcription": "",
+    "translation": "коза",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-009",
+    "word": "duck",
+    "transcription": "",
+    "translation": "утка",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-010",
+    "word": "rabbit",
+    "transcription": "",
+    "translation": "кролик",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-011",
+    "word": "mouse",
+    "transcription": "",
+    "translation": "мышь",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-012",
+    "word": "bear",
+    "transcription": "",
+    "translation": "медведь",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-013",
+    "word": "lion",
+    "transcription": "",
+    "translation": "лев",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-014",
+    "word": "tiger",
+    "transcription": "",
+    "translation": "тигр",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-015",
+    "word": "monkey",
+    "transcription": "",
+    "translation": "обезьяна",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-016",
+    "word": "elephant",
+    "transcription": "",
+    "translation": "слон",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-017",
+    "word": "giraffe",
+    "transcription": "",
+    "translation": "жираф",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-018",
+    "word": "zebra",
+    "transcription": "",
+    "translation": "зебра",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-019",
+    "word": "frog",
+    "transcription": "",
+    "translation": "лягушка",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-020",
+    "word": "snake",
+    "transcription": "",
+    "translation": "змея",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-021",
+    "word": "bee",
+    "transcription": "",
+    "translation": "пчела",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-022",
+    "word": "butterfly",
+    "transcription": "",
+    "translation": "бабочка",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-023",
+    "word": "spider",
+    "transcription": "",
+    "translation": "паук",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-024",
+    "word": "pet",
+    "transcription": "",
+    "translation": "питомец",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-025",
+    "word": "animal",
+    "transcription": "",
+    "translation": "животное",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-026",
+    "word": "tail",
+    "transcription": "",
+    "translation": "хвост",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-027",
+    "word": "wing",
+    "transcription": "",
+    "translation": "крыло",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-028",
+    "word": "wild",
+    "transcription": "",
+    "translation": "дикий",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-029",
+    "word": "farm animal",
+    "transcription": "",
+    "translation": "домашнее животное",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-030",
+    "word": "puppy",
+    "transcription": "",
+    "translation": "щенок",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-031",
+    "word": "kitten",
+    "transcription": "",
+    "translation": "котёнок",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-032",
+    "word": "wolf",
+    "transcription": "",
+    "translation": "волк",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-033",
+    "word": "fox",
+    "transcription": "",
+    "translation": "лиса",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-034",
+    "word": "deer",
+    "transcription": "",
+    "translation": "олень",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-035",
+    "word": "camel",
+    "transcription": "",
+    "translation": "верблюд",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-036",
+    "word": "panda",
+    "transcription": "",
+    "translation": "панда",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-037",
+    "word": "whale",
+    "transcription": "",
+    "translation": "кит",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-038",
+    "word": "dolphin",
+    "transcription": "",
+    "translation": "дельфин",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-039",
+    "word": "shark",
+    "transcription": "",
+    "translation": "акула",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-животные-040",
+    "word": "turtle",
+    "transcription": "",
+    "translation": "черепаха",
+    "theme": "Животные",
+    "emoji": "🐾"
+  },
+  {
+    "id": "stage2-природа-001",
+    "word": "tree",
+    "transcription": "",
+    "translation": "дерево",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-002",
+    "word": "flower",
+    "transcription": "",
+    "translation": "цветок",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-003",
+    "word": "grass",
+    "transcription": "",
+    "translation": "трава",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-004",
+    "word": "leaf",
+    "transcription": "",
+    "translation": "лист",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-005",
+    "word": "forest",
+    "transcription": "",
+    "translation": "лес",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-006",
+    "word": "river",
+    "transcription": "",
+    "translation": "река",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-007",
+    "word": "lake",
+    "transcription": "",
+    "translation": "озеро",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-008",
+    "word": "sea",
+    "transcription": "",
+    "translation": "море",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-009",
+    "word": "ocean",
+    "transcription": "",
+    "translation": "океан",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-010",
+    "word": "mountain",
+    "transcription": "",
+    "translation": "гора",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-011",
+    "word": "hill",
+    "transcription": "",
+    "translation": "холм",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-012",
+    "word": "field",
+    "transcription": "",
+    "translation": "поле",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-013",
+    "word": "park",
+    "transcription": "",
+    "translation": "парк",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-014",
+    "word": "sky",
+    "transcription": "",
+    "translation": "небо",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-015",
+    "word": "star",
+    "transcription": "",
+    "translation": "звезда",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-016",
+    "word": "moon",
+    "transcription": "",
+    "translation": "луна",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-017",
+    "word": "earth",
+    "transcription": "",
+    "translation": "земля",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-018",
+    "word": "stone",
+    "transcription": "",
+    "translation": "камень",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-019",
+    "word": "sand",
+    "transcription": "",
+    "translation": "песок",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-020",
+    "word": "fire",
+    "transcription": "",
+    "translation": "огонь",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-021",
+    "word": "ice",
+    "transcription": "",
+    "translation": "лёд",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-022",
+    "word": "air",
+    "transcription": "",
+    "translation": "воздух",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-023",
+    "word": "plant",
+    "transcription": "",
+    "translation": "растение",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-024",
+    "word": "branch",
+    "transcription": "",
+    "translation": "ветка",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-025",
+    "word": "root",
+    "transcription": "",
+    "translation": "корень",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-026",
+    "word": "island",
+    "transcription": "",
+    "translation": "остров",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-027",
+    "word": "desert",
+    "transcription": "",
+    "translation": "пустыня",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-028",
+    "word": "garden",
+    "transcription": "",
+    "translation": "сад",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-029",
+    "word": "cloudy",
+    "transcription": "",
+    "translation": "облачно",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-030",
+    "word": "rainy",
+    "transcription": "",
+    "translation": "дождливо",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-031",
+    "word": "sunny",
+    "transcription": "",
+    "translation": "солнечно",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-032",
+    "word": "storm",
+    "transcription": "",
+    "translation": "буря",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-033",
+    "word": "thunder",
+    "transcription": "",
+    "translation": "гром",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-034",
+    "word": "lightning",
+    "transcription": "",
+    "translation": "молния",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-035",
+    "word": "wave",
+    "transcription": "",
+    "translation": "волна",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-036",
+    "word": "beach",
+    "transcription": "",
+    "translation": "пляж",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-037",
+    "word": "wood",
+    "transcription": "",
+    "translation": "древесина",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-038",
+    "word": "rock",
+    "transcription": "",
+    "translation": "скала",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-039",
+    "word": "waterfall",
+    "transcription": "",
+    "translation": "водопад",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-природа-040",
+    "word": "pond",
+    "transcription": "",
+    "translation": "пруд",
+    "theme": "Природа",
+    "emoji": "🌿"
+  },
+  {
+    "id": "stage2-город-001",
+    "word": "street",
+    "transcription": "",
+    "translation": "улица",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-002",
+    "word": "city",
+    "transcription": "",
+    "translation": "город",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-003",
+    "word": "town",
+    "transcription": "",
+    "translation": "городок",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-004",
+    "word": "village",
+    "transcription": "",
+    "translation": "деревня",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-005",
+    "word": "building",
+    "transcription": "",
+    "translation": "здание",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-006",
+    "word": "shop",
+    "transcription": "",
+    "translation": "магазин",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-007",
+    "word": "market",
+    "transcription": "",
+    "translation": "рынок",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-008",
+    "word": "bank",
+    "transcription": "",
+    "translation": "банк",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-009",
+    "word": "post office",
+    "transcription": "",
+    "translation": "почта",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-010",
+    "word": "police",
+    "transcription": "",
+    "translation": "полиция",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-011",
+    "word": "hospital",
+    "transcription": "",
+    "translation": "больница",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-012",
+    "word": "pharmacy",
+    "transcription": "",
+    "translation": "аптека",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-013",
+    "word": "station",
+    "transcription": "",
+    "translation": "станция",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-014",
+    "word": "bus stop",
+    "transcription": "",
+    "translation": "остановка",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-015",
+    "word": "bridge",
+    "transcription": "",
+    "translation": "мост",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-016",
+    "word": "square",
+    "transcription": "",
+    "translation": "площадь",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-017",
+    "word": "corner",
+    "transcription": "",
+    "translation": "угол",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-018",
+    "word": "traffic light",
+    "transcription": "",
+    "translation": "светофор",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-019",
+    "word": "road sign",
+    "transcription": "",
+    "translation": "дорожный знак",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-020",
+    "word": "address",
+    "transcription": "",
+    "translation": "адрес",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-021",
+    "word": "center",
+    "transcription": "",
+    "translation": "центр",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-022",
+    "word": "entrance",
+    "transcription": "",
+    "translation": "вход",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-023",
+    "word": "exit",
+    "transcription": "",
+    "translation": "выход",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-024",
+    "word": "elevator",
+    "transcription": "",
+    "translation": "лифт",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-025",
+    "word": "stairs",
+    "transcription": "",
+    "translation": "лестница",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-026",
+    "word": "library",
+    "transcription": "",
+    "translation": "библиотека",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-027",
+    "word": "museum",
+    "transcription": "",
+    "translation": "музей",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-028",
+    "word": "cinema",
+    "transcription": "",
+    "translation": "кинотеатр",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-029",
+    "word": "theater",
+    "transcription": "",
+    "translation": "театр",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-030",
+    "word": "restaurant",
+    "transcription": "",
+    "translation": "ресторан",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-031",
+    "word": "cafe",
+    "transcription": "",
+    "translation": "кафе",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-032",
+    "word": "church",
+    "transcription": "",
+    "translation": "церковь",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-033",
+    "word": "factory",
+    "transcription": "",
+    "translation": "завод",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-034",
+    "word": "airport",
+    "transcription": "",
+    "translation": "аэропорт",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-035",
+    "word": "garage",
+    "transcription": "",
+    "translation": "гараж",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-036",
+    "word": "parking",
+    "transcription": "",
+    "translation": "парковка",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-037",
+    "word": "playground",
+    "transcription": "",
+    "translation": "площадка",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-038",
+    "word": "yard",
+    "transcription": "",
+    "translation": "двор",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-039",
+    "word": "roof",
+    "transcription": "",
+    "translation": "крыша",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-город-040",
+    "word": "gate",
+    "transcription": "",
+    "translation": "ворота",
+    "theme": "Город",
+    "emoji": "🏙️"
+  },
+  {
+    "id": "stage2-транспорт-001",
+    "word": "car",
+    "transcription": "",
+    "translation": "машина",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-002",
+    "word": "bus",
+    "transcription": "",
+    "translation": "автобус",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-003",
+    "word": "train",
+    "transcription": "",
+    "translation": "поезд",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-004",
+    "word": "plane",
+    "transcription": "",
+    "translation": "самолёт",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-005",
+    "word": "ship",
+    "transcription": "",
+    "translation": "корабль",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-006",
+    "word": "boat",
+    "transcription": "",
+    "translation": "лодка",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-007",
+    "word": "bike",
+    "transcription": "",
+    "translation": "велосипед",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-008",
+    "word": "motorbike",
+    "transcription": "",
+    "translation": "мотоцикл",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-009",
+    "word": "taxi",
+    "transcription": "",
+    "translation": "такси",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-010",
+    "word": "truck",
+    "transcription": "",
+    "translation": "грузовик",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-011",
+    "word": "metro",
+    "transcription": "",
+    "translation": "метро",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-012",
+    "word": "tram",
+    "transcription": "",
+    "translation": "трамвай",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-013",
+    "word": "ticket",
+    "transcription": "",
+    "translation": "билет",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-014",
+    "word": "seat",
+    "transcription": "",
+    "translation": "место",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-015",
+    "word": "wheel",
+    "transcription": "",
+    "translation": "колесо",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-016",
+    "word": "engine",
+    "transcription": "",
+    "translation": "двигатель",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-017",
+    "word": "brake",
+    "transcription": "",
+    "translation": "тормоз",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-018",
+    "word": "fuel",
+    "transcription": "",
+    "translation": "топливо",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-019",
+    "word": "speed",
+    "transcription": "",
+    "translation": "скорость",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-020",
+    "word": "traffic",
+    "transcription": "",
+    "translation": "движение",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-021",
+    "word": "driver",
+    "transcription": "",
+    "translation": "водитель",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-022",
+    "word": "passenger",
+    "transcription": "",
+    "translation": "пассажир",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-023",
+    "word": "road",
+    "transcription": "",
+    "translation": "дорога",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-024",
+    "word": "highway",
+    "transcription": "",
+    "translation": "шоссе",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-025",
+    "word": "trip",
+    "transcription": "",
+    "translation": "поездка",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-026",
+    "word": "journey",
+    "transcription": "",
+    "translation": "путешествие",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-027",
+    "word": "flight",
+    "transcription": "",
+    "translation": "рейс",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-028",
+    "word": "arrival",
+    "transcription": "",
+    "translation": "прибытие",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-029",
+    "word": "departure",
+    "transcription": "",
+    "translation": "отправление",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-030",
+    "word": "delay",
+    "transcription": "",
+    "translation": "задержка",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-031",
+    "word": "platform",
+    "transcription": "",
+    "translation": "платформа",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-032",
+    "word": "railway",
+    "transcription": "",
+    "translation": "железная дорога",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-033",
+    "word": "subway",
+    "transcription": "",
+    "translation": "метро",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-034",
+    "word": "helmet",
+    "transcription": "",
+    "translation": "шлем",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-035",
+    "word": "license",
+    "transcription": "",
+    "translation": "права",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-036",
+    "word": "route",
+    "transcription": "",
+    "translation": "маршрут",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-037",
+    "word": "map",
+    "transcription": "",
+    "translation": "карта",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-038",
+    "word": "direction",
+    "transcription": "",
+    "translation": "направление",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-транспорт-039",
+    "word": "turn",
+    "transcription": "",
+    "translation": "поворот",
+    "theme": "Транспорт",
+    "emoji": "🚗"
+  },
+  {
+    "id": "stage2-путешествия-001",
+    "word": "hotel",
+    "transcription": "",
+    "translation": "отель",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-002",
+    "word": "passport",
+    "transcription": "",
+    "translation": "паспорт",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-003",
+    "word": "visa",
+    "transcription": "",
+    "translation": "виза",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-004",
+    "word": "suitcase",
+    "transcription": "",
+    "translation": "чемодан",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-005",
+    "word": "luggage",
+    "transcription": "",
+    "translation": "багаж",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-006",
+    "word": "holiday",
+    "transcription": "",
+    "translation": "отпуск",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-007",
+    "word": "reservation",
+    "transcription": "",
+    "translation": "бронь",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-008",
+    "word": "reception",
+    "transcription": "",
+    "translation": "ресепшен",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-009",
+    "word": "room key",
+    "transcription": "",
+    "translation": "ключ от номера",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-010",
+    "word": "boarding",
+    "transcription": "",
+    "translation": "посадка",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-011",
+    "word": "tourist",
+    "transcription": "",
+    "translation": "турист",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-012",
+    "word": "guide",
+    "transcription": "",
+    "translation": "гид",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-013",
+    "word": "country",
+    "transcription": "",
+    "translation": "страна",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-014",
+    "word": "language",
+    "transcription": "",
+    "translation": "язык",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-015",
+    "word": "city center",
+    "transcription": "",
+    "translation": "центр города",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-016",
+    "word": "beach hotel",
+    "transcription": "",
+    "translation": "отель у пляжа",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-017",
+    "word": "breakfast included",
+    "transcription": "",
+    "translation": "завтрак включён",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-018",
+    "word": "single room",
+    "transcription": "",
+    "translation": "одноместный номер",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-019",
+    "word": "double room",
+    "transcription": "",
+    "translation": "двухместный номер",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-020",
+    "word": "towel",
+    "transcription": "",
+    "translation": "полотенце",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-021",
+    "word": "shower",
+    "transcription": "",
+    "translation": "душ",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-022",
+    "word": "check in",
+    "transcription": "",
+    "translation": "заселяться",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-023",
+    "word": "check out",
+    "transcription": "",
+    "translation": "выезжать",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-024",
+    "word": "book a room",
+    "transcription": "",
+    "translation": "забронировать номер",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-025",
+    "word": "ask the way",
+    "transcription": "",
+    "translation": "спросить дорогу",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-026",
+    "word": "take a taxi",
+    "transcription": "",
+    "translation": "взять такси",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-027",
+    "word": "miss a train",
+    "transcription": "",
+    "translation": "опоздать на поезд",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-028",
+    "word": "change money",
+    "transcription": "",
+    "translation": "обменять деньги",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-029",
+    "word": "travel card",
+    "transcription": "",
+    "translation": "проездная карта",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-030",
+    "word": "tour",
+    "transcription": "",
+    "translation": "тур",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-031",
+    "word": "excursion",
+    "transcription": "",
+    "translation": "экскурсия",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-032",
+    "word": "souvenir",
+    "transcription": "",
+    "translation": "сувенир",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-033",
+    "word": "photo",
+    "transcription": "",
+    "translation": "фото",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-034",
+    "word": "view",
+    "transcription": "",
+    "translation": "вид",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-035",
+    "word": "local",
+    "transcription": "",
+    "translation": "местный",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-036",
+    "word": "foreign",
+    "transcription": "",
+    "translation": "иностранный",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-037",
+    "word": "abroad",
+    "transcription": "",
+    "translation": "за границей",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-038",
+    "word": "customs",
+    "transcription": "",
+    "translation": "таможня",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-путешествия-039",
+    "word": "border",
+    "transcription": "",
+    "translation": "граница",
+    "theme": "Путешествия",
+    "emoji": "🧳"
+  },
+  {
+    "id": "stage2-покупки-001",
+    "word": "price",
+    "transcription": "",
+    "translation": "цена",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-002",
+    "word": "money",
+    "transcription": "",
+    "translation": "деньги",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-003",
+    "word": "cash",
+    "transcription": "",
+    "translation": "наличные",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-004",
+    "word": "card",
+    "transcription": "",
+    "translation": "карта",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-005",
+    "word": "change",
+    "transcription": "",
+    "translation": "сдача",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-006",
+    "word": "receipt",
+    "transcription": "",
+    "translation": "чек",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-007",
+    "word": "discount",
+    "transcription": "",
+    "translation": "скидка",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-008",
+    "word": "sale",
+    "transcription": "",
+    "translation": "распродажа",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-009",
+    "word": "size",
+    "transcription": "",
+    "translation": "размер",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-010",
+    "word": "cheap",
+    "transcription": "",
+    "translation": "дешёвый",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-011",
+    "word": "expensive",
+    "transcription": "",
+    "translation": "дорогой",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-012",
+    "word": "buy",
+    "transcription": "",
+    "translation": "купить",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-013",
+    "word": "sell",
+    "transcription": "",
+    "translation": "продавать",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-014",
+    "word": "order",
+    "transcription": "",
+    "translation": "заказ",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-015",
+    "word": "cart",
+    "transcription": "",
+    "translation": "корзина",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-016",
+    "word": "payment",
+    "transcription": "",
+    "translation": "оплата",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-017",
+    "word": "customer",
+    "transcription": "",
+    "translation": "покупатель",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-018",
+    "word": "seller",
+    "transcription": "",
+    "translation": "продавец",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-019",
+    "word": "thing",
+    "transcription": "",
+    "translation": "вещь",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-020",
+    "word": "gift",
+    "transcription": "",
+    "translation": "подарок",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-021",
+    "word": "bag",
+    "transcription": "",
+    "translation": "пакет",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-022",
+    "word": "box",
+    "transcription": "",
+    "translation": "коробка",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-023",
+    "word": "delivery",
+    "transcription": "",
+    "translation": "доставка",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-024",
+    "word": "return",
+    "transcription": "",
+    "translation": "возврат",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-025",
+    "word": "try on",
+    "transcription": "",
+    "translation": "примерять",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-026",
+    "word": "cashier",
+    "transcription": "",
+    "translation": "кассир",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-027",
+    "word": "shop assistant",
+    "transcription": "",
+    "translation": "продавец-консультант",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-028",
+    "word": "total",
+    "transcription": "",
+    "translation": "итого",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-029",
+    "word": "coin",
+    "transcription": "",
+    "translation": "монета",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-030",
+    "word": "note",
+    "transcription": "",
+    "translation": "купюра",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-031",
+    "word": "brand",
+    "transcription": "",
+    "translation": "бренд",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-032",
+    "word": "quality",
+    "transcription": "",
+    "translation": "качество",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-033",
+    "word": "open hours",
+    "transcription": "",
+    "translation": "часы работы",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-034",
+    "word": "closed",
+    "transcription": "",
+    "translation": "закрыто",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-035",
+    "word": "available",
+    "transcription": "",
+    "translation": "доступный",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-покупки-036",
+    "word": "out of stock",
+    "transcription": "",
+    "translation": "нет в наличии",
+    "theme": "Покупки",
+    "emoji": "🛒"
+  },
+  {
+    "id": "stage2-люди-и-работа-001",
+    "word": "man",
+    "transcription": "",
+    "translation": "мужчина",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-002",
+    "word": "woman",
+    "transcription": "",
+    "translation": "женщина",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-003",
+    "word": "boy",
+    "transcription": "",
+    "translation": "мальчик",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-004",
+    "word": "girl",
+    "transcription": "",
+    "translation": "девочка",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-005",
+    "word": "person",
+    "transcription": "",
+    "translation": "человек",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-006",
+    "word": "people",
+    "transcription": "",
+    "translation": "люди",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-007",
+    "word": "neighbor",
+    "transcription": "",
+    "translation": "сосед",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-008",
+    "word": "guest",
+    "transcription": "",
+    "translation": "гость",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-009",
+    "word": "team",
+    "transcription": "",
+    "translation": "команда",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-010",
+    "word": "group",
+    "transcription": "",
+    "translation": "группа",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-011",
+    "word": "boss",
+    "transcription": "",
+    "translation": "начальник",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-012",
+    "word": "worker",
+    "transcription": "",
+    "translation": "работник",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-013",
+    "word": "doctor",
+    "transcription": "",
+    "translation": "врач",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-014",
+    "word": "nurse",
+    "transcription": "",
+    "translation": "медсестра",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-015",
+    "word": "engineer",
+    "transcription": "",
+    "translation": "инженер",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-016",
+    "word": "programmer",
+    "transcription": "",
+    "translation": "программист",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-017",
+    "word": "cook",
+    "transcription": "",
+    "translation": "повар",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-018",
+    "word": "waiter",
+    "transcription": "",
+    "translation": "официант",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-019",
+    "word": "farmer",
+    "transcription": "",
+    "translation": "фермер",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-020",
+    "word": "artist",
+    "transcription": "",
+    "translation": "художник",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-021",
+    "word": "singer",
+    "transcription": "",
+    "translation": "певец",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-022",
+    "word": "dancer",
+    "transcription": "",
+    "translation": "танцор",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-023",
+    "word": "actor",
+    "transcription": "",
+    "translation": "актёр",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-024",
+    "word": "job",
+    "transcription": "",
+    "translation": "работа",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-025",
+    "word": "office",
+    "transcription": "",
+    "translation": "офис",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-026",
+    "word": "meeting",
+    "transcription": "",
+    "translation": "встреча",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-027",
+    "word": "email",
+    "transcription": "",
+    "translation": "электронная почта",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-028",
+    "word": "message",
+    "transcription": "",
+    "translation": "сообщение",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-029",
+    "word": "call",
+    "transcription": "",
+    "translation": "звонок",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-030",
+    "word": "plan",
+    "transcription": "",
+    "translation": "план",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-031",
+    "word": "company",
+    "transcription": "",
+    "translation": "компания",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-032",
+    "word": "manager",
+    "transcription": "",
+    "translation": "менеджер",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-033",
+    "word": "client",
+    "transcription": "",
+    "translation": "клиент",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-034",
+    "word": "colleague",
+    "transcription": "",
+    "translation": "коллега",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-035",
+    "word": "salary",
+    "transcription": "",
+    "translation": "зарплата",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-036",
+    "word": "task",
+    "transcription": "",
+    "translation": "задача",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-037",
+    "word": "project",
+    "transcription": "",
+    "translation": "проект",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-038",
+    "word": "break",
+    "transcription": "",
+    "translation": "перерыв",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-люди-и-работа-039",
+    "word": "workday",
+    "transcription": "",
+    "translation": "рабочий день",
+    "theme": "Люди и работа",
+    "emoji": "👥"
+  },
+  {
+    "id": "stage2-день-001",
+    "word": "wake up",
+    "transcription": "",
+    "translation": "просыпаться",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-002",
+    "word": "get up",
+    "transcription": "",
+    "translation": "вставать",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-003",
+    "word": "wash",
+    "transcription": "",
+    "translation": "мыть",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-004",
+    "word": "brush",
+    "transcription": "",
+    "translation": "чистить щёткой",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-005",
+    "word": "dress up",
+    "transcription": "",
+    "translation": "одеваться",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-006",
+    "word": "cook breakfast",
+    "transcription": "",
+    "translation": "готовить завтрак",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-007",
+    "word": "go home",
+    "transcription": "",
+    "translation": "идти домой",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-008",
+    "word": "come back",
+    "transcription": "",
+    "translation": "возвращаться",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-009",
+    "word": "start",
+    "transcription": "",
+    "translation": "начинать",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-010",
+    "word": "finish",
+    "transcription": "",
+    "translation": "заканчивать",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-011",
+    "word": "rest",
+    "transcription": "",
+    "translation": "отдыхать",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-012",
+    "word": "relax",
+    "transcription": "",
+    "translation": "расслабляться",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-013",
+    "word": "clean",
+    "transcription": "",
+    "translation": "убирать",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-014",
+    "word": "carry",
+    "transcription": "",
+    "translation": "нести",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-015",
+    "word": "bring",
+    "transcription": "",
+    "translation": "приносить",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-016",
+    "word": "take",
+    "transcription": "",
+    "translation": "брать",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-017",
+    "word": "give",
+    "transcription": "",
+    "translation": "давать",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-018",
+    "word": "put",
+    "transcription": "",
+    "translation": "класть",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-019",
+    "word": "find",
+    "transcription": "",
+    "translation": "находить",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-020",
+    "word": "lose",
+    "transcription": "",
+    "translation": "терять",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-021",
+    "word": "wait",
+    "transcription": "",
+    "translation": "ждать",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-022",
+    "word": "ask",
+    "transcription": "",
+    "translation": "спрашивать",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-023",
+    "word": "tell",
+    "transcription": "",
+    "translation": "рассказывать",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-024",
+    "word": "say",
+    "transcription": "",
+    "translation": "сказать",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-025",
+    "word": "sit",
+    "transcription": "",
+    "translation": "сидеть",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-026",
+    "word": "stand",
+    "transcription": "",
+    "translation": "стоять",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-027",
+    "word": "lie down",
+    "transcription": "",
+    "translation": "лечь",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-028",
+    "word": "turn on",
+    "transcription": "",
+    "translation": "включить",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-029",
+    "word": "turn off",
+    "transcription": "",
+    "translation": "выключить",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-030",
+    "word": "prepare",
+    "transcription": "",
+    "translation": "готовить",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-031",
+    "word": "leave",
+    "transcription": "",
+    "translation": "уходить",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-032",
+    "word": "arrive",
+    "transcription": "",
+    "translation": "прибывать",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-033",
+    "word": "remember",
+    "transcription": "",
+    "translation": "помнить",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-034",
+    "word": "forget",
+    "transcription": "",
+    "translation": "забывать",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-035",
+    "word": "repeat",
+    "transcription": "",
+    "translation": "повторять",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-день-036",
+    "word": "practice",
+    "transcription": "",
+    "translation": "практиковаться",
+    "theme": "День",
+    "emoji": "☀️"
+  },
+  {
+    "id": "stage2-глаголы-001",
+    "word": "know",
+    "transcription": "",
+    "translation": "знать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-002",
+    "word": "think",
+    "transcription": "",
+    "translation": "думать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-003",
+    "word": "understand",
+    "transcription": "",
+    "translation": "понимать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-004",
+    "word": "learn",
+    "transcription": "",
+    "translation": "учить",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-005",
+    "word": "teach",
+    "transcription": "",
+    "translation": "обучать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-006",
+    "word": "try",
+    "transcription": "",
+    "translation": "пробовать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-007",
+    "word": "use",
+    "transcription": "",
+    "translation": "использовать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-008",
+    "word": "make",
+    "transcription": "",
+    "translation": "делать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-009",
+    "word": "do",
+    "transcription": "",
+    "translation": "делать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-010",
+    "word": "have",
+    "transcription": "",
+    "translation": "иметь",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-011",
+    "word": "need",
+    "transcription": "",
+    "translation": "нуждаться",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-012",
+    "word": "want",
+    "transcription": "",
+    "translation": "хотеть",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-013",
+    "word": "like",
+    "transcription": "",
+    "translation": "нравиться",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-014",
+    "word": "love",
+    "transcription": "",
+    "translation": "любить",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-015",
+    "word": "hate",
+    "transcription": "",
+    "translation": "ненавидеть",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-016",
+    "word": "feel",
+    "transcription": "",
+    "translation": "чувствовать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-017",
+    "word": "hear",
+    "transcription": "",
+    "translation": "слышать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-018",
+    "word": "smell",
+    "transcription": "",
+    "translation": "нюхать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-019",
+    "word": "taste",
+    "transcription": "",
+    "translation": "пробовать на вкус",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-020",
+    "word": "touch",
+    "transcription": "",
+    "translation": "трогать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-021",
+    "word": "choose",
+    "transcription": "",
+    "translation": "выбирать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-022",
+    "word": "show",
+    "transcription": "",
+    "translation": "показывать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-023",
+    "word": "move",
+    "transcription": "",
+    "translation": "двигаться",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-024",
+    "word": "meet",
+    "transcription": "",
+    "translation": "встречать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-025",
+    "word": "visit",
+    "transcription": "",
+    "translation": "посещать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-026",
+    "word": "live",
+    "transcription": "",
+    "translation": "жить",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-027",
+    "word": "stay",
+    "transcription": "",
+    "translation": "оставаться",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-028",
+    "word": "travel",
+    "transcription": "",
+    "translation": "путешествовать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-029",
+    "word": "drive",
+    "transcription": "",
+    "translation": "водить",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-030",
+    "word": "ride",
+    "transcription": "",
+    "translation": "кататься",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-031",
+    "word": "fly",
+    "transcription": "",
+    "translation": "летать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-032",
+    "word": "swim",
+    "transcription": "",
+    "translation": "плавать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-033",
+    "word": "jump",
+    "transcription": "",
+    "translation": "прыгать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-034",
+    "word": "climb",
+    "transcription": "",
+    "translation": "карабкаться",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-035",
+    "word": "fall",
+    "transcription": "",
+    "translation": "падать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-036",
+    "word": "build",
+    "transcription": "",
+    "translation": "строить",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-037",
+    "word": "break",
+    "transcription": "",
+    "translation": "ломать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-038",
+    "word": "fix",
+    "transcription": "",
+    "translation": "чинить",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-039",
+    "word": "cut",
+    "transcription": "",
+    "translation": "резать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-040",
+    "word": "draw",
+    "transcription": "",
+    "translation": "рисовать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-041",
+    "word": "paint",
+    "transcription": "",
+    "translation": "красить",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-042",
+    "word": "sing",
+    "transcription": "",
+    "translation": "петь",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-043",
+    "word": "dance",
+    "transcription": "",
+    "translation": "танцевать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-044",
+    "word": "win",
+    "transcription": "",
+    "translation": "побеждать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-045",
+    "word": "lose game",
+    "transcription": "",
+    "translation": "проигрывать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-046",
+    "word": "follow",
+    "transcription": "",
+    "translation": "следовать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-047",
+    "word": "lead",
+    "transcription": "",
+    "translation": "вести",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-048",
+    "word": "send",
+    "transcription": "",
+    "translation": "отправлять",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-049",
+    "word": "receive",
+    "transcription": "",
+    "translation": "получать",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-глаголы-050",
+    "word": "save",
+    "transcription": "",
+    "translation": "сохранять",
+    "theme": "Глаголы",
+    "emoji": "✅"
+  },
+  {
+    "id": "stage2-прилагательные-001",
+    "word": "fast",
+    "transcription": "",
+    "translation": "быстрый",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-002",
+    "word": "slow",
+    "transcription": "",
+    "translation": "медленный",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-003",
+    "word": "long",
+    "transcription": "",
+    "translation": "длинный",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-004",
+    "word": "short",
+    "transcription": "",
+    "translation": "короткий",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-005",
+    "word": "tall",
+    "transcription": "",
+    "translation": "высокий",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-006",
+    "word": "low",
+    "transcription": "",
+    "translation": "низкий",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-007",
+    "word": "high",
+    "transcription": "",
+    "translation": "высокий",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-008",
+    "word": "strong",
+    "transcription": "",
+    "translation": "сильный",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-009",
+    "word": "weak",
+    "transcription": "",
+    "translation": "слабый",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-010",
+    "word": "right",
+    "transcription": "",
+    "translation": "правильный",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-011",
+    "word": "wrong",
+    "transcription": "",
+    "translation": "неправильный",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-012",
+    "word": "clean",
+    "transcription": "",
+    "translation": "чистый",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-013",
+    "word": "dirty",
+    "transcription": "",
+    "translation": "грязный",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-014",
+    "word": "full",
+    "transcription": "",
+    "translation": "полный",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-015",
+    "word": "empty",
+    "transcription": "",
+    "translation": "пустой",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-016",
+    "word": "beautiful",
+    "transcription": "",
+    "translation": "красивый",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-017",
+    "word": "ugly",
+    "transcription": "",
+    "translation": "некрасивый",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-018",
+    "word": "kind",
+    "transcription": "",
+    "translation": "добрый",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-019",
+    "word": "angry",
+    "transcription": "",
+    "translation": "злой",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-020",
+    "word": "tired",
+    "transcription": "",
+    "translation": "уставший",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-021",
+    "word": "hungry",
+    "transcription": "",
+    "translation": "голодный",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-022",
+    "word": "thirsty",
+    "transcription": "",
+    "translation": "хочет пить",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-023",
+    "word": "ready",
+    "transcription": "",
+    "translation": "готовый",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-024",
+    "word": "busy",
+    "transcription": "",
+    "translation": "занятый",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-025",
+    "word": "free",
+    "transcription": "",
+    "translation": "свободный",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-026",
+    "word": "safe",
+    "transcription": "",
+    "translation": "безопасный",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-027",
+    "word": "dangerous",
+    "transcription": "",
+    "translation": "опасный",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-028",
+    "word": "interesting",
+    "transcription": "",
+    "translation": "интересный",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-029",
+    "word": "boring",
+    "transcription": "",
+    "translation": "скучный",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-030",
+    "word": "funny",
+    "transcription": "",
+    "translation": "смешной",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-031",
+    "word": "quiet",
+    "transcription": "",
+    "translation": "тихий",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-032",
+    "word": "loud",
+    "transcription": "",
+    "translation": "громкий",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-033",
+    "word": "soft",
+    "transcription": "",
+    "translation": "мягкий",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-034",
+    "word": "hard",
+    "transcription": "",
+    "translation": "твёрдый",
+    "theme": "Прилагательные",
+    "emoji": "✨"
+  },
+  {
+    "id": "stage2-прилагательные-035",
+    "word": "heavy",
+    "transcription": "",
+    "translation": "тяжёлый",
+    "theme": "Прилагательные",
+    "emoji": "✨"
   }
 ]
